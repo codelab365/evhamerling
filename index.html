@@ -29,6 +29,11 @@
         #sidebar {
             transition: transform 0.3s ease-in-out;
         }
+        #home {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://codelab365.github.io/evhamerling/events/brghamerling.png');
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -40,7 +45,7 @@
                 Elternverein BRG Hamerlingstraße
             </a>
             <div class="hidden md:flex items-center space-x-6">
-                <a href="https://codelab365.github.io/evhamerling/" class="text-gray-700 hover:text-blue-700 font-medium transition duration-300">Start</a>
+                <a href="https://codelab365.github.io/evhamerling/" class="text-blue-700 font-semibold">Start</a>
                 <a href="https://codelab365.github.io/evhamerling/aktuelles.html" class="text-gray-700 hover:text-blue-700 font-medium transition duration-300">Aktuelles & Fotos</a>
                 <a href="#contact" class="text-gray-700 hover:text-blue-700 font-medium transition duration-300">Kontakt</a>
                 <button id="desktop-menu-button" class="flex items-center">
@@ -72,15 +77,47 @@
 
     <main>
         <!-- Welcome Text Section -->
-        <section id="home" class="py-16 bg-blue-50 text-center">
+        <section id="home" class="py-24 text-center text-white">
             <div class="container mx-auto px-6">
-                <h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Herzlich Willkommen beim Elternverein des BRG Hamerlingstraße!</h1>
-                <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">"Gemeinsam für unsere Kinder - der Elternverein als starke Brücke!"</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Herzlich Willkommen beim Elternverein des BRG Hamerlingstraße!</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto">"Gemeinsam für unsere Kinder! - Unser Elternverein als starke Brücke!"</p>
+            </div>
+        </section>
+
+        <!-- Maturaball Announcement -->
+        <section id="top-aktuell" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                     <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Top-Aktuell: Maturaball 2025</h2>
+                </div>
+                <div class="flex flex-wrap md:flex-nowrap items-center bg-gray-50 rounded-lg shadow-lg overflow-hidden max-w-5xl mx-auto">
+                    <div class="w-full md:w-2/5">
+                         <img src="https://codelab365.github.io/evhamerling/events/hamair-1.jpg" alt="Maturaball Plakat" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-full md:w-3/5 p-8">
+                         <h3 class="text-2xl font-bold text-gray-800 mb-4">Maturaball BRG Hamerling 2025</h3>
+                         <div class="text-gray-700 space-y-3">
+                             <div>
+                                <h4 class="font-semibold text-gray-800">Wann?</h4>
+                                <p>14. November 2025, 19:15 Einlass / 20:00 Eröffnung</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Kartenverkauf:</h4>
+                                <p>Sekretariat (+43 732 65262), im Kaffeeladen Linz, sowie bei allen Maturant*innen und an der Abendkassa (AK)</p>
+                                <p><strong>Eintritt:</strong> EW: 29 Euro (AK 31 Euro) / Schüler*innen: 27 Euro (AK 29 Euro)</p>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-gray-800">Tischreservierungen:</h4>
+                                <p>Bei allen Maturant:innen oder <a href="mailto:ball@brghamerling.at" class="text-blue-700 hover:underline">ball@brghamerling.at</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- About Us Section -->
-        <section id="about" class="py-20 bg-white">
+        <section id="about" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Über den Elternverein</h2>
@@ -111,9 +148,9 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- Important Infos Section -->
-        <section id="infos" class="py-20 bg-gray-50">
+        <section id="infos" class="py-20 bg-white">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Wichtige Informationen</h2>
@@ -277,7 +314,7 @@
         </section>
 
         <!-- Team Section -->
-        <section id="team" class="py-20 bg-white">
+        <section id="team" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Unser Team</h2>
@@ -285,32 +322,32 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
                     <!-- Team Member Card 1 -->
-                    <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
                         <h4 class="text-xl font-bold text-gray-800">Gudrun Ronacher</h4>
                         <p class="text-gray-600 mt-1 font-semibold">Obfrau</p>
                     </div>
                     <!-- Team Member Card 2 -->
-                    <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
                         <h4 class="text-xl font-bold text-gray-800">Petra Schwarzenberger</h4>
                         <p class="text-gray-600 mt-1 font-semibold">Obfrau Stv.</p>
                     </div>
                     <!-- Team Member Card 3 -->
-                    <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
                         <h4 class="text-xl font-bold text-gray-800">Thomas Wiener</h4>
                         <p class="text-gray-600 mt-1 font-semibold">Kassier</p>
                     </div>
                     <!-- Team Member Card 4 -->
-                    <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
                         <h4 class="text-xl font-bold text-gray-800">in Kürze...</h4>
                         <p class="text-gray-600 mt-1 font-semibold">Schriftführerin</p>
                     </div>
                     <!-- Team Member Card 5 -->
-                    <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
                         <h4 class="text-xl font-bold text-gray-800">Vera Rachbauer</h4>
                         <p class="text-gray-600 mt-1 font-semibold">Rechnungsprüferin</p>
                     </div>
                     <!-- Team Member Card 6 -->
-                    <div class="bg-gray-50 text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
                         <h4 class="text-xl font-bold text-gray-800">Thomas Lambert</h4>
                         <p class="text-gray-600 mt-1 font-semibold">Rechnungsprüfer</p>
                     </div>
@@ -319,7 +356,7 @@
         </section>
 
         <!-- Termine Section -->
-        <section id="termine" class="py-20 bg-gray-50">
+        <section id="termine" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Terminkalender</h2>
@@ -333,13 +370,13 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-white">
+        <section id="contact" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 text-center">
                  <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Kontaktieren Sie uns</h2>
                     <p class="text-gray-600 mt-2">Wir freuen uns auf Ihre Nachricht.</p>
                 </div>
-                <div class="max-w-lg mx-auto bg-gray-50 p-8 rounded-lg shadow-sm border border-gray-200">
+                <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-sm border border-gray-200">
                      <p class="text-xl font-semibold text-gray-800 mb-2">
                         Elternverein des BRG Hamerlingstraße
                     </p>
@@ -354,7 +391,7 @@
         </section>
         
         <!-- Impressum & Datenschutz Section -->
-        <section id="rechtliches" class="py-20 bg-gray-50">
+        <section id="rechtliches" class="py-20 bg-white">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Impressum & Datenschutz</h2>
@@ -414,115 +451,117 @@
     </footer>
 
     <script>
-        // Sidebar Toggle
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-        const openButtons = [document.getElementById('mobile-menu-button'), document.getElementById('desktop-menu-button')];
-        const closeButton = document.getElementById('close-sidebar-button');
-        const sidebarLinks = sidebar.querySelectorAll('a');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Sidebar Toggle
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            const openButtons = [document.getElementById('mobile-menu-button'), document.getElementById('desktop-menu-button')];
+            const closeButton = document.getElementById('close-sidebar-button');
+            const sidebarLinks = sidebar.querySelectorAll('a');
 
-        function openSidebar() {
-            sidebar.classList.remove('translate-x-full');
-            sidebarOverlay.classList.remove('hidden');
-        }
-
-        function closeSidebar() {
-            sidebar.classList.add('translate-x-full');
-            sidebarOverlay.classList.add('hidden');
-        }
-
-        openButtons.forEach(btn => btn.addEventListener('click', openSidebar));
-        closeButton.addEventListener('click', closeSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-        sidebarLinks.forEach(link => {
-            // Check if the link is an anchor link on the same page
-            if (link.getAttribute('href').startsWith('#')) {
-                link.addEventListener('click', closeSidebar);
+            function openSidebar() {
+                sidebar.classList.remove('translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
             }
-        });
-        
-        // Accordion functionality
-        const detailsElements = document.querySelectorAll('details');
-        detailsElements.forEach(details => {
-            details.addEventListener('toggle', event => {
-                const arrow = details.querySelector('.arrow-down');
-                if (details.open) {
-                    arrow.style.transform = 'rotate(180deg)';
-                } else {
-                    arrow.style.transform = 'rotate(0deg)';
+
+            function closeSidebar() {
+                sidebar.classList.add('translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+
+            openButtons.forEach(btn => btn.addEventListener('click', openSidebar));
+            closeButton.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+            sidebarLinks.forEach(link => {
+                // Check if the link is an anchor link on the same page
+                if (link.getAttribute('href').startsWith('#')) {
+                    link.addEventListener('click', closeSidebar);
                 }
             });
-        });
-
-        // Dynamic content loading for statutes
-        const statutenAccordion = document.getElementById('statuten-accordion');
-        let statutenLoaded = false;
-        if(statutenAccordion) {
-            statutenAccordion.addEventListener('toggle', event => {
-                if (statutenAccordion.open && !statutenLoaded) {
-                    const contentTarget = document.getElementById('statuten-content');
-                    fetch('https://codelab365.github.io/evhamerling/statuten-inhalt.html')
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Netzwerk-Antwort war nicht ok.');
-                            }
-                            return response.text();
-                        })
-                        .then(html => {
-                            contentTarget.innerHTML = html;
-                            statutenLoaded = true;
-                        })
-                        .catch(error => {
-                            contentTarget.innerHTML = '<p class="text-red-500">Fehler beim Laden der Statuten. Bitte versuchen Sie es später erneut.</p>';
-                            console.error('Fehler beim Abrufen der Statuten:', error);
-                        });
-                }
+            
+            // Accordion functionality
+            const detailsElements = document.querySelectorAll('details');
+            detailsElements.forEach(details => {
+                details.addEventListener('toggle', event => {
+                    const arrow = details.querySelector('.arrow-down');
+                    if (details.open) {
+                        arrow.style.transform = 'rotate(180deg)';
+                    } else {
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
+                });
             });
-        }
-        
-        // Termine Section Data
-        const termine = [
-            { date: '2025-09-22', time: '19:00 Uhr', title: 'Sitzung des Elternvereins', description: 'Planung des Schuljahres. Alle Eltern sind herzlich eingeladen.' },
-            { date: '2025-10-20', time: '19:00 Uhr', title: 'Jahreshauptversammlung & Vortrag Snusen und Vapen Ort: Festsaal', description: 'Wir treffen wichtige Entscheidungen für das Schuljahr 2025. Vortragsinhalt: Hr. Dieter Geigle spricht über das Thema "Kinder und Jugendliche gut begleiten im Umgang mit neuen Nikotinprodukten"' },
-            { date: '2025-11-03', time: '19:30 Uhr', title: 'Der KI-Tutor im Kinderzimmer – Wie KI die Nachhilfe revolutioniert online via Zoom', description: 'Teure Nachhilfestunden könnten bald der Vergangenheit angehören. In diesem Vortrag entdecken wir, wie moderne KI-Anwendungen die Rolle eines persönlichen Tutors einnehmen können. Wir zeigen Ihnen Programme, die nicht nur die richtige Lösung verraten, sondern den Weg dorthin Schritt für Schritt erklären, bei Denkblockaden helfen und sogar Fremdsprachen interaktiv trainieren. Ein Muss für alle, die Lernprozesse individuell und kosteneffizient unterstützen wollen.' },
-            { date: '2025-11-10', time: '19:30 Uhr', title: 'Die KI-Werkzeugkiste für die Schule – Kreativität und Effizienz entfesseln', description: 'Vom leeren Dokument zur fertigen Präsentation in wenigen Minuten? In dieser Live-Demonstration stellen wir Ihnen eine Palette an faszinierenden und meist kostenlosen KI-Tools vor (u.a. Gama, Canva, Suno). Erleben Sie, wie Ihr Kind mit wenigen Klicks beeindruckende Ergebnisse für Referate und Projekte erzielen und dabei wichtige digitale Kompetenzen aufbauen kann.' },
-            { date: '2025-11-17', time: '19:30 Uhr', title: 'KI-Kompetenz – Sicher und fair in der digitalen Welt', description: 'Mit den großen Chancen der KI gehen auch neue Herausforderungen einher. Dieser wichtige Abend widmet sich der "dunklen Seite": Wie erkennen wir Deepfakes? Wo ist die Grenze zwischen Recherche und Plagiat bei Hausübungen? Und wie schützen wir unsere Kinder vor neuen Formen des Cybermobbings? Wir geben Ihnen klare Informationen und praxistaugliche Strategien an die Hand, um als Familie kompetent und sicher in der digitalen Welt zu agieren.' }
-        ];
 
-        const calendarContainer = document.getElementById('calendar-events');
-        const monthNames = ["JAN", "FEB", "MÄR", "APR", "MAI", "JUN", "JUL", "AUG", "SEP", "OKT", "NOV", "DEZ"];
+            // Dynamic content loading for statutes
+            const statutenAccordion = document.getElementById('statuten-accordion');
+            let statutenLoaded = false;
+            if(statutenAccordion) {
+                statutenAccordion.addEventListener('toggle', event => {
+                    if (statutenAccordion.open && !statutenLoaded) {
+                        const contentTarget = document.getElementById('statuten-content');
+                        fetch('https://codelab365.github.io/evhamerling/statuten-inhalt.html')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Netzwerk-Antwort war nicht ok.');
+                                }
+                                return response.text();
+                            })
+                            .then(html => {
+                                contentTarget.innerHTML = html;
+                                statutenLoaded = true;
+                            })
+                            .catch(error => {
+                                contentTarget.innerHTML = '<p class="text-red-500">Fehler beim Laden der Statuten. Bitte versuchen Sie es später erneut.</p>';
+                                console.error('Fehler beim Abrufen der Statuten:', error);
+                            });
+                    }
+                });
+            }
+            
+            // Termine Section Data
+            const termine = [
+                { date: '2025-09-22', time: '19:00 Uhr', title: 'Sitzung des Elternvereins', description: 'Planung des Schuljahres. Alle Eltern sind herzlich eingeladen.' },
+                { date: '2025-10-20', time: '19:00 Uhr', title: 'Jahreshauptversammlung & Vortrag Snusen und Vapen Ort: Festsaal', description: 'Wir treffen wichtige Entscheidungen für das Schuljahr 2025. Vortragsinhalt: Hr. Dieter Geigle spricht über das Thema "Kinder und Jugendliche gut begleiten im Umgang mit neuen Nikotinprodukten"' },
+                { date: '2025-11-03', time: '19:30 Uhr', title: 'Der KI-Tutor im Kinderzimmer – Wie KI die Nachhilfe revolutioniert online via Zoom', description: 'Teure Nachhilfestunden könnten bald der Vergangenheit angehören. In diesem Vortrag entdecken wir, wie moderne KI-Anwendungen die Rolle eines persönlichen Tutors einnehmen können. Wir zeigen Ihnen Programme, die nicht nur die richtige Lösung verraten, sondern den Weg dorthin Schritt für Schritt erklären, bei Denkblockaden helfen und sogar Fremdsprachen interaktiv trainieren. Ein Muss für alle, die Lernprozesse individuell und kosteneffizient unterstützen wollen.' },
+                { date: '2025-11-10', time: '19:30 Uhr', title: 'Die KI-Werkzeugkiste für die Schule – Kreativität und Effizienz entfesseln', description: 'Vom leeren Dokument zur fertigen Präsentation in wenigen Minuten? In dieser Live-Demonstration stellen wir Ihnen eine Palette an faszinierenden und meist kostenlosen KI-Tools vor (u.a. Gama, Canva, Suno). Erleben Sie, wie Ihr Kind mit wenigen Klicks beeindruckende Ergebnisse für Referate und Projekte erzielen und dabei wichtige digitale Kompetenzen aufbauen kann.' },
+                { date: '2025-11-17', time: '19:30 Uhr', title: 'KI-Kompetenz – Sicher und fair in der digitalen Welt', description: 'Mit den großen Chancen der KI gehen auch neue Herausforderungen einher. Dieser wichtige Abend widmet sich der "dunklen Seite": Wie erkennen wir Deepfakes? Wo ist die Grenze zwischen Recherche und Plagiat bei Hausübungen? Und wie schützen wir unsere Kinder vor neuen Formen des Cybermobbings? Wir geben Ihnen klare Informationen und praxistaugliche Strategien an die Hand, um als Familie kompetent und sicher in der digitalen Welt zu agieren.' }
+            ];
 
-        if (calendarContainer) {
-            termine.sort((a, b) => new Date(a.date) - new Date(b.date));
+            const calendarContainer = document.getElementById('calendar-events');
+            const monthNames = ["JAN", "FEB", "MÄR", "APR", "MAI", "JUN", "JUL", "AUG", "SEP", "OKT", "NOV", "DEZ"];
 
-            termine.forEach(event => {
-                const dateObj = new Date(event.date + 'T00:00:00'); 
-                const day = dateObj.getDate().toString();
-                const month = monthNames[dateObj.getMonth()];
+            if (calendarContainer) {
+                termine.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-                const eventHtml = `
-                    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
-                        <div class="flex items-start space-x-6">
-                            <div class="text-center w-20 flex-shrink-0 pt-1">
-                                <p class="text-3xl font-bold text-blue-700">${day}</p>
-                                <p class="text-sm font-semibold text-gray-500">${month}</p>
-                            </div>
-                            <div class="flex-grow">
-                                <h4 class="font-bold text-xl text-gray-800 mb-2">${event.title}</h4>
-                                <div class="flex items-center text-gray-600 text-sm mb-3">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    <span>${event.time}</span>
+                termine.forEach(event => {
+                    const dateObj = new Date(event.date + 'T00:00:00'); 
+                    const day = dateObj.getDate().toString();
+                    const month = monthNames[dateObj.getMonth()];
+
+                    const eventHtml = `
+                        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
+                            <div class="flex items-start space-x-6">
+                                <div class="text-center w-20 flex-shrink-0 pt-1">
+                                    <p class="text-3xl font-bold text-blue-700">${day}</p>
+                                    <p class="text-sm font-semibold text-gray-500">${month}</p>
                                 </div>
-                                <p class="text-gray-700 leading-relaxed">${event.description}</p>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold text-xl text-gray-800 mb-2">${event.title}</h4>
+                                    <div class="flex items-center text-gray-600 text-sm mb-3">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        <span>${event.time}</span>
+                                    </div>
+                                    <p class="text-gray-700 leading-relaxed">${event.description}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
-                calendarContainer.innerHTML += eventHtml;
-            });
-        }
-        
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+                    `;
+                    calendarContainer.innerHTML += eventHtml;
+                });
+            }
+            
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
     </script>
 </body>
 </html>
