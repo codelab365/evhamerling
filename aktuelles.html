@@ -13,6 +13,21 @@
     <style>
         body { font-family: 'Poppins', sans-serif; }
         #sidebar { transition: transform 0.3s ease-in-out; }
+        
+        /* Embedded SimpleLightbox CSS to ensure controls are always visible */
+        .sl-overlay{position:fixed;left:0;right:0;top:0;bottom:0;background:#000;opacity:.8;display:none;z-index:1035}
+        .sl-wrapper{z-index:1040}
+        .sl-wrapper button{border:0;background:0 0;font-size:32px;color:#fff;cursor:pointer;position:absolute}
+        .sl-wrapper button:hover{color:#ccc}
+        .sl-wrapper .sl-close{right:10px;top:10px;font-size:40px}
+        .sl-wrapper .sl-navigation{width:100%;display:flex;justify-content:space-between}
+        .sl-wrapper .sl-navigation button{top:50%;transform:translateY(-50%)}
+        .sl-wrapper .sl-prev{left:10px}
+        .sl-wrapper .sl-next{right:10px}
+        .sl-wrapper .sl-counter{top:10px;left:10px;color:#fff;font-size:16px}
+        .sl-wrapper .sl-image{position:fixed;transform:translate(-50%,-50%);top:50%;left:50%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+        .sl-wrapper .sl-image img{width:auto;height:auto;max-width:100%;max-height:100%;display:block;margin:auto}
+        .sl-wrapper .sl-caption{display:none;text-align:center;color:#fff;font-size:16px;position:fixed;bottom:10px;left:0;right:0;padding:10px}
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -142,7 +157,7 @@
     <!-- Lightbox JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-lightbox/2.14.2/simple-lightbox.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        window.onload = function () {
             // Sidebar Toggle
             const sidebar = document.getElementById('sidebar');
             const sidebarOverlay = document.getElementById('sidebar-overlay');
@@ -168,7 +183,7 @@
             // Initialize Lightboxes
             new SimpleLightbox('.gallery-sommerfest');
             new SimpleLightbox('.gallery-boulder');
-        });
+        };
     </script>
 </body>
 </html>
