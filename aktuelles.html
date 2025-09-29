@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-lightbox/2.14.2/simple-lightbox.min.css" />
     <style>
         body { font-family: 'Poppins', sans-serif; }
         #sidebar { transition: transform 0.3s ease-in-out; }
@@ -85,7 +87,9 @@
                 
                  <!-- News Item with Image -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <img src="https://codelab365.github.io/evhamerling/events/2025-fotos-sommerfest/BlickSchulhof.jpg" alt="Blick in den Schulhof beim Sommerfest" class="w-full h-64 object-cover">
+                    <a href="https://codelab365.github.io/evhamerling/events/2025-fotos-sommerfest/BlickSchulhof.jpg" class="gallery-sommerfest">
+                        <img src="https://codelab365.github.io/evhamerling/events/2025-fotos-sommerfest/BlickSchulhof.jpg" alt="Blick in den Schulhof beim Sommerfest" class="w-full h-64 object-cover">
+                    </a>
                     <div class="p-6">
                         <p class="text-sm text-gray-500 mb-2">28. Juni 2025</p>
                         <h3 class="text-xl font-semibold text-blue-800 mb-3">Rückblick auf ein gelungenes Sommerfest</h3>
@@ -93,11 +97,33 @@
                     </div>
                 </div>
 
-                <!-- Example News Item -->
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <p class="text-sm text-gray-500 mb-2">29. September 2025</p>
-                    <h3 class="text-xl font-semibold text-blue-800 mb-3">Jahreshauptversammlung 2025</h3>
-                    <p class="text-gray-700">Die diesjährige Jahreshauptversammlung findet am 20. Oktober statt. Wir freuen uns auf zahlreiche Teilnahme und einen konstruktiven Austausch. Weitere Details finden Sie im Terminkalender auf der Startseite.</p>
+                <!-- News Item Boulderwand with Lightbox Gallery -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <a href="https://codelab365.github.io/evhamerling/events/Boulder04.jpeg" class="gallery-boulder">
+                        <img src="https://codelab365.github.io/evhamerling/events/Boulder04.jpeg" alt="Kinder an der Boulderwand" class="w-full h-64 object-cover">
+                    </a>
+                    <div class="p-6">
+                        <p class="text-sm text-gray-500 mb-2">15. Oktober 2018</p>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">Anschaffung der Boulderwand</h3>
+                        <p class="text-gray-700 mb-6">Beim Bouldern werden nahezu alle Muskelgruppen angesprochen. Es ist also ein richtiges Ganzkörpertraining. Vor allem aber stärkt es unseren Oberkörper und verbessert so die Haltung. Es schult auch Balance, Koordinationsfähigkeit, Gleichgewichtssinn, Konzentration und strategisches Denken. Aus diesen Gründen wurde 2018 eine Boulderwand angeschafft, bei der auch der EV mit € 5000,- die Schule unterstützte.</p>
+                        <!-- Thumbnail Gallery -->
+                        <div class="grid grid-cols-4 gap-2">
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder01.jpeg" class="gallery-boulder"><img src="https://codelab365.github.io/evhamerling/events/Boulder01.jpeg" class="rounded-md h-24 w-full object-cover" alt="Boulderwand Detail 1"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder02.jpeg" class="gallery-boulder"><img src="https://codelab365.github.io/evhamerling/events/Boulder02.jpeg" class="rounded-md h-24 w-full object-cover" alt="Boulderwand Detail 2"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder03.jpeg" class="gallery-boulder"><img src="https://codelab365.github.io/evhamerling/events/Boulder03.jpeg" class="rounded-md h-24 w-full object-cover" alt="Boulderwand Detail 3"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder05.jpeg" class="gallery-boulder"><img src="https://codelab365.github.io/evhamerling/events/Boulder05.jpeg" class="rounded-md h-24 w-full object-cover" alt="Boulderwand Detail 4"></a>
+                        </div>
+                        <!-- Hidden links for the rest of the gallery -->
+                        <div class="hidden">
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder06.jpeg" class="gallery-boulder"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder07.jpeg" class="gallery-boulder"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder08.jpeg" class="gallery-boulder"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder09.jpeg" class="gallery-boulder"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder10.jpeg" class="gallery-boulder"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder11.jpeg" class="gallery-boulder"></a>
+                            <a href="https://codelab365.github.io/evhamerling/events/Boulder12.jpeg" class="gallery-boulder"></a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -112,29 +138,37 @@
             <p class="text-sm text-gray-300 mt-1">ZVR Österreich: 463107582</p>
         </div>
     </footer>
-
+    
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-lightbox/2.14.2/simple-lightbox.min.js"></script>
     <script>
-        // Sidebar Toggle
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-        const openButtons = [document.getElementById('mobile-menu-button'), document.getElementById('desktop-menu-button')];
-        const closeButton = document.getElementById('close-sidebar-button');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Sidebar Toggle
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            const openButtons = [document.getElementById('mobile-menu-button'), document.getElementById('desktop-menu-button')];
+            const closeButton = document.getElementById('close-sidebar-button');
 
-        function openSidebar() {
-            sidebar.classList.remove('translate-x-full');
-            sidebarOverlay.classList.remove('hidden');
-        }
+            function openSidebar() {
+                sidebar.classList.remove('translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+            }
 
-        function closeSidebar() {
-            sidebar.classList.add('translate-x-full');
-            sidebarOverlay.classList.add('hidden');
-        }
+            function closeSidebar() {
+                sidebar.classList.add('translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
 
-        openButtons.forEach(btn => btn.addEventListener('click', openSidebar));
-        closeButton.addEventListener('click', closeSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-        
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+            openButtons.forEach(btn => btn.addEventListener('click', openSidebar));
+            closeButton.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+            
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Initialize Lightboxes
+            new SimpleLightbox('.gallery-sommerfest');
+            new SimpleLightbox('.gallery-boulder');
+        });
     </script>
 </body>
 </html>
