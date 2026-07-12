@@ -809,55 +809,60 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
       <h2 class="section-title" data-i18n="kv.title">Klassenelternvertreter*innen 2026/2027</h2>
       <p class="lead" data-i18n="kv.lead">Werden im Herbst 2026 bekannt gegeben.</p>
     </div>
-    <div class="kv-filter">
-      <input type="text" id="kvFilter" placeholder="Klasse oder Name suchen …" data-i18n-placeholder="kv.filter">
-    </div>
-    <div class="table-wrap">
-      <table class="kv">
-        <thead><tr><th data-i18n="kv.th.klasse">Klasse</th><th data-i18n="kv.th.vertreter">Vertreter*in</th><th data-i18n="kv.th.stv">Stellvertreter*in</th></tr></thead>
-        <tbody>
-          <tr><td>1A</td><td>–</td><td>–</td></tr>
-          <tr><td>1B</td><td>–</td><td>–</td></tr>
-          <tr><td>1C</td><td>–</td><td>–</td></tr>
-          <tr><td>1D</td><td>–</td><td>–</td></tr>
-          <tr><td>1E</td><td>–</td><td>–</td></tr>
-          <tr><td>1M</td><td>–</td><td>–</td></tr>
-          <tr><td>2A</td><td>–</td><td>–</td></tr>
-          <tr><td>2B</td><td>–</td><td>–</td></tr>
-          <tr><td>2D</td><td>–</td><td>–</td></tr>
-          <tr><td>2M</td><td>–</td><td>–</td></tr>
-          <tr><td>3A</td><td>–</td><td>–</td></tr>
-          <tr><td>3B</td><td>–</td><td>–</td></tr>
-          <tr><td>3C</td><td>–</td><td>–</td></tr>
-          <tr><td>3D</td><td>–</td><td>–</td></tr>
-          <tr><td>3E</td><td>–</td><td>–</td></tr>
-          <tr><td>3M</td><td>–</td><td>–</td></tr>
-          <tr><td>4A</td><td>–</td><td>–</td></tr>
-          <tr><td>4B</td><td>–</td><td>–</td></tr>
-          <tr><td>4C</td><td>–</td><td>–</td></tr>
-          <tr><td>4D</td><td>–</td><td>–</td></tr>
-          <tr><td>4E</td><td>–</td><td>–</td></tr>
-          <tr><td>4M</td><td>–</td><td>–</td></tr>
-          <tr><td>5LIA</td><td>–</td><td>–</td></tr>
-          <tr><td>5LIB</td><td>–</td><td>–</td></tr>
-          <tr><td>5MED</td><td>–</td><td>–</td></tr>
-          <tr><td>5MKK</td><td>–</td><td>–</td></tr>
-          <tr><td>6LIA</td><td>–</td><td>–</td></tr>
-          <tr><td>6LIB</td><td>–</td><td>–</td></tr>
-          <tr><td>6LIC</td><td>–</td><td>–</td></tr>
-          <tr><td>6MED</td><td>–</td><td>–</td></tr>
-          <tr><td>6MKK</td><td>–</td><td>–</td></tr>
-          <tr><td>7LIA</td><td>–</td><td>–</td></tr>
-          <tr><td>7LIB</td><td>–</td><td>–</td></tr>
-          <tr><td>7MED</td><td>–</td><td>–</td></tr>
-          <tr><td>7MKK</td><td>–</td><td>–</td></tr>
-          <tr><td>8A</td><td>–</td><td>–</td></tr>
-          <tr><td>8B</td><td>–</td><td>–</td></tr>
-          <tr><td>8C</td><td>–</td><td>–</td></tr>
-          <tr><td>8M</td><td>–</td><td>–</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <details class="acc kv-acc">
+      <summary><span data-i18n="kv.toggle">Tabelle ein-/ausblenden</span> <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <div class="kv-filter">
+          <input type="text" id="kvFilter" placeholder="Klasse oder Name suchen …" data-i18n-placeholder="kv.filter">
+        </div>
+        <div class="table-wrap">
+          <table class="kv">
+            <thead><tr><th data-i18n="kv.th.klasse">Klasse</th><th data-i18n="kv.th.vertreter">Vertreter*in</th><th data-i18n="kv.th.stv">Stellvertreter*in</th></tr></thead>
+            <tbody>
+              <tr><td>1A</td><td>–</td><td>–</td></tr>
+              <tr><td>1B</td><td>–</td><td>–</td></tr>
+              <tr><td>1C</td><td>–</td><td>–</td></tr>
+              <tr><td>1D</td><td>–</td><td>–</td></tr>
+              <tr><td>1E</td><td>–</td><td>–</td></tr>
+              <tr><td>1M</td><td>–</td><td>–</td></tr>
+              <tr><td>2A</td><td>–</td><td>–</td></tr>
+              <tr><td>2B</td><td>–</td><td>–</td></tr>
+              <tr><td>2D</td><td>–</td><td>–</td></tr>
+              <tr><td>2M</td><td>–</td><td>–</td></tr>
+              <tr><td>3A</td><td>–</td><td>–</td></tr>
+              <tr><td>3B</td><td>–</td><td>–</td></tr>
+              <tr><td>3C</td><td>–</td><td>–</td></tr>
+              <tr><td>3D</td><td>–</td><td>–</td></tr>
+              <tr><td>3E</td><td>–</td><td>–</td></tr>
+              <tr><td>3M</td><td>–</td><td>–</td></tr>
+              <tr><td>4A</td><td>–</td><td>–</td></tr>
+              <tr><td>4B</td><td>–</td><td>–</td></tr>
+              <tr><td>4C</td><td>–</td><td>–</td></tr>
+              <tr><td>4D</td><td>–</td><td>–</td></tr>
+              <tr><td>4E</td><td>–</td><td>–</td></tr>
+              <tr><td>4M</td><td>–</td><td>–</td></tr>
+              <tr><td>5LIA</td><td>–</td><td>–</td></tr>
+              <tr><td>5LIB</td><td>–</td><td>–</td></tr>
+              <tr><td>5MED</td><td>–</td><td>–</td></tr>
+              <tr><td>5MKK</td><td>–</td><td>–</td></tr>
+              <tr><td>6LIA</td><td>–</td><td>–</td></tr>
+              <tr><td>6LIB</td><td>–</td><td>–</td></tr>
+              <tr><td>6LIC</td><td>–</td><td>–</td></tr>
+              <tr><td>6MED</td><td>–</td><td>–</td></tr>
+              <tr><td>6MKK</td><td>–</td><td>–</td></tr>
+              <tr><td>7LIA</td><td>–</td><td>–</td></tr>
+              <tr><td>7LIB</td><td>–</td><td>–</td></tr>
+              <tr><td>7MED</td><td>–</td><td>–</td></tr>
+              <tr><td>7MKK</td><td>–</td><td>–</td></tr>
+              <tr><td>8A</td><td>–</td><td>–</td></tr>
+              <tr><td>8B</td><td>–</td><td>–</td></tr>
+              <tr><td>8C</td><td>–</td><td>–</td></tr>
+              <tr><td>8M</td><td>–</td><td>–</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -1393,6 +1398,7 @@ translations.en = {
   "kv.lead":"Will be announced in autumn 2026.",
   "kv.filter":"Search by class or name …",
   "kv.th.klasse":"Class","kv.th.vertreter":"Representative","kv.th.stv":"Deputy",
+  "kv.toggle":"Show / hide table",
   "termine.title":"Calendar","termine.lead":"Key dates and events at a glance.",
   "cal.year":"Calendar year",
   "t1.title":"Parents' Evening – Year 1 Classes",
@@ -1554,6 +1560,7 @@ translations.hr = {
   "kv.lead":"Bit će objavljeno u jesen 2026.",
   "kv.filter":"Pretraži po razredu ili imenu …",
   "kv.th.klasse":"Razred","kv.th.vertreter":"Predstavnik/ca","kv.th.stv":"Zamjenik/ca",
+  "kv.toggle":"Prikaži / sakrij tablicu",
   "termine.title":"Kalendar događanja","termine.lead":"Važni datumi i događanja na jednom mjestu.",
   "cal.year":"Kalendarska godina",
   "t1.title":"Roditeljski sastanak – 1. razredi",
