@@ -142,22 +142,20 @@ nav.chapter-rail{
 }
 nav.chapter-rail::-webkit-scrollbar{ display:none; }
 .chapter-rail-inner{
-  display:flex; align-items:stretch;
+  display:flex; align-items:stretch; justify-content:center;
   max-width:var(--container); margin:0 auto; padding:0 1.5rem;
   min-width:max-content;
 }
 .chapter-rail a{
-  display:flex; align-items:baseline; gap:.4rem;
+  display:flex; align-items:baseline;
   color:#c7d6e5; text-decoration:none;
-  font-size:.82rem; font-weight:600; letter-spacing:.03em;
-  padding:.75rem .9rem; white-space:nowrap;
-  border-bottom:3px solid transparent;
+  font-size:.78rem; font-weight:600; letter-spacing:.02em;
+  padding:.55rem .85rem; white-space:nowrap;
+  border-bottom:2px solid transparent;
   transition:color .2s ease,border-color .2s ease;
 }
-.chapter-rail a .num{ font-family:var(--font-display); color:#7d97b3; font-size:.78rem; }
 .chapter-rail a:hover{ color:var(--white); text-decoration:none; }
 .chapter-rail a.active{ color:var(--white); border-bottom-color:var(--gold); }
-.chapter-rail a.active .num{ color:var(--gold); }
 
 /* ---------- Sections ---------- */
 section{ padding:4.5rem 0; }
@@ -226,7 +224,21 @@ details.acc[open] > summary .chev{ transform:rotate(180deg); }
 /* Team */
 .team-card{ background:var(--white); border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:var(--radius); padding:1.5rem; text-align:center; }
 .team-card h4{ margin-bottom:.15rem; }
-.team-card .role{ color:var(--ink-soft); font-size:.9rem; font-weight:600; }
+.team-card .role{ color:var(--ink-soft); font-size:.9rem; font-weight:600; margin-bottom:0; }
+.role-toggle{
+  display:inline-flex; align-items:center; gap:.3rem; margin-top:.6rem;
+  background:none; border:none; cursor:pointer; padding:0;
+  font-family:var(--font-body); font-size:.8rem; font-weight:600; color:var(--blue);
+}
+.role-toggle:hover{ text-decoration:underline; }
+.role-toggle .chev{ width:13px; height:13px; stroke:var(--blue); transition:transform .2s ease; }
+.team-card.open .role-toggle .chev{ transform:rotate(180deg); }
+.role-desc{
+  max-height:0; overflow:hidden; opacity:0;
+  transition:max-height .25s ease, opacity .2s ease, margin-top .25s ease;
+  font-size:.85rem; color:var(--ink-soft); text-align:left; margin-top:0; margin-bottom:0;
+}
+.team-card.open .role-desc{ max-height:220px; opacity:1; margin-top:.75rem; }
 
 /* Table */
 .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); }
@@ -344,16 +356,12 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
 <!-- ================= CHAPTER RAIL (Kapitelübersicht) ================= -->
 <nav class="chapter-rail" id="chapterRail" aria-label="Kapitelübersicht">
   <div class="chapter-rail-inner">
-    <a href="#start"><span class="num">00</span> <span data-i18n="nav.start">Start</span></a>
-    <a href="#aktuelles"><span class="num">01</span> <span data-i18n="nav.aktuelles">Aktuelles</span></a>
-    <a href="#ueber-uns"><span class="num">02</span> <span data-i18n="nav.ueberuns">Über uns</span></a>
-    <a href="#infos"><span class="num">03</span> <span data-i18n="nav.infos">Wichtige Infos</span></a>
-    <a href="#team"><span class="num">04</span> <span data-i18n="nav.team">Team</span></a>
-    <a href="#klassenvertreter"><span class="num">05</span> <span data-i18n="nav.klassenvertreter">Klassenvertreter</span></a>
-    <a href="#termine"><span class="num">06</span> <span data-i18n="nav.termine">Termine</span></a>
-    <a href="#downloads"><span class="num">07</span> <span data-i18n="nav.downloads">Downloads & Links</span></a>
-    <a href="#kontakt"><span class="num">08</span> <span data-i18n="nav.kontakt">Kontakt</span></a>
-    <a href="#impressum"><span class="num">09</span> <span data-i18n="nav.impressum">Impressum</span></a>
+    <a href="#start" data-i18n="nav.start">Start</a>
+    <a href="#aktuelles" data-i18n="nav.aktuelles">Aktuelles</a>
+    <a href="#infos" data-i18n="nav.infos">Wichtige Infos</a>
+    <a href="#termine" data-i18n="nav.termine">Termine</a>
+    <a href="#downloads" data-i18n="nav.downloads">Downloads</a>
+    <a href="#kontakt" data-i18n="nav.kontakt">Kontakt</a>
   </div>
 </nav>
 
@@ -651,12 +659,60 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
       <p class="lead" data-i18n="team.lead">Die Gesichter hinter dem Elternverein.</p>
     </div>
     <div class="grid grid-3">
-      <div class="team-card"><h4>Gudrun Ronacher</h4><p class="role" data-i18n="team.obfrau">Obfrau</p></div>
-      <div class="team-card"><h4>Petra Schwarzenberger</h4><p class="role" data-i18n="team.obfraustv">Obfrau Stv.</p></div>
-      <div class="team-card"><h4>Thomas Wiener</h4><p class="role" data-i18n="team.kassier">Kassier</p></div>
-      <div class="team-card"><h4 data-i18n="team.soon">in Kürze …</h4><p class="role" data-i18n="team.schriftfuehrerin">Schriftführerin</p></div>
-      <div class="team-card"><h4>Vera Rachbauer</h4><p class="role" data-i18n="team.rechnungspr">Rechnungsprüferin</p></div>
-      <div class="team-card"><h4>Thomas Lambert</h4><p class="role" data-i18n="team.rechnungspr2">Rechnungsprüfer</p></div>
+      <div class="team-card">
+        <h4>Gudrun Ronacher</h4>
+        <p class="role" data-i18n="team.obfrau">Obfrau</p>
+        <button class="role-toggle" type="button" aria-expanded="false">
+          <span data-i18n="team.more">Mehr …</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <p class="role-desc" data-i18n="team.obfrau.desc">Vertritt den Verein nach außen und leitet die Sitzungen von Hauptversammlung, Elternausschuss und Vorstand.</p>
+      </div>
+      <div class="team-card">
+        <h4>Petra Schwarzenberger</h4>
+        <p class="role" data-i18n="team.obfraustv">Obfrau Stv.</p>
+        <button class="role-toggle" type="button" aria-expanded="false">
+          <span data-i18n="team.more">Mehr …</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <p class="role-desc" data-i18n="team.obfraustv.desc">Vertritt die Obfrau bei Verhinderung und unterstützt sie bei der Führung des Vereins.</p>
+      </div>
+      <div class="team-card">
+        <h4>Thomas Wiener</h4>
+        <p class="role" data-i18n="team.kassier">Kassier</p>
+        <button class="role-toggle" type="button" aria-expanded="false">
+          <span data-i18n="team.more">Mehr …</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <p class="role-desc" data-i18n="team.kassier.desc">Verwaltet die Vereinsfinanzen, Mitgliedsbeiträge und Zahlungen und unterschreibt bei finanziellen Angelegenheiten gemeinsam mit der Obfrau.</p>
+      </div>
+      <div class="team-card">
+        <h4 data-i18n="team.soon">in Kürze …</h4>
+        <p class="role" data-i18n="team.schriftfuehrerin">Schriftführerin</p>
+        <button class="role-toggle" type="button" aria-expanded="false">
+          <span data-i18n="team.more">Mehr …</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <p class="role-desc" data-i18n="team.schriftfuehrerin.desc">Führt das Protokoll bei Sitzungen und ist für den Schriftverkehr des Vereins verantwortlich.</p>
+      </div>
+      <div class="team-card">
+        <h4>Vera Rachbauer</h4>
+        <p class="role" data-i18n="team.rechnungspr">Rechnungsprüferin</p>
+        <button class="role-toggle" type="button" aria-expanded="false">
+          <span data-i18n="team.more">Mehr …</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <p class="role-desc" data-i18n="team.rechnungspr.desc">Prüft unabhängig die Vereinsfinanzen und berichtet der Hauptversammlung.</p>
+      </div>
+      <div class="team-card">
+        <h4>Thomas Lambert</h4>
+        <p class="role" data-i18n="team.rechnungspr2">Rechnungsprüfer</p>
+        <button class="role-toggle" type="button" aria-expanded="false">
+          <span data-i18n="team.more">Mehr …</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <p class="role-desc" data-i18n="team.rechnungspr.desc">Prüft unabhängig die Vereinsfinanzen und berichtet der Hauptversammlung.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -942,6 +998,15 @@ if(kvFilter){
   });
 }
 
+/* Team: role description toggle ("Mehr ...") */
+document.querySelectorAll('.role-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.team-card');
+    const open = card.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+
 /* ============================================================
    TERMINE — jedes Datum trägt sein Kalenderjahr, gruppiert je Jahr
    ============================================================ */
@@ -1080,6 +1145,12 @@ translations.en = {
   "team.obfrau":"Chairwoman","team.obfraustv":"Deputy Chairwoman","team.kassier":"Treasurer",
   "team.soon":"To be announced","team.schriftfuehrerin":"Secretary",
   "team.rechnungspr":"Auditor","team.rechnungspr2":"Auditor",
+  "team.more":"Learn more …",
+  "team.obfrau.desc":"Represents the association externally and chairs the meetings of the General Assembly, the Parents' Committee and the Board.",
+  "team.obfraustv.desc":"Represents the Chairwoman when unavailable and supports her in leading the association.",
+  "team.kassier.desc":"Manages the association's finances, membership fees and payments, and co-signs financial matters together with the Chairwoman.",
+  "team.schriftfuehrerin.desc":"Keeps the minutes at meetings and is responsible for the association's correspondence.",
+  "team.rechnungspr.desc":"Independently audits the association's finances and reports to the General Assembly.",
   "kv.title":"Class Parent Representatives 2026/2027",
   "kv.lead":"Will be announced in autumn 2026.",
   "kv.filter":"Search by class or name …",
@@ -1208,6 +1279,12 @@ translations.hr = {
   "team.obfrau":"Predsjednica","team.obfraustv":"Zamjenica predsjednice","team.kassier":"Blagajnik",
   "team.soon":"Uskoro","team.schriftfuehrerin":"Zapisničarka",
   "team.rechnungspr":"Revizorica","team.rechnungspr2":"Revizor",
+  "team.more":"Saznajte više …",
+  "team.obfrau.desc":"Zastupa udrugu prema van te vodi sjednice Glavne skupštine, Vijeća roditelja i Upravnog odbora.",
+  "team.obfraustv.desc":"Zastupa predsjednicu u slučaju spriječenosti i podržava je u vođenju udruge.",
+  "team.kassier.desc":"Upravlja financijama udruge, članarinama i uplatama te zajedno s predsjednicom supotpisuje financijske dokumente.",
+  "team.schriftfuehrerin.desc":"Vodi zapisnik na sjednicama i odgovorna je za pismenu komunikaciju udruge.",
+  "team.rechnungspr.desc":"Neovisno provjerava financije udruge i izvještava Glavnu skupštinu.",
   "kv.title":"Predstavnici roditelja po razredima 2026./2027.",
   "kv.lead":"Bit će objavljeno u jesen 2026.",
   "kv.filter":"Pretraži po razredu ili imenu …",
