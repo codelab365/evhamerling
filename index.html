@@ -253,6 +253,30 @@ table.kv tbody tr:hover{ background:var(--blue-soft); }
   font-family:var(--font-body); font-size:.95rem;
 }
 
+/* Online-Formular (Unterstützungsantrag) */
+.app-form h4{ margin:1.5rem 0 .75rem; font-size:.95rem; }
+.app-form h4:first-child{ margin-top:0; }
+.form-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1rem; }
+.form-field{ display:flex; flex-direction:column; gap:.35rem; min-width:0; }
+.form-field label{ font-size:.8rem; font-weight:600; color:var(--navy); }
+.form-field input, .form-field textarea{
+  width:100%; padding:.6rem .75rem; border:1px solid var(--line); border-radius:var(--radius);
+  font-family:var(--font-body); font-size:.92rem; color:var(--ink); background:var(--white); min-width:0;
+}
+.form-field textarea{ resize:vertical; min-height:90px; }
+.form-hint{ font-size:.78rem; color:var(--ink-soft); margin:-.5rem 0 1rem; }
+.form-consent{ display:flex; align-items:flex-start; gap:.6rem; margin:1.25rem 0; font-size:.85rem; color:var(--ink-soft); cursor:pointer; }
+.form-consent input{ margin-top:.25rem; flex-shrink:0; }
+.form-note{ font-size:.78rem; color:var(--ink-soft); margin-top:.75rem; margin-bottom:0; }
+@media (max-width:700px){
+  .form-row{ grid-template-columns:repeat(2,1fr); }
+  .form-field[style*="span 2"]{ grid-column:span 2 !important; }
+}
+@media (max-width:480px){
+  .form-row{ grid-template-columns:1fr; }
+  .form-field[style]{ grid-column:auto !important; }
+}
+
 /* Timeline (Termine) */
 .cal-year-badge{
   display:inline-block; font-family:var(--font-display); font-weight:700; font-size:1.1rem;
@@ -809,9 +833,80 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
 
     <p class="subhead" data-i18n="dl.sub.formulare">Formulare & Anträge</p>
     <div class="res-list">
-      <a class="res-item" href="pdf/EVHamerling_Antrag_Unterstuetzung.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.foerderantrag">Unterstützungs-Förderantrag</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+      <a class="res-item" href="pdf/EVHamerling_Antrag_Unterstuetzung.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.foerderantrag">Unterstützungs-Förderantrag (PDF)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
       <a class="res-item" href="pdf/Schueler_Unfallversicherung.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.polizze">Polizze Schülerunfallversicherung</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
     </div>
+
+    <details class="acc" style="margin-top:.75rem;">
+      <summary><span data-i18n="dl.form.h">Unterstützungsantrag online ausfüllen</span> <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <p data-i18n="dl.form.intro">Füllen Sie das Formular aus und klicken Sie auf „Als E-Mail vorbereiten". Ihr E-Mail-Programm öffnet sich danach mit einer fertig ausgefüllten Vorlage, die Sie noch prüfen, ergänzen und selbst absenden. Es werden dabei keine Daten auf dieser Website gespeichert oder übertragen.</p>
+
+        <form id="supportForm" class="app-form" novalidate>
+          <div class="form-row">
+            <div class="form-field"><label for="sf-schuljahr" data-i18n="dl.form.schuljahr">Schuljahr</label><input type="text" id="sf-schuljahr" placeholder="z. B. 2026/2027" data-i18n-placeholder="dl.form.schuljahr.ph" required></div>
+          </div>
+
+          <h4 data-i18n="dl.form.h.schueler">Schüler*in</h4>
+          <div class="form-row">
+            <div class="form-field"><label for="sf-svor" data-i18n="dl.form.vorname">Vorname</label><input type="text" id="sf-svor" required></div>
+            <div class="form-field"><label for="sf-snach" data-i18n="dl.form.nachname">Familienname</label><input type="text" id="sf-snach" required></div>
+            <div class="form-field"><label for="sf-klasse" data-i18n="dl.form.klasse">Klasse</label><input type="text" id="sf-klasse" required></div>
+            <div class="form-field"><label for="sf-geb" data-i18n="dl.form.geb">Geburtsdatum</label><input type="date" id="sf-geb" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field" style="grid-column:span 2;"><label for="sf-sstr" data-i18n="dl.form.strasse">Straße & Hausnummer</label><input type="text" id="sf-sstr" required></div>
+            <div class="form-field"><label for="sf-splz" data-i18n="dl.form.plz">PLZ</label><input type="text" id="sf-splz" required></div>
+            <div class="form-field"><label for="sf-sort" data-i18n="dl.form.ort">Ort</label><input type="text" id="sf-sort" required></div>
+          </div>
+
+          <h4 data-i18n="dl.form.h.antragsteller">Antragsteller*in / Erziehungsberechtigte*r</h4>
+          <div class="form-row">
+            <div class="form-field"><label for="sf-avor" data-i18n="dl.form.vorname">Vorname</label><input type="text" id="sf-avor" required></div>
+            <div class="form-field"><label for="sf-anach" data-i18n="dl.form.nachname">Familienname</label><input type="text" id="sf-anach" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field" style="grid-column:span 2;"><label for="sf-astr" data-i18n="dl.form.strasse">Straße & Hausnummer</label><input type="text" id="sf-astr" required></div>
+            <div class="form-field"><label for="sf-aplz" data-i18n="dl.form.plz">PLZ</label><input type="text" id="sf-aplz" required></div>
+            <div class="form-field"><label for="sf-aort" data-i18n="dl.form.ort">Ort</label><input type="text" id="sf-aort" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label for="sf-tel" data-i18n="dl.form.tel">Telefonnummer</label><input type="tel" id="sf-tel" required></div>
+            <div class="form-field"><label for="sf-email" data-i18n="dl.form.email">E-Mail</label><input type="email" id="sf-email" required></div>
+          </div>
+
+          <h4 data-i18n="dl.form.h.veranstaltung">Schulveranstaltung</h4>
+          <div class="form-row">
+            <div class="form-field" style="grid-column:1/-1;"><label for="sf-veranst" data-i18n="dl.form.veranstaltung">Bezeichnung der Schulveranstaltung</label><input type="text" id="sf-veranst" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label for="sf-von" data-i18n="dl.form.von">Datum von</label><input type="date" id="sf-von" required></div>
+            <div class="form-field"><label for="sf-bis" data-i18n="dl.form.bis">Datum bis</label><input type="date" id="sf-bis" required></div>
+            <div class="form-field"><label for="sf-kosten" data-i18n="dl.form.kosten">Höhe der Gesamtkosten (€)</label><input type="text" id="sf-kosten" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label for="sf-edupay" data-i18n="dl.form.edupay">Zugangscode von edu.PAY</label><input type="text" id="sf-edupay"></div>
+            <div class="form-field"><label for="sf-iban" data-i18n="dl.form.iban">oder Bankverbindung / IBAN / BIC</label><input type="text" id="sf-iban"></div>
+          </div>
+          <p class="form-hint" data-i18n="dl.form.hint">Bitte mindestens eines der beiden Felder ausfüllen.</p>
+
+          <div class="form-field">
+            <label for="sf-begruendung" data-i18n="dl.form.begruendung">Angaben zur Begründung der beantragten Unterstützung</label>
+            <textarea id="sf-begruendung" required></textarea>
+          </div>
+
+          <label class="form-consent">
+            <input type="checkbox" id="sf-consent" required>
+            <span data-i18n="dl.form.consent">Ich bin mit der Speicherung und Verarbeitung meiner Daten gemäß den Datenschutzrichtlinien des Elternvereins BRG Hamerling einverstanden und bestätige, dass meine Angaben korrekt sind.</span>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-gold" data-i18n="dl.form.submit">Als E-Mail vorbereiten</button>
+          </div>
+          <p class="form-note" data-i18n="dl.form.note">Der Antrag muss vor der Schulveranstaltung beim Elternverein eingelangt sein. Über die Gewährung entscheidet der Vorstand, max. 50 % der Gesamtkosten, kein Rechtsanspruch.</p>
+        </form>
+      </div>
+    </details>
 
     <p class="subhead" data-i18n="dl.sub.berichte">Berichte & Vorträge</p>
     <div class="res-list">
@@ -1019,6 +1114,66 @@ document.querySelectorAll('.role-toggle').forEach(btn => {
   });
 });
 
+/* Unterstützungsantrag: Formular -> vorausgefüllte E-Mail (kein Server, keine Datenbank) */
+const supportForm = document.getElementById('supportForm');
+if(supportForm){
+  supportForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if(!supportForm.checkValidity()){
+      supportForm.reportValidity();
+      return;
+    }
+    const val = id => (document.getElementById(id).value || '').trim();
+    const edupay = val('sf-edupay');
+    const iban = val('sf-iban');
+    if(!edupay && !iban){
+      alert('Bitte geben Sie entweder den Zugangscode von edu.PAY oder eine Bankverbindung/IBAN an.');
+      document.getElementById('sf-edupay').focus();
+      return;
+    }
+    const fmtDate = (d) => {
+      if(!d) return '';
+      const parts = d.split('-');
+      return parts.length === 3 ? `${parts[2]}.${parts[1]}.${parts[0]}` : d;
+    };
+
+    const lines = [
+      `Antrag um Unterstützungszahlung im Schuljahr ${val('sf-schuljahr')}`,
+      '',
+      'SCHÜLER*IN',
+      `Vorname: ${val('sf-svor')}`,
+      `Familienname: ${val('sf-snach')}`,
+      `Klasse: ${val('sf-klasse')}`,
+      `Geburtsdatum: ${fmtDate(val('sf-geb'))}`,
+      `Anschrift: ${val('sf-sstr')}, ${val('sf-splz')} ${val('sf-sort')}`,
+      '',
+      'ANTRAGSTELLER*IN / ERZIEHUNGSBERECHTIGTE*R',
+      `Vorname: ${val('sf-avor')}`,
+      `Familienname: ${val('sf-anach')}`,
+      `Anschrift: ${val('sf-astr')}, ${val('sf-aplz')} ${val('sf-aort')}`,
+      `Telefonnummer: ${val('sf-tel')}`,
+      `E-Mail: ${val('sf-email')}`,
+      '',
+      'SCHULVERANSTALTUNG',
+      `Bezeichnung: ${val('sf-veranst')}`,
+      `Datum (von–bis): ${fmtDate(val('sf-von'))} – ${fmtDate(val('sf-bis'))}`,
+      `Höhe der Gesamtkosten: € ${val('sf-kosten')}`,
+      edupay ? `Zugangscode von edu.PAY: ${edupay}` : `Bankverbindung / IBAN / BIC: ${iban}`,
+      '',
+      'BEGRÜNDUNG DER BEANTRAGTEN UNTERSTÜTZUNG',
+      val('sf-begruendung'),
+      '',
+      'Mit dem Absenden dieser E-Mail bestätige ich, dass ich mit der Speicherung und Verarbeitung meiner Daten gemäß den Datenschutzrichtlinien des Elternvereins BRG Hamerling einverstanden bin und dass meine Angaben korrekt sind.'
+    ];
+
+    const subject = `Unterstützungsantrag – ${val('sf-svor')} ${val('sf-snach')} (${val('sf-klasse')})`;
+    const body = lines.join('\n');
+    const mailtoUrl = `mailto:elternverein@brghamerling.at?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+  });
+}
+
 /* ============================================================
    TERMINE — jedes Datum trägt sein Kalenderjahr, gruppiert je Jahr
    ============================================================ */
@@ -1201,6 +1356,23 @@ translations.en = {
   "dl.l19":"Safer Internet","dl.l20":"First Aid for Cyberbullying",
   "dl.sub.weitere":"Further Organisations",
   "dl.l21":"State Association of Parents' Associations Upper Austria","dl.l22":"Upper Austria Education Directorate","dl.l23":"Austrian Federal Parents' Association",
+  "dl.form.h":"Fill in the Support Application Online",
+  "dl.form.intro":"Fill in the form and click \"Prepare e-mail\". Your e-mail program will then open with a ready-filled template, which you can review, complete and send yourself. No data is stored or transmitted on this website.",
+  "dl.form.schuljahr":"School year","dl.form.schuljahr.ph":"e.g. 2026/2027",
+  "dl.form.h.schueler":"Student",
+  "dl.form.vorname":"First name","dl.form.nachname":"Last name","dl.form.klasse":"Class","dl.form.geb":"Date of birth",
+  "dl.form.strasse":"Street & number","dl.form.plz":"Postcode","dl.form.ort":"Town",
+  "dl.form.h.antragsteller":"Applicant / Legal Guardian",
+  "dl.form.tel":"Phone number","dl.form.email":"E-mail",
+  "dl.form.h.veranstaltung":"School Event",
+  "dl.form.veranstaltung":"Name of the school event",
+  "dl.form.von":"Date from","dl.form.bis":"Date to","dl.form.kosten":"Total cost (€)",
+  "dl.form.edupay":"edu.PAY access code","dl.form.iban":"or bank details / IBAN / BIC",
+  "dl.form.hint":"Please fill in at least one of the two fields.",
+  "dl.form.begruendung":"Reason for the requested support",
+  "dl.form.consent":"I agree to the storage and processing of my data in accordance with the privacy policy of the Parents' Association BRG Hamerling and confirm that my details are correct.",
+  "dl.form.submit":"Prepare E-mail",
+  "dl.form.note":"The application must reach the Parents' Association before the school event. The Board decides on approval; max. 50% of total costs; no legal entitlement.",
   "kontakt.title":"Get in Touch","kontakt.lead":"We look forward to hearing from you.","kontakt.btn":"Send E-mail",
   "impressum.title":"Legal Notice & Privacy","impressum.h":"Legal Notice",
   "impressum.daten":"<strong>Association founded:</strong> 29 March 1951<br><strong>Register no. (ZVR):</strong> 463107582<br><strong>Jurisdiction:</strong> Linz",
@@ -1335,6 +1507,23 @@ translations.hr = {
   "dl.l19":"Safer Internet","dl.l20":"Prva pomoć kod cyber-nasilja",
   "dl.sub.weitere":"Ostale ustanove",
   "dl.l21":"Savez udruga roditelja Gornje Austrije","dl.l22":"Ured za obrazovanje Gornje Austrije","dl.l23":"Savezni savez udruga roditelja Austrije",
+  "dl.form.h":"Ispunite zahtjev za potporu online",
+  "dl.form.intro":"Ispunite obrazac i kliknite „Pripremi e-poštu”. Vaš program za e-poštu tada će se otvoriti s već ispunjenom predloškom, koju možete provjeriti, dopuniti i sami poslati. Na ovoj web stranici se ne pohranjuju niti prenose nikakvi podaci.",
+  "dl.form.schuljahr":"Školska godina","dl.form.schuljahr.ph":"npr. 2026./2027.",
+  "dl.form.h.schueler":"Učenik/ca",
+  "dl.form.vorname":"Ime","dl.form.nachname":"Prezime","dl.form.klasse":"Razred","dl.form.geb":"Datum rođenja",
+  "dl.form.strasse":"Ulica i kućni broj","dl.form.plz":"Poštanski broj","dl.form.ort":"Mjesto",
+  "dl.form.h.antragsteller":"Podnositelj zahtjeva / zakonski skrbnik",
+  "dl.form.tel":"Broj telefona","dl.form.email":"E-pošta",
+  "dl.form.h.veranstaltung":"Školska priredba",
+  "dl.form.veranstaltung":"Naziv školske priredbe",
+  "dl.form.von":"Datum od","dl.form.bis":"Datum do","dl.form.kosten":"Ukupni trošak (€)",
+  "dl.form.edupay":"Pristupni kod edu.PAY","dl.form.iban":"ili bankovni podaci / IBAN / BIC",
+  "dl.form.hint":"Molimo ispunite barem jedno od ova dva polja.",
+  "dl.form.begruendung":"Obrazloženje zatražene potpore",
+  "dl.form.consent":"Suglasan/na sam s pohranom i obradom mojih podataka u skladu s pravilima o zaštiti podataka udruge roditelja BRG Hamerling te potvrđujem točnost svojih podataka.",
+  "dl.form.submit":"Pripremi e-poštu",
+  "dl.form.note":"Zahtjev mora stići udruzi roditelja prije školske priredbe. O odobrenju odlučuje upravni odbor, najviše 50% ukupnih troškova, bez pravnog prava.",
   "kontakt.title":"Kontaktirajte nas","kontakt.lead":"Radujemo se vašoj poruci.","kontakt.btn":"Pošalji e-poštu",
   "impressum.title":"Impresum i zaštita podataka","impressum.h":"Impresum",
   "impressum.daten":"<strong>Datum osnivanja udruge:</strong> 29.03.1951.<br><strong>ZVR broj:</strong> 463107582<br><strong>Nadležnost suda:</strong> Linz",
