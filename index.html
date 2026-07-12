@@ -76,6 +76,19 @@ p{ margin:0 0 1rem; }
 
 .section-head{ max-width:720px; margin-bottom:2.75rem; }
 
+.leistungen-list{ list-style:none; padding-left:0; margin:0; display:grid; gap:.65rem; }
+.leistungen-list li{
+  position:relative; padding-left:1.75rem; color:var(--ink);
+}
+.leistungen-list li::before{
+  content:""; position:absolute; left:0; top:.3rem; width:16px; height:16px;
+  border-radius:50%; background:var(--blue-soft); border:1px solid var(--blue);
+}
+.leistungen-list li::after{
+  content:""; position:absolute; left:5px; top:.55rem; width:7px; height:4px;
+  border-left:2px solid var(--blue); border-bottom:2px solid var(--blue); transform:rotate(-45deg);
+}
+
 /* Buttons */
 .btn{
   display:inline-block;
@@ -500,6 +513,17 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
         <h3 data-i18n="ueberuns.mission.title">Unsere Mission</h3>
         <p data-i18n="ueberuns.mission.p1">Der Elternverein des BRG Hamerling sieht sich als Partner der Schule und als Vertretung der Interessen der Eltern und Erziehungsberechtigten. Wir fördern die Zusammenarbeit und Kommunikation, unterstützen schulische Projekte finanziell und ideell und tragen zu einem positiven Schulklima bei.</p>
         <p data-i18n="ueberuns.mission.p2">Unser Ziel ist es, die bestmöglichen Rahmenbedingungen für die Ausbildung und persönliche Entwicklung unserer Kinder zu schaffen. Wir organisieren Veranstaltungen, bieten Unterstützung bei schulischen Herausforderungen und sind Ansprechpartner für Ihre Anliegen.</p>
+        <h4 style="margin-top:1.5rem;" data-i18n="ueberuns.leistungen.title">Unsere Leistungen</h4>
+        <ul class="leistungen-list" data-i18n="ueberuns.leistungen.list">
+          <li>Verwaltung und Instandhaltung der Schulspinde</li>
+          <li>Förderung eines positiven Schulklimas</li>
+          <li>Organisation von Vorträgen für Eltern</li>
+          <li>Umsetzung von Projekten</li>
+          <li>Ansprechpartner bei Problemen</li>
+          <li>Förderung der Tutor*innen</li>
+          <li>Förderung gewaltfreier Umgangsformen</li>
+          <li>Suchtprävention</li>
+        </ul>
       </div>
       <div>
         <h3 data-i18n="ueberuns.leitbild.title">Unser Leitbild</h3>
@@ -1313,6 +1337,8 @@ translations.en = {
   "ueberuns.mission.title":"Our Mission",
   "ueberuns.mission.p1":"The BRG Hamerling Parents' Association sees itself as a partner of the school and as a representation of parents' and guardians' interests. We foster cooperation and communication, support school projects financially and in spirit, and contribute to a positive school climate.",
   "ueberuns.mission.p2":"Our goal is to create the best possible conditions for our children's education and personal development. We organise events, offer support with school-related challenges, and are your contact for any concerns.",
+  "ueberuns.leistungen.title":"Our Services",
+  "ueberuns.leistungen.list":"<li>Management and maintenance of the school lockers</li><li>Promoting a positive school climate</li><li>Organising talks for parents</li><li>Implementing projects</li><li>Point of contact for problems</li><li>Supporting the tutoring programme</li><li>Promoting non-violent interaction</li><li>Addiction prevention</li>",
   "ueberuns.leitbild.title":"Our Mission Statement",
   "ueberuns.leitbild.quote":"\"We see it as our most important task to support the school community and thereby contribute to a good school climate.\"",
   "ueberuns.leitbild.p1":"As a Parents' Association, we hold three votes on the School Community Board (SGA) and bring parents' interests to the table. Together with teacher and student representatives, important school matters are discussed here.",
@@ -1472,6 +1498,8 @@ translations.hr = {
   "ueberuns.mission.title":"Naša misija",
   "ueberuns.mission.p1":"Udruga roditelja BRG Hamerling vidi sebe kao partnera škole i zastupnika interesa roditelja i skrbnika. Poticmo suradnju i komunikaciju, financijski i idejno podupiremo školske projekte te doprinosimo pozitivnoj školskoj klimi.",
   "ueberuns.mission.p2":"Naš je cilj stvoriti najbolje moguće uvjete za obrazovanje i osobni razvoj naše djece. Organiziramo priredbe, pružamo podršku kod školskih izazova i kontakt smo za vaša pitanja.",
+  "ueberuns.leistungen.title":"Naše usluge",
+  "ueberuns.leistungen.list":"<li>Upravljanje i održavanje školskih ormarića</li><li>Poticanje pozitivne školske klime</li><li>Organizacija predavanja za roditelje</li><li>Provedba projekata</li><li>Kontakt-osoba kod problema</li><li>Podrška programu instrukcija (tutora)</li><li>Poticanje nenasilnog ponašanja</li><li>Prevencija ovisnosti</li>",
   "ueberuns.leitbild.title":"Naše vodeće načelo",
   "ueberuns.leitbild.quote":"„Smatramo da nam je najvažnija zadaća podržati školsku zajednicu i time doprinijeti dobroj školskoj klimi.”",
   "ueberuns.leitbild.p1":"Kao udruga roditelja zastupljeni smo s tri glasa u Školskom vijeću (SGA) te unosimo interese roditelja. Zajedno s predstavnicima nastavnika i učenika ovdje se raspravlja o važnim školskim temama.",
