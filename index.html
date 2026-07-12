@@ -104,22 +104,24 @@ header.site-header{
   border-bottom:1px solid var(--line);
 }
 .header-inner{
-  display:flex; align-items:center; justify-content:space-between;
+  display:flex; align-items:center; justify-content:space-between; gap:.75rem;
   padding:.9rem 0;
 }
 .wordmark{
   font-family:var(--font-display); font-weight:700; color:var(--navy);
   font-size:1.15rem; line-height:1.2;
+  min-width:0; flex:1 1 auto; display:block;
 }
-.wordmark small{ display:block; font-family:var(--font-body); font-weight:500; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); }
-.header-actions{ display:flex; align-items:center; gap:1rem; }
+.wordmark-label{ display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.wordmark small{ display:block; font-family:var(--font-body); font-weight:500; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); white-space:normal; }
+.header-actions{ display:flex; align-items:center; gap:.6rem; flex:0 0 auto; }
 .header-actions a.quicklink{ font-size:.9rem; font-weight:600; color:var(--navy); }
 
-.lang-switch{ display:flex; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+.lang-switch{ display:flex; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; flex-shrink:0; }
 .lang-btn{
-  font-family:var(--font-body); font-size:.78rem; font-weight:700; letter-spacing:.03em;
-  background:var(--paper); color:var(--ink-soft); border:none; padding:.4rem .6rem; cursor:pointer;
-  border-right:1px solid var(--line);
+  font-family:var(--font-body); font-size:.74rem; font-weight:700; letter-spacing:.02em;
+  background:var(--paper); color:var(--ink-soft); border:none; padding:.45rem .5rem; cursor:pointer;
+  border-right:1px solid var(--line); min-width:32px;
 }
 .lang-btn:last-child{ border-right:none; }
 .lang-btn:hover{ background:var(--blue-soft); }
@@ -127,7 +129,7 @@ header.site-header{
 
 button.menu-btn{
   background:none; border:1px solid var(--line); border-radius:var(--radius);
-  width:42px; height:42px; display:flex; align-items:center; justify-content:center; cursor:pointer;
+  width:42px; height:42px; flex-shrink:0; display:flex; align-items:center; justify-content:center; cursor:pointer;
 }
 button.menu-btn svg{ width:20px; height:20px; stroke:var(--navy); }
 
@@ -298,6 +300,24 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
   section{ padding:3.25rem 0; }
   .thumbs{ grid-template-columns:repeat(3,1fr); }
   .header-actions .quicklink{ display:none; }
+  .hero-actions{ flex-direction:column; align-items:stretch; }
+  .hero-actions .btn{ text-align:center; }
+  .contact-card{ padding:1.75rem; }
+}
+@media (max-width:420px){
+  .container{ padding:0 1.1rem; }
+  .wordmark{ font-size:.98rem; }
+  .wordmark small{ display:none; }
+  .lang-btn{ padding:.4rem .42rem; font-size:.7rem; min-width:28px; }
+  .header-actions{ gap:.4rem; }
+  button.menu-btn{ width:38px; height:38px; }
+  .hero{ padding:3rem 0 2.5rem; }
+  .hero-facts{ grid-template-columns:repeat(2,1fr); }
+  section{ padding:2.75rem 0; }
+  .thumbs{ grid-template-columns:repeat(2,1fr); }
+  details.acc > summary{ padding:.95rem 1.1rem; font-size:.98rem; gap:.75rem; }
+  .acc-body{ padding:0 1.1rem 1.1rem; }
+  .acc-body[style]{ max-height:420px !important; }
 }
 </style>
 </head>
@@ -306,7 +326,7 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
 <!-- ================= HEADER ================= -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#start" class="wordmark">Elternverein BRG Hamerling<small data-i18n="header.subtitle">Bundesrealgymnasium Linz</small></a>
+    <a href="#start" class="wordmark"><span class="wordmark-label">Elternverein BRG Hamerling</span><small data-i18n="header.subtitle">Bundesrealgymnasium Linz</small></a>
     <div class="header-actions">
       <div class="lang-switch" role="group" aria-label="Sprache / Language / Jezik">
         <button type="button" class="lang-btn active" data-lang="de">DE</button>
@@ -442,7 +462,7 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
           <div class="news-date">15. Oktober 2018</div>
           <h3 data-i18n="news.boulder.title">Anschaffung der Boulderwand</h3>
           <p data-i18n="news.boulder.body">Beim Bouldern werden nahezu alle Muskelgruppen angesprochen – ein echtes Ganzkörpertraining, das auch Balance, Koordination und strategisches Denken schult. Aus diesen Gründen wurde 2018 eine Boulderwand angeschafft, die der Elternverein mit € 5.000,- unterstützte.</p>
-          <div class="thumbs" style="grid-template-columns:repeat(4,1fr);">
+          <div class="thumbs">
             <a href="events/Boulder01.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder01.jpeg" alt="Boulderwand Detail 1"></a>
             <a href="events/Boulder02.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder02.jpeg" alt="Boulderwand Detail 2"></a>
             <a href="events/Boulder03.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder03.jpeg" alt="Boulderwand Detail 3"></a>
