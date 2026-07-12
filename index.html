@@ -880,15 +880,26 @@ mobileMenu.addEventListener('click', (e) => { if(e.target === mobileMenu) mobile
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
 /* Chapter rail: scroll-spy */
+const railEl = document.getElementById('chapterRail');
 const railLinks = Array.from(document.querySelectorAll('.chapter-rail a'));
 const sections = railLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function centerInRail(a){
+  const railRect = railEl.getBoundingClientRect();
+  const aRect = a.getBoundingClientRect();
+  const target = railEl.scrollLeft + (aRect.left - railRect.left) - (railEl.clientWidth / 2) + (aRect.width / 2);
+  railEl.scrollTo({ left: Math.max(0, target), behavior:'smooth' });
+}
+let currentActiveHref = null;
 function setActive(){
   let current = sections[0];
   const probe = window.scrollY + 140;
   sections.forEach(sec => { if(sec.offsetTop <= probe) current = sec; });
-  railLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
-  const activeEl = document.querySelector('.chapter-rail a.active');
-  if(activeEl){ activeEl.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' }); }
+  const href = '#' + current.id;
+  if(href === currentActiveHref) return;
+  currentActiveHref = href;
+  railLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === href));
+  const activeEl = railLinks.find(a => a.getAttribute('href') === href);
+  if(activeEl){ centerInRail(activeEl); }
 }
 window.addEventListener('scroll', () => window.requestAnimationFrame(setActive));
 window.addEventListener('load', setActive);
