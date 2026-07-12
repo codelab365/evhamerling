@@ -356,7 +356,6 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
 <!-- ================= CHAPTER RAIL (Kapitelübersicht) ================= -->
 <nav class="chapter-rail" id="chapterRail" aria-label="Kapitelübersicht">
   <div class="chapter-rail-inner">
-    <a href="#start" data-i18n="nav.start">Start</a>
     <a href="#aktuelles" data-i18n="nav.aktuelles">Aktuelles</a>
     <a href="#infos" data-i18n="nav.infos">Wichtige Infos</a>
     <a href="#termine" data-i18n="nav.termine">Termine</a>
@@ -400,7 +399,7 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
     </div>
     <div class="hero-facts">
       <div class="hero-fact"><span class="num">€17</span><span class="label" data-i18n="hero.fact1">Mitgliedsbeitrag / Jahr</span></div>
-      <div class="hero-fact"><span class="num">1951</span><span class="label" data-i18n="hero.fact2">Vereinsgründung</span></div>
+      <div class="hero-fact"><span class="num" id="yearsActive">–</span><span class="label" data-i18n="hero.fact2">Jahre Bestand</span></div>
       <div class="hero-fact"><span class="num">3</span><span class="label" data-i18n="hero.fact3">Stimmen im SGA</span></div>
       <div class="hero-fact"><span class="num">50%</span><span class="label" data-i18n="hero.fact4">Zuschuss zu Schulveranstaltungen</span></div>
     </div>
@@ -955,6 +954,19 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* Bestandsjahre seit Vereinsgründung (29.03.1951), automatisch aktuell */
+(function(){
+  const yearsEl = document.getElementById('yearsActive');
+  if(!yearsEl) return;
+  const founding = new Date(1951, 2, 29); // Monat ist 0-indiziert: 2 = März
+  const now = new Date();
+  let years = now.getFullYear() - founding.getFullYear();
+  const beforeAnniversary = (now.getMonth() < founding.getMonth()) ||
+    (now.getMonth() === founding.getMonth() && now.getDate() < founding.getDate());
+  if(beforeAnniversary) years--;
+  yearsEl.textContent = years;
+})();
+
 /* Mobile menu */
 const mobileMenu = document.getElementById('mobileMenu');
 document.getElementById('menuBtn').addEventListener('click', () => mobileMenu.classList.add('open'));
@@ -974,14 +986,14 @@ function centerInRail(a){
 }
 let currentActiveHref = null;
 function setActive(){
-  let current = sections[0];
+  let current = null;
   const probe = window.scrollY + 140;
   sections.forEach(sec => { if(sec.offsetTop <= probe) current = sec; });
-  const href = '#' + current.id;
+  const href = current ? ('#' + current.id) : null;
   if(href === currentActiveHref) return;
   currentActiveHref = href;
   railLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === href));
-  const activeEl = railLinks.find(a => a.getAttribute('href') === href);
+  const activeEl = href ? railLinks.find(a => a.getAttribute('href') === href) : null;
   if(activeEl){ centerInRail(activeEl); }
 }
 window.addEventListener('scroll', () => window.requestAnimationFrame(setActive));
@@ -1083,7 +1095,7 @@ translations.en = {
   "hero.lead":"The Parents' Association of BRG Linz Hamerlingstraße represents parents' interests, supports school projects and is your contact for anything concerning your child's time at school.",
   "hero.btn.infos":"Key Information",
   "hero.btn.kontakt":"Get in Touch",
-  "hero.fact1":"Membership fee / year","hero.fact2":"Association founded","hero.fact3":"Votes on the school board","hero.fact4":"Subsidy for school events",
+  "hero.fact1":"Membership fee / year","hero.fact2":"Years in existence","hero.fact3":"Votes on the school board","hero.fact4":"Subsidy for school events",
   "aktuelles.title":"News & Photos",
   "aktuelles.lead":"Announcements and impressions from association life.",
   "aktuelles.sponsor.title":"We're looking for sponsors for the \"School Psychotherapy\" project",
@@ -1217,7 +1229,7 @@ translations.hr = {
   "hero.lead":"Udruga roditelja BRG Linz Hamerlingstraße zastupa interese roditelja, podržava školske projekte i vaša je kontakt-točka za sva pitanja vezana uz školovanje vašeg djeteta.",
   "hero.btn.infos":"Važne informacije",
   "hero.btn.kontakt":"Kontaktirajte nas",
-  "hero.fact1":"Članarina / godišnje","hero.fact2":"Osnivanje udruge","hero.fact3":"Glasova u školskom vijeću","hero.fact4":"Subvencija za školske priredbe",
+  "hero.fact1":"Članarina / godišnje","hero.fact2":"Godina postojanja","hero.fact3":"Glasova u školskom vijeću","hero.fact4":"Subvencija za školske priredbe",
   "aktuelles.title":"Novosti i fotografije",
   "aktuelles.lead":"Obavijesti i dojmovi iz života udruge.",
   "aktuelles.sponsor.title":"Tražimo sponzore za projekt „Školska psihoterapija”",
