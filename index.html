@@ -1,569 +1,938 @@
-r<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elternverein BRG Hamerlingstraße</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        details > summary {
-            cursor: pointer;
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        details[open] summary .arrow-down {
-            transform: rotate(180deg);
-        }
-        /* Sidebar transition */
-        #sidebar {
-            transition: transform 0.3s ease-in-out;
-        }
-        #home {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://codelab365.github.io/evhamerling/events/2025-fotos-sommerfest/BlickSchulhof.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elternverein BRG Hamerlingstraße</title>
+<meta name="description" content="Elternverein des BRG Linz Hamerlingstraße – Aktuelles, wichtige Infos, Termine, Downloads und Kontakt auf einen Blick.">
+<style>
+/* =========================================================
+   ELTERNVEREIN BRG HAMERLINGSTRASSE — STYLESHEET
+   Eigenständiges CSS, keine externen Frameworks/Fonts.
+   ========================================================= */
+
+:root{
+  /* Farben – an das Schulblau angelehnt */
+  --navy:        #163a5f;   /* Primär: Header, Flächen, Überschriften */
+  --navy-dark:   #0e2740;   /* dunkler für Footer/Kontraste */
+  --blue:        #2f6690;   /* Sekundär: Links, Icons */
+  --blue-soft:   #e7eef4;   /* helle Fläche, Kartenrahmen-Hintergrund */
+  --sky:         #f2f6f9;   /* alternierende Sektionsfläche */
+  --paper:       #fdfcfa;   /* Grundhintergrund, warmes Weiß */
+  --gold:        #c1893c;   /* Akzent: CTA, aktives Kapitel */
+  --gold-dark:   #9c6d2c;
+  --ink:         #1c2530;   /* Haupttext */
+  --ink-soft:    #4b5563;   /* Nebentext */
+  --line:        #dde3ea;   /* Trennlinien / Rahmen */
+  --white:       #ffffff;
+
+  --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --radius: 6px;
+  --container: 1080px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:110px; }
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:var(--blue); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+ul,ol{ padding-left:1.25rem; }
+.container{ width:100%; max-width:var(--container); margin:0 auto; padding:0 1.5rem; }
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  color:var(--navy);
+  font-weight:700;
+  line-height:1.2;
+  margin:0 0 .6rem;
+}
+h2.section-title{ font-size:clamp(1.7rem,3.4vw,2.4rem); }
+h3{ font-size:1.25rem; }
+h4{ font-size:1.05rem; }
+p{ margin:0 0 1rem; }
+.lead{ color:var(--ink-soft); font-size:1.05rem; max-width:640px; }
+
+.eyebrow{
+  display:flex; align-items:center; gap:.6rem;
+  font-family:var(--font-body);
+  font-size:.78rem; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--gold-dark);
+  margin-bottom:.75rem;
+}
+.eyebrow::before{
+  content:""; width:22px; height:2px; background:var(--gold);
+}
+
+.section-head{ max-width:720px; margin-bottom:2.75rem; }
+
+/* Buttons */
+.btn{
+  display:inline-block;
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:.95rem;
+  padding:.7rem 1.5rem;
+  border-radius:var(--radius);
+  border:1px solid transparent;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .2s ease,border-color .2s ease,color .2s ease;
+}
+.btn:hover{ text-decoration:none; }
+.btn-primary{ background:var(--navy); color:var(--white); }
+.btn-primary:hover{ background:var(--blue); }
+.btn-gold{ background:var(--gold); color:var(--white); }
+.btn-gold:hover{ background:var(--gold-dark); }
+.btn-outline{ background:transparent; color:var(--navy); border-color:var(--navy); }
+.btn-outline:hover{ background:var(--navy); color:var(--white); }
+
+/* ---------- Header ---------- */
+header.site-header{
+  position:sticky; top:0; z-index:60;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.9rem 0;
+}
+.wordmark{
+  font-family:var(--font-display); font-weight:700; color:var(--navy);
+  font-size:1.15rem; line-height:1.2;
+}
+.wordmark small{ display:block; font-family:var(--font-body); font-weight:500; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); }
+.header-actions{ display:flex; align-items:center; gap:1rem; }
+.header-actions a.quicklink{ font-size:.9rem; font-weight:600; color:var(--navy); }
+
+button.menu-btn{
+  background:none; border:1px solid var(--line); border-radius:var(--radius);
+  width:42px; height:42px; display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+button.menu-btn svg{ width:20px; height:20px; stroke:var(--navy); }
+
+/* ---------- Chapter rail (Kapitelübersicht / signature element) ---------- */
+nav.chapter-rail{
+  position:sticky; top:64px; z-index:55;
+  background:var(--navy);
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+nav.chapter-rail::-webkit-scrollbar{ display:none; }
+.chapter-rail-inner{
+  display:flex; align-items:stretch;
+  max-width:var(--container); margin:0 auto; padding:0 1.5rem;
+  min-width:max-content;
+}
+.chapter-rail a{
+  display:flex; align-items:baseline; gap:.4rem;
+  color:#c7d6e5; text-decoration:none;
+  font-size:.82rem; font-weight:600; letter-spacing:.03em;
+  padding:.75rem .9rem; white-space:nowrap;
+  border-bottom:3px solid transparent;
+  transition:color .2s ease,border-color .2s ease;
+}
+.chapter-rail a .num{ font-family:var(--font-display); color:#7d97b3; font-size:.78rem; }
+.chapter-rail a:hover{ color:var(--white); text-decoration:none; }
+.chapter-rail a.active{ color:var(--white); border-bottom-color:var(--gold); }
+.chapter-rail a.active .num{ color:var(--gold); }
+
+/* ---------- Sections ---------- */
+section{ padding:4.5rem 0; }
+section.alt{ background:var(--sky); }
+
+/* ---------- Hero ---------- */
+.hero{
+  background:linear-gradient(180deg,var(--sky) 0%,var(--paper) 65%);
+  color:var(--ink);
+  padding:4.5rem 0 4rem;
+  position:relative;
+  border-bottom:1px solid var(--line);
+}
+.hero .container{ position:relative; z-index:2; }
+.hero-tag{
+  display:inline-block; font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--gold-dark); background:var(--white); border:1px solid var(--line); border-radius:999px; padding:.3rem .9rem; margin-bottom:1.4rem;
+}
+.hero h1{ color:var(--navy); font-size:clamp(2rem,4.4vw,3.1rem); max-width:16ch; margin-bottom:1rem; }
+.hero .lead{ color:var(--ink-soft); font-size:1.15rem; max-width:52ch; }
+.hero-facts{
+  margin-top:2.5rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1.25rem; max-width:760px; border-top:1px solid var(--line); padding-top:1.75rem;
+}
+.hero-fact .num{ font-family:var(--font-display); font-size:1.6rem; color:var(--navy); display:block; }
+.hero-fact .label{ font-size:.82rem; color:var(--ink-soft); }
+.hero-actions{ margin-top:2.2rem; display:flex; gap:1rem; flex-wrap:wrap; }
+
+/* ---------- Cards ---------- */
+.card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+  padding:1.5rem;
+}
+.grid{ display:grid; gap:1.5rem; }
+.grid-2{ grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+.grid-3{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+
+/* News */
+.news-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-bottom:1.75rem; }
+.news-card img{ width:100%; height:230px; object-fit:cover; }
+.news-card .body{ padding:1.5rem; }
+.news-date{ font-size:.8rem; color:var(--gold-dark); font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.4rem; }
+.news-meta{ display:grid; gap:.9rem; margin-top:.75rem; }
+.news-meta h4{ margin-bottom:.15rem; font-size:.85rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); font-family:var(--font-body); font-weight:700; }
+.thumbs{ display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; margin-top:1rem; }
+.thumbs img{ height:80px; object-fit:cover; border-radius:4px; }
+.callout{
+  background:var(--blue-soft); border-left:4px solid var(--blue);
+  border-radius:0 var(--radius) var(--radius) 0; padding:1.5rem; margin-bottom:2.5rem;
+}
+
+/* Accordion */
+details.acc{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); margin-bottom:.75rem; }
+details.acc > summary{
+  list-style:none; cursor:pointer; padding:1.1rem 1.4rem;
+  display:flex; justify-content:space-between; align-items:center; gap:1rem;
+  font-family:var(--font-display); font-weight:700; color:var(--navy); font-size:1.05rem;
+}
+details.acc > summary::-webkit-details-marker{ display:none; }
+details.acc > summary .chev{ width:18px; height:18px; stroke:var(--gold-dark); flex-shrink:0; transition:transform .2s ease; }
+details.acc[open] > summary .chev{ transform:rotate(180deg); }
+.acc-body{ padding:0 1.4rem 1.4rem; border-top:1px solid var(--line); margin-top:0; padding-top:1rem; color:var(--ink); }
+.acc-body p:last-child{ margin-bottom:0; }
+.acc-body strong{ color:var(--navy); }
+
+/* Team */
+.team-card{ background:var(--white); border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:var(--radius); padding:1.5rem; text-align:center; }
+.team-card h4{ margin-bottom:.15rem; }
+.team-card .role{ color:var(--ink-soft); font-size:.9rem; font-weight:600; }
+
+/* Table */
+.table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); }
+table.kv{ width:100%; border-collapse:collapse; font-size:.92rem; min-width:520px; }
+table.kv thead th{ background:var(--navy); color:var(--white); text-align:left; padding:.85rem 1rem; font-family:var(--font-body); font-weight:700; font-size:.82rem; letter-spacing:.03em; text-transform:uppercase; }
+table.kv td{ padding:.7rem 1rem; border-bottom:1px solid var(--line); }
+table.kv tbody tr:nth-child(even){ background:var(--sky); }
+table.kv tbody tr:hover{ background:var(--blue-soft); }
+.kv-filter{ margin-bottom:1.25rem; }
+.kv-filter input{
+  width:100%; max-width:320px; padding:.65rem .9rem; border:1px solid var(--line); border-radius:var(--radius);
+  font-family:var(--font-body); font-size:.95rem;
+}
+
+/* Timeline (Termine) */
+.timeline{ max-width:760px; }
+.tl-item{ display:flex; gap:1.5rem; padding-bottom:2rem; position:relative; }
+.tl-item:not(:last-child)::before{
+  content:""; position:absolute; left:34px; top:64px; bottom:0; width:1px; background:var(--line);
+}
+.tl-date{ width:68px; flex-shrink:0; text-align:center; }
+.tl-date .day{ font-family:var(--font-display); font-size:1.6rem; color:var(--navy); display:block; line-height:1; }
+.tl-date .month{ font-size:.72rem; font-weight:700; letter-spacing:.06em; color:var(--gold-dark); text-transform:uppercase; }
+.tl-body{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem 1.4rem; flex:1; }
+.tl-time{ display:flex; align-items:center; gap:.4rem; font-size:.85rem; color:var(--ink-soft); margin:.25rem 0 .6rem; }
+
+/* Downloads / Links lists */
+.res-list{ display:grid; gap:.65rem; }
+.res-item{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+  padding:.9rem 1.2rem; font-size:.95rem; font-weight:600; color:var(--ink);
+}
+.res-item:hover{ border-color:var(--blue); text-decoration:none; }
+.res-item svg{ width:18px; height:18px; stroke:var(--blue); flex-shrink:0; }
+.subhead{ font-size:.9rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); margin:2rem 0 1rem; font-family:var(--font-body); }
+.subhead:first-child{ margin-top:0; }
+
+/* Contact */
+.contact-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:2.5rem; max-width:520px; margin:0 auto; text-align:center; }
+
+/* Footer */
+footer.site-footer{ background:var(--navy-dark); color:#a9bccd; padding:3rem 0 2rem; }
+footer.site-footer .container{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem; }
+footer.site-footer h4{ color:var(--white); font-size:.95rem; }
+footer.site-footer a{ color:#a9bccd; }
+footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
+.footer-bottom{ border-top:1px solid rgba(255,255,255,.1); margin-top:2rem; padding-top:1.5rem; font-size:.82rem; text-align:center; color:#7f93a5; }
+
+/* Mobile menu */
+.mobile-menu{
+  position:fixed; inset:0; background:rgba(14,39,64,.55); z-index:80; display:none;
+}
+.mobile-menu.open{ display:block; }
+.mobile-menu-panel{
+  position:absolute; top:0; right:0; height:100%; width:min(320px,85%);
+  background:var(--paper); padding:1.75rem; overflow-y:auto;
+}
+.mobile-menu-panel h3{ margin-bottom:1.5rem; }
+.mobile-menu-panel nav a{ display:block; padding:.65rem 0; border-bottom:1px solid var(--line); color:var(--ink); font-weight:600; }
+.mobile-menu-close{ background:none; border:none; cursor:pointer; float:right; }
+.mobile-menu-close svg{ width:22px; height:22px; stroke:var(--navy); }
+
+@media (max-width:760px){
+  section{ padding:3.25rem 0; }
+  .thumbs{ grid-template-columns:repeat(3,1fr); }
+  .header-actions .quicklink{ display:none; }
+}
+</style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
 
-    <!-- Header & Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="https://codelab365.github.io/evhamerling/" class="text-xl md:text-2xl font-bold text-blue-800">
-                Elternverein BRG Hamerlingstraße
-            </a>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="https://codelab365.github.io/evhamerling/" class="text-blue-700 font-semibold">Start</a>
-                <a href="https://codelab365.github.io/evhamerling/aktuelles.html" class="text-gray-700 hover:text-blue-700 font-medium transition duration-300">Aktuelles & Fotos</a>
-                <a href="#contact" class="text-gray-700 hover:text-blue-700 font-medium transition duration-300">Kontakt</a>
-                <button id="desktop-menu-button" class="flex items-center">
-                    <svg class="w-6 h-6 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden flex items-center">
-                 <svg class="w-6 h-6 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </nav>
-    </header>
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#start" class="wordmark">Elternverein BRG Hamerling<small>Bundesrealgymnasium Linz</small></a>
+    <div class="header-actions">
+      <a href="#kontakt" class="quicklink">Kontakt</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
-    <!-- Sidebar Navigation -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
-    <div id="sidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-lg z-50 transform translate-x-full">
-        <div class="p-6">
-            <button id="close-sidebar-button" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <h2 class="text-2xl font-bold text-blue-800 mb-8 mt-2">Menü</h2>
-            <nav class="flex flex-col space-y-4">
-                <a href="https://codelab365.github.io/evhamerling/klassenelternvertreter.html" class="text-lg text-gray-700 hover:text-blue-700 font-medium transition duration-300">Klassenelternvertreter</a>
-				<a href="#team" class="text-lg text-gray-700 hover:text-blue-700 font-medium transition duration-300">Unser Team</a>
-				<a href="#infos" class="text-lg text-gray-700 hover:text-blue-700 font-medium transition duration-300">Wichtige Infos</a>
-				<a href="https://codelab365.github.io/evhamerling/aktuelles.html" class="text-lg text-gray-700 hover:text-blue-700 font-medium transition duration-300">Aktuelles&Fotos</a>
-				<a href="#termine" class="text-lg text-gray-700 hover:text-blue-700 font-medium transition duration-300">Terminkalender</a>
-                <a href="https://codelab365.github.io/evhamerling/downloads.html" class="text-lg text-gray-700 hover:text-blue-700 font-medium transition duration-300">Downloads</a>
-                <a href="https://codelab365.github.io/evhamerling/links.html" class="text-lg text-gray-700 hover:text-blue-700 font-medium transition duration-300">Links</a>
-                <a href="#rechtliches" class="text-lg text-gray-700 hover:text-blue-700 font-medium transition duration-300">Impressum</a>
-            </nav>
-        </div>
+<!-- ================= CHAPTER RAIL (Kapitelübersicht) ================= -->
+<nav class="chapter-rail" id="chapterRail" aria-label="Kapitelübersicht">
+  <div class="chapter-rail-inner">
+    <a href="#start"><span class="num">00</span> Start</a>
+    <a href="#aktuelles"><span class="num">01</span> Aktuelles</a>
+    <a href="#ueber-uns"><span class="num">02</span> Über uns</a>
+    <a href="#infos"><span class="num">03</span> Wichtige Infos</a>
+    <a href="#team"><span class="num">04</span> Team</a>
+    <a href="#klassenvertreter"><span class="num">05</span> Klassenvertreter</a>
+    <a href="#termine"><span class="num">06</span> Termine</a>
+    <a href="#downloads"><span class="num">07</span> Downloads & Links</a>
+    <a href="#kontakt"><span class="num">08</span> Kontakt</a>
+    <a href="#impressum"><span class="num">09</span> Impressum</a>
+  </div>
+</nav>
+
+<!-- ================= MOBILE MENU ================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-panel">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Menü schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+    <h3>Menü</h3>
+    <nav>
+      <a href="#start">Start</a>
+      <a href="#aktuelles">Aktuelles & Fotos</a>
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#infos">Wichtige Infos</a>
+      <a href="#team">Unser Team</a>
+      <a href="#klassenvertreter">Klassenelternvertreter</a>
+      <a href="#termine">Terminkalender</a>
+      <a href="#downloads">Downloads & Links</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#impressum">Impressum & Datenschutz</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+<!-- ================= 00 START / HERO ================= -->
+<section id="start" class="hero">
+  <div class="container">
+    <span class="hero-tag">Elternverein · seit 1951</span>
+    <h1>Gemeinsam für unsere Kinder — Ihre Brücke zwischen Elternhaus und Schule.</h1>
+    <p class="lead">Der Elternverein des BRG Linz Hamerlingstraße vertritt die Interessen der Eltern, unterstützt schulische Projekte und ist Ansprechpartner bei Fragen rund um die Schulzeit Ihres Kindes.</p>
+    <div class="hero-actions">
+      <a href="#infos" class="btn btn-gold">Wichtige Infos</a>
+      <a href="#kontakt" class="btn btn-outline">Kontakt aufnehmen</a>
+    </div>
+    <div class="hero-facts">
+      <div class="hero-fact"><span class="num">€17</span><span class="label">Mitgliedsbeitrag / Jahr</span></div>
+      <div class="hero-fact"><span class="num">1951</span><span class="label">Vereinsgründung</span></div>
+      <div class="hero-fact"><span class="num">3</span><span class="label">Stimmen im SGA</span></div>
+      <div class="hero-fact"><span class="num">50%</span><span class="label">Zuschuss zu Schulveranstaltungen</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 01 AKTUELLES ================= -->
+<section id="aktuelles">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 01 · Aktuelles</div>
+      <h2 class="section-title">Neuigkeiten & Fotos</h2>
+      <p class="lead">Mitteilungen und Impressionen aus dem Vereinsleben.</p>
     </div>
 
-    <main>
-        <!-- Welcome Text Section -->
-        <section id="home" class="py-24 text-center text-white">
-            <div class="container mx-auto px-6">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Herzlich Willkommen beim Elternverein des BRG Hamerlingstraße!</h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto">"Gemeinsam für unsere Kinder! - Unser Elternverein als starke Brücke!"</p>
-            </div>
-        </section>
+    <div class="callout">
+      <h3 style="margin-bottom:.5rem;">Wir suchen Sponsoren für das Projekt „Schulpsychotherapie“</h3>
+      <p>Die Schulpsychotherapeutin, die wir mit dem Geld des Elternvereins seit dem Sommersemester 2021 finanzieren, ist eine große Bereicherung für unsere Schüler*innen. Da wir von offizieller Seite bis dato keine Unterstützung erhalten, brauchen wir für die Weiterführung dringend Sponsoren. Bitte meldet euch über das <a href="#kontakt">Kontaktformular</a> oder per E-Mail an <a href="mailto:elternverein@brghamerling.at">elternverein@brghamerling.at</a> mit euren Ideen.</p>
+      <a href="pdf/Sponsering-Schulpsychotherapie.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:.5rem;">Mehr Infos (PDF)</a>
+    </div>
 
-        <!-- Maturaball Announcement -->
-        <section id="top-aktuell" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                     <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Top-Aktuell: Maturaball 2025</h2>
-                </div>
-                <div class="flex flex-wrap md:flex-nowrap items-center bg-gray-50 rounded-lg shadow-lg overflow-hidden max-w-5xl mx-auto">
-                    <div class="w-full md:w-2/5">
-                         <img src="https://codelab365.github.io/evhamerling/events/hamair-1.jpg" alt="Maturaball Plakat" class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full md:w-3/5 p-8">
-                         <h3 class="text-2xl font-bold text-gray-800 mb-4">Maturaball BRG Hamerling 2025</h3>
-                         <div class="text-gray-700 space-y-3">
-                             <div>
-                                <h4 class="font-semibold text-gray-800">Wann?</h4>
-                                <p>14. November 2025, 19:15 Einlass / 20:00 Eröffnung</p>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Kartenverkauf:</h4>
-                                <p>Sekretariat (+43 732 65262), im Kaffeeladen Linz, sowie bei allen Maturant*innen und an der Abendkassa (AK)</p>
-                                <p><strong>Eintritt:</strong> EW: 29 Euro (AK 31 Euro) / Schüler*innen: 27 Euro (AK 29 Euro)</p>
-                            </div>
-                             <div>
-                                <h4 class="font-semibold text-gray-800">Tischreservierungen:</h4>
-                                <p>Bei allen Maturant:innen oder <a href="mailto:ball@brghamerling.at" class="text-blue-700 hover:underline">ball@brghamerling.at</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Us Section -->
-        <section id="about" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Über den Elternverein</h2>
-                    <p class="text-gray-600 mt-2">Wer wir sind und was wir tun.</p>
-                </div>
-                <div class="flex flex-wrap -mx-6">
-                    <div class="w-full md:w-1/2 px-6 mb-8 md:mb-0">
-                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Unsere Mission</h3>
-                        <p class="text-gray-700 mb-4 leading-relaxed">
-                            Der Elternverein des BRG Hamerling sieht sich als Partner der Schule und als Vertretung der Interessen der Eltern und Erziehungsberechtigten. Wir fördern die Zusammenarbeit und Kommunikation, unterstützen schulische Projekte finanziell und ideell und tragen zu einem positiven Schulklima bei.
-                        </p>
-                        <p class="text-gray-700 leading-relaxed">
-                            Unser Ziel ist es, die bestmöglichen Rahmenbedingungen für die Ausbildung und persönliche Entwicklung unserer Kinder zu schaffen. Wir organisieren Veranstaltungen, bieten Unterstützung bei schulischen Herausforderungen und sind Ansprechpartner für Ihre Anliegen.
-                        </p>
-                    </div>
-                    <div class="w-full md:w-1/2 px-6">
-                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Unser Leitbild</h3>
-                        <p class="text-gray-700 mb-4 leading-relaxed font-semibold italic">
-                           "Wir sehen es als unsere wichtigste Aufgabe, die Schulgemeinschaft zu unterstützen und so unseren Beitrag zu einem guten Schulklima zu leisten."
-                        </p>
-                        <p class="text-gray-700 mb-4 leading-relaxed">
-                            Als Elternverein sind wir mit drei Stimmen im Schulgemeinschaftsausschuss (SGA) vertreten und bringen die Interessen der Eltern ein. Gemeinsam mit Lehrer- und Schülervertreter*innen werden in diesem Forum verschiedene Schulthemen behandelt und wichtige Entscheidungen getroffen.
-                        </p>
-                         <p class="text-gray-700 mb-4 leading-relaxed">
-                            Zusätzliche Lehr- und Freizeitmittel für die Schule werden vom Elternverein angeschafft. Bei Problemen zwischen Eltern, Schüler*innen und Schule kann der Elternverein als Vermittler kontaktiert werden. Der Elternverein unterstützt finanziell bedürftige Schüler*innen bei Schulveranstaltungen und Schulprojekten, damit diese teilnehmen können.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Important Infos Section -->
-        <section id="infos" class="py-20 bg-white">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Wichtige Informationen</h2>
-                    <p class="text-gray-600 mt-2">Alles rund um Mitgliedsbeitrag, Spind und Unterstützung.</p>
-                </div>
-                <div class="space-y-4">
-                    <!-- Mitgliedsbeitrag Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Mitgliedsbeitrag
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-3 border-t pt-4">
-                            <p>Der jährliche Mitgliedsbeitrag beträgt <strong>€ 17,-</strong> für 1 Kind; für jedes weitere Kind zusätzlich + <strong>€ 5,-</strong> (Versicherungsbeitrag). Bitte bis zum <strong>15. Oktober</strong> des jeweiligen Schuljahres einzahlen.</p>
-                            <div>
-                                <p class="font-semibold text-gray-800">Bankverbindung:</p>
-                                <p>Elternverein des BRG Hamerlingstraße</p>
-                                <p><strong>IBAN:</strong> AT63 3400 0000 0136 8968</p>
-                            </div>
-                            <p>Zusätzliche Spenden sind jederzeit willkommen und helfen uns bei der Erfüllung unserer vielfältigen Aufgaben.</p>
-                        </div>
-                    </details>
-                    <!-- Spind Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Garderobenschrank (Spind)
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-3 border-t pt-4">
-                            <p>Es besteht für die Schüler*innen die Verpflichtung, einen verschließbaren Garderobenschrank zum Preis von <strong>€ 10,- pro Schuljahr</strong> zu mieten.</p>
-                            <div>
-                                <p class="font-semibold text-gray-800">Bankverbindung:</p>
-                                <p>Elternverein des BRG Hamerlingstraße</p>
-                                <p><strong>IBAN:</strong> AT63 3400 0000 0136 8968</p>
-                            </div>
-                            <p class="font-semibold text-red-600">Bitte den <strong>Namen und die Klasse des Kindes</strong> in der Zahlungsreferenz angeben!</p>
-                            <p>Bei <strong>Verlust des Spindschlüssels</strong> sind € 20,- für den Tausch des Schlosses zu bezahlen. Dieser Betrag wird nicht mehr refundiert, wenn das Schloss bereits getauscht wurde.</p>
-                        </div>
-                    </details>
-                    <!-- Unterstützung Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Finanzielle Unterstützung
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-3 border-t pt-4">
-                            <p>Der Elternverein kann grundsätzlich nur Mitglieder finanziell unterstützen. Um Mitglied zu werden, zahlen Sie bitte den Mitgliedsbeitrag bis zum <strong>15. Oktober</strong> des jeweiligen Schuljahres ein.</p>
-                            <p>Der EV gewährt einen Zuschuss zu Schulveranstaltungen von <strong>max. 50%</strong>, um die Teilnahme bedürftiger Schüler*innen zu ermöglichen. Um diesen in Anspruch zu nehmen, suchen Sie bitte das Gespräch mit dem*der Klassenlehrer*in oder dem*der Lehrer*in, welche*r die Veranstaltung leitet oder wenden Sie sich mittels Formular direkt an den Elternverein.</p>
-                            <p>Der Elternverein bevorzugt, den zu fördernden Betrag direkt an den*die Veranstalter*in zu bezahlen. Aus diesem Grund ersuchen wir Sie, den Förderantrag so bald wie möglich (<strong>vor der Veranstaltung!</strong>) zu stellen und den Zugangscode von edu.PAY anzugeben.</p>
-                        </div>
-                    </details>
-                     <!-- Schüler Unfallversicherung Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Schüler Unfallversicherung
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-3 border-t pt-4">
-                            <p>Leistungen aus der Kollektiv Unfallversicherung werden nur ausgezahlt, wenn Sie den Versicherungsbeitrag (der mit dem Elternvereinsbeitrag eingezahlt wird) bis zum <strong>1. Oktober</strong> des laufenden Schuljahres eingezahlt haben.</p>
-                            <p>Detailinformationen entnehmen sie bitte der <a href="https://codelab365.github.io/evhamerling/pdf/Sch%C3%BCler%20Unfallversicherung-2.pdf" class="text-blue-700 hover:underline">Polizze</a>.</p>
-                        </div>
-                    </details>
-                    <!-- Rechte und Pflichten Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Rechte und Pflichten des Elternvereins
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-3 border-t pt-4 prose max-w-none">
-                           <ul class="list-disc pl-5 space-y-2">
-                                <li><strong>Recht auf Information:</strong> Mitglieder des Elternvereins können Einblick in Erlässe nehmen und haben das Recht auf Information über das Schulgeschehen.</li>
-                                <li><strong>Recht auf Anhörung:</strong> Der EV kann der Schulleitung und dem Klassenvorstand Vorschläge, Wünsche und Beschwerden mitteilen.</li>
-                                <li><strong>Recht auf Mitbestimmung und Mitsprache:</strong> Bei päd. Konferenzen dürfen die gewählten Klassenelternvertreter teilnehmen. Mitglieder des Elternvereines, auch nicht der/die Vorsitzende haben nicht automatisch das Recht daran teilnehmen zu können, außer sie sind Klassenelternvertreter (Siehe auch SchUG § 57 Abs. 5 und SchUG § 61 Abs. 2.)</li>
-                                <li><strong>Entsendungs- u. Vorschlagsrecht:</strong> Der Elternverein hat das Recht auf Entsendung von Vertretern der Erziehungsberechtigten in den Schulgemeinschaftsausschuss.</li>
-                                <li><strong>Wahrnehmung</strong> der Aufgaben des Elternvereines gemäß § 63 SchUG (u. a. Abgabe von Vorschlägen, Wünschen, Beschwerden und Stellungnahmen an der Schule).</li>
-                                <li><strong>Entsendung der Vertreter</strong> der Erziehungsberechtigten in den SGA.</li>
-                                <li><strong>Aktive Mitwirkung</strong> an der Partnerschaft zwischen Eltern, Schülern und Schule.</li>
-                                <li><strong>Unterstützung</strong> der Eltern bei der Geltendmachung der ihnen nach dem SchUG zustehenden Rechte.</li>
-                                <li><strong>Unterstützung</strong> der Klassenelternvertreter und Elternvertreter im Schulgemeinschaftsausschuss</li>
-                                <li><strong>Förderung</strong> des Unterrichts durch enge Zusammenarbeit mit den Lehrern</li>
-                                <li><strong>Wahrnehmung</strong> der Elterninteressen in Bezug auf Schulwegsicherung sowie die Förderung zur Errichtung und Einrichtung von Sport- und Spielplätzen sowie Turnhallen usw.</li>
-                                <li><strong>Wahrnehmung</strong> der Elterninteressen hinsichtlich der Schulbahn- und Berufsberatung.</li>
-                                <li><strong>Hilfe und Unterstützung</strong> für bedürftige Schüler (unter Ausschluss jeder regelmäßigen Fürsorgetätigkeit).</li>
-                                <li><strong>Wahrung des Erziehungsrechtes</strong> der Eltern</li>
-                                <li><strong>Unterstützung</strong> der im § 2 SchOG normierten Miterziehungsaufgaben der Schule unter Wahrung des primären Erziehungsrechtes der Eltern.</li>
-                                <li><strong>Förderung</strong> positiver Erziehungseinflüsse (z.B. Errichtung von Schulbibliotheken, Unterstützung von Maßnahmen auf dem Gebiet des Jugendschutzes) und</li>
-                                <li><strong>Abwehr</strong> negativer Einflüsse (Brutalität, Rauschgift, Alkoholmißbrauch, Pornographie, aber auch antidemokratischer Tendenzen usw.).</li>
-                                <li><strong>Wahrnehmung</strong> von Möglichkeiten zur Beratung und Weiterbildung der Eltern auf dem Gebiet der Bildung und Erziehung.</li>
-                           </ul>
-                        </div>
-                    </details>
-                    
-                    <!-- Verlust Spindschlüssel Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Verlust eines Spindschlüssels
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-3 border-t pt-4">
-                            <p>Wenn Sie Ihren Spindschlüssel verloren haben, folgen Sie bitte diesen Schritten, um das Problem schnellstmöglich zu lösen:</p>
-                            <ol class="list-decimal list-inside space-y-2 mt-2">
-                                <li><strong>Suchen Sie zunächst gründlich:</strong> Überprüfen Sie alle möglichen Orte, an denen Sie den Schlüssel zuletzt verwendet haben.</li>
-                                <li><strong>Fragen Sie den Schulwart:</strong> Wenden Sie sich an den Schulwart. Möglicherweise wurde der Schlüssel bei ihm abgegeben.</li>
-                                <li><strong>Anfrage beim Fundamt Linz:</strong> Kontaktieren Sie das Fundamt in Linz, falls der Schlüssel nicht gefunden wird.</li>
-                                <li><strong>Meldung im Sekretariat:</strong> Informieren Sie bitte auch das Sekretariat über den Verlust.</li>
-                                <li><strong>Beitrag für Schlosstausch bezahlen:</strong> Zahlen Sie den Betrag von 20 € für einen neuen Schlüssel und den Tausch. Die Zahlungskonditionen finden Sie oben unter "Garderobenschrank (Spind)".</li>
-                                <li><strong>Zahlungsbeleg vorlegen:</strong> Zeigen Sie den Zahlungsbeleg Frau Mag. Antretter oder dem Schulwart, damit das Schloss getauscht werden kann.</li>
-                            </ol>
-                            <p class="mt-3">Durch die Befolgung dieser Schritte stellen Sie sicher, dass der Verlust Ihres Spindschlüssels schnell und effizient bearbeitet wird.</p>
-                        </div>
-                    </details>
-
-                    <!-- Unfall Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Unfall in der Schule / am Schulweg
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-3 border-t pt-4">
-                            <p>Im Falle eines Unfalls ist es wichtig, die richtigen Schritte zu unternehmen. Dies ist die empfohlene Vorgehensweise:</p>
-                            <ol class="list-decimal list-inside space-y-2 mt-2">
-                                <li><strong>Sofortige Hilfe leisten:</strong> Stellen Sie sicher, dass die verletzte Person angemessen versorgt wird (Erste Hilfe).</li>
-                                <li><strong>Meldung im Sekretariat:</strong> Melden Sie den Unfall so zeitnah wie möglich im Sekretariat der Schule.</li>
-                                <li><strong>Unfallbericht ausfüllen:</strong> Im Sekretariat wird ein Unfallbericht vorbereitet, der alle relevanten Informationen dokumentiert.</li>
-                                <li><strong>Schule übernimmt Unfallmeldung:</strong> Die Schule ist verantwortlich für die Meldung an die zuständigen Stellen (Eltern, Versicherung).</li>
-                                <li><strong>Außerordentliche Kosten dokumentieren:</strong> Bewahren Sie alle Belege und Rechnungen (z.B. für Bergung, Spezialisten) sorgfältig auf.</li>
-                                <li><strong>Meldung an Zusatzversicherung:</strong> Diese Meldung erfolgt über die Schule und den Elternverein.</li>
-                            </ol>
-                        </div>
-                    </details>
-                    
-                    <!-- Leih-iPad Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Leih-iPad defekt / beschädigt
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-3 border-t pt-4">
-                            <p>Es ist wichtig, das Sekretariat sofort zu informieren, wenn ein Leih-iPad defekt oder beschädigt ist. Hier sind die Schritte, die Sie befolgen müssen:</p>
-                            <ol class="list-decimal list-inside space-y-2 mt-2">
-                                <li><strong>Meldung im Sekretariat:</strong> Suchen Sie bei einem Defekt umgehend das Sekretariat auf und geben Sie genaue Informationen zum Problem an.</li>
-                                <li><strong>Tausch in der Schule:</strong> Das Sekretariat organisiert den Austausch des defekten Geräts gegen ein neues.</li>
-                                <li><strong>Abwicklung mit der Versicherung:</strong> Das Sekretariat und/oder der Elternverein übernehmen die gesamte Abwicklung mit der Versicherung.</li>
-                            </ol>
-                        </div>
-                    </details>
-
-                    <!-- Vereinsstatuten Accordion -->
-                    <details id="statuten-accordion" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Vereinsstatuten
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div id="statuten-content" class="mt-4 text-gray-700 space-y-4 border-t pt-4 prose max-w-none">
-                           <p>Lade Statuten...</p>
-                        </div>
-                    </details>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Team Section -->
-        <section id="team" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Unser Team</h2>
-                    <p class="text-gray-600 mt-2">Die Gesichter hinter dem Elternverein.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <!-- Team Member Card 1 -->
-                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="text-xl font-bold text-gray-800">Gudrun Ronacher</h4>
-                        <p class="text-gray-600 mt-1 font-semibold">Obfrau</p>
-                    </div>
-                    <!-- Team Member Card 2 -->
-                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="text-xl font-bold text-gray-800">Petra Schwarzenberger</h4>
-                        <p class="text-gray-600 mt-1 font-semibold">Obfrau Stv.</p>
-                    </div>
-                    <!-- Team Member Card 3 -->
-                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="text-xl font-bold text-gray-800">Thomas Wiener</h4>
-                        <p class="text-gray-600 mt-1 font-semibold">Kassier</p>
-                    </div>
-                    <!-- Team Member Card 4 -->
-                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="text-xl font-bold text-gray-800">in Kürze...</h4>
-                        <p class="text-gray-600 mt-1 font-semibold">Schriftführerin</p>
-                    </div>
-                    <!-- Team Member Card 5 -->
-                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="text-xl font-bold text-gray-800">Vera Rachbauer</h4>
-                        <p class="text-gray-600 mt-1 font-semibold">Rechnungsprüferin</p>
-                    </div>
-                    <!-- Team Member Card 6 -->
-                    <div class="bg-white text-center p-6 rounded-lg shadow-md border-t-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
-                        <h4 class="text-xl font-bold text-gray-800">Thomas Lambert</h4>
-                        <p class="text-gray-600 mt-1 font-semibold">Rechnungsprüfer</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Termine Section -->
-        <section id="termine" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Terminkalender</h2>
-                    <p class="text-gray-600 mt-2">Wichtige Daten und Veranstaltungen im Überblick.</p>
-                </div>
-                <!-- New container for the timeline -->
-                <div id="calendar-events" class="max-w-4xl mx-auto space-y-8">
-                    <!-- Termine werden hier dynamisch eingefügt -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Kontaktieren Sie uns</h2>
-                    <p class="text-gray-600 mt-2">Wir freuen uns auf Ihre Nachricht.</p>
-                </div>
-                <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-sm border border-gray-200">
-                     <p class="text-xl font-semibold text-gray-800 mb-2">
-                        Elternverein des BRG Hamerlingstraße
-                    </p>
-                    <p class="text-gray-600 mb-6">
-                        Hamerlingstraße 18, 4020 Linz
-                    </p>
-                    <a href="mailto:elternverein@brghamerling.at" class="inline-block bg-blue-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-800 transition duration-300 shadow-md">
-                        E-Mail Senden
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Impressum & Datenschutz Section -->
-        <section id="rechtliches" class="py-20 bg-white">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Impressum & Datenschutz</h2>
-                    <p class="text-gray-600 mt-2">Rechtliche Informationen.</p>
-                </div>
-                 <div class="space-y-4">
-                    <!-- Impressum Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Impressum
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-2 border-t pt-4">
-                            <p><strong>Elternverein des Bundesrealgymnasiums Linz, Hamerlingstraße</strong><br>
-                            Hamerlingstraße 18, 4020 Linz</p>
-                            <p><strong>Entstehungsdatum des Vereins:</strong> 29.03.1951</p>
-                            <p><strong>ZVR-Zahl:</strong> 463107582</p>
-                            <p><strong>Gerichtsstand:</strong> Linz</p>
-                            <h4 class="font-semibold pt-2 text-gray-800">Vertretungsberechtigte Personen:</h4>
-                            <p><strong>Obfrau:</strong> Gudrun Ronacher</p>
-                            <p><strong>Obfrau Stv.:</strong> Petra Schwarzenberger</p>
-                            <p><strong>Kassier:</strong> Thomas Wiener</p>
-                            <p><strong>Schriftführerin:</strong> (wird noch bekannt gegeben)</p>
-                            <p><strong>E-Mail:</strong> <a href="mailto:elternverein@brghamerling.at" class="text-blue-700 hover:underline">elternverein@brghamerling.at</a></p>
-                        </div>
-                    </details>
-                    <!-- Datenschutz Accordion -->
-                    <details class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <summary class="font-semibold text-xl flex justify-between items-center text-gray-800">
-                            Datenschutzerklärung
-                            <svg class="w-5 h-5 arrow-down transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-700 space-y-4 prose max-w-none border-t pt-4">
-                            <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-                            <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis.</p>
-                            <h4 class="font-semibold pt-2 text-gray-800">Datenerfassung auf dieser Website</h4>
-                            <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.</p>
-                            <h4 class="font-semibold pt-2 text-gray-800">Kontakt per E-Mail</h4>
-                            <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben aus der E-Mail inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-                            <h4 class="font-semibold pt-2 text-gray-800">Ihre Rechte</h4>
-                            <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-10">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; <span id="current-year"></span> Elternverein BRG Hamerlingstraße. Alle Rechte vorbehalten.</p>
-            <p class="text-sm text-gray-300 mt-2">Ein ehrenamtlicher Verein zur Förderung der Schulgemeinschaft.</p>
-            <p class="text-sm text-gray-300 mt-1">ZVR Österreich: 463107582</p>
+    <div class="grid grid-2">
+      <div class="news-card">
+        <a href="events/hamair-1.jpg" target="_blank" rel="noopener noreferrer"><img src="events/hamair-1.jpg" alt="Maturaball Plakat"></a>
+        <div class="body">
+          <div class="news-date">14. November 2025</div>
+          <h3>Maturaball BRG Hamerling 2025</h3>
+          <div class="news-meta">
+            <div><h4>Wann?</h4><p style="margin:0;">14. November 2025, 19:15 Einlass / 20:00 Eröffnung</p></div>
+            <div><h4>Kartenverkauf</h4><p style="margin:0;">Sekretariat (+43 732 65262), im Kaffeeladen Linz, sowie bei allen Maturant*innen und an der Abendkassa (AK).<br><strong>Eintritt:</strong> EW 29 € (AK 31 €) / Schüler*innen 27 € (AK 29 €)</p></div>
+            <div><h4>Tischreservierungen</h4><p style="margin:0;">Bei allen Maturant:innen oder <a href="mailto:ball@brghamerling.at">ball@brghamerling.at</a></p></div>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Sidebar Toggle
-            const sidebar = document.getElementById('sidebar');
-            const sidebarOverlay = document.getElementById('sidebar-overlay');
-            const openButtons = [document.getElementById('mobile-menu-button'), document.getElementById('desktop-menu-button')];
-            const closeButton = document.getElementById('close-sidebar-button');
-            const sidebarLinks = sidebar.querySelectorAll('a');
+      <div class="news-card">
+        <a href="events/werther.jpg" target="_blank" rel="noopener noreferrer"><img src="events/werther.jpg" alt="Theateraufführung Werther"></a>
+        <div class="body">
+          <div class="news-date">Juni 2025</div>
+          <h3>„Werther“ – eine Annäherung</h3>
+          <div class="news-meta">
+            <div><h4>Wann?</h4><p style="margin:0;">11., 12., 14., 16. & 17. Juni 2025, jeweils 19:00 Uhr</p></div>
+            <div><h4>Wo?</h4><p style="margin:0;">Festsaal, BRG Hamerling, Hamerlingstraße 18, 4020 Linz</p></div>
+            <div><h4>Kartenverkauf</h4><p style="margin:0;">Sekretariat (+43 732 65262) und an der Abendkassa eine halbe Stunde vor Vorstellungsbeginn.<br><strong>Eintritt:</strong> EW 10 € / Schüler*innen 5 €</p></div>
+          </div>
+        </div>
+      </div>
 
-            function openSidebar() {
-                sidebar.classList.remove('translate-x-full');
-                sidebarOverlay.classList.remove('hidden');
-            }
+      <div class="news-card">
+        <a href="events/2025-fotos-sommerfest/BlickSchulhof.jpg" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/BlickSchulhof.jpg" alt="Blick in den Schulhof beim Sommerfest"></a>
+        <div class="body">
+          <div class="news-date">28. Juni 2025</div>
+          <h3>Rückblick auf ein gelungenes Sommerfest</h3>
+          <p>Wir bedanken uns bei allen Eltern für ihre köstlichen Kuchenspenden und danke auch den Helfer*innen, die uns im Verkauf und bei der Organisation unterstützt haben! Am Schulfest haben wir € 1.026,- eingenommen, die unseren Kindern zugutekommen.</p>
+          <div class="thumbs">
+            <a href="events/2025-fotos-sommerfest/IMG_2365.webp" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/IMG_2365.webp" alt="Sommerfest Detail 1"></a>
+            <a href="events/2025-fotos-sommerfest/IMG_2369.webp" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/IMG_2369.webp" alt="Sommerfest Detail 2"></a>
+            <a href="events/2025-fotos-sommerfest/IMG_2370.webp" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/IMG_2370.webp" alt="Sommerfest Detail 3"></a>
+            <a href="events/2025-fotos-sommerfest/IMG_2376.webp" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/IMG_2376.webp" alt="Sommerfest Detail 4"></a>
+          </div>
+        </div>
+      </div>
 
-            function closeSidebar() {
-                sidebar.classList.add('translate-x-full');
-                sidebarOverlay.classList.add('hidden');
-            }
+      <div class="news-card">
+        <a href="events/Boulder04.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder04.jpeg" alt="Kinder an der Boulderwand"></a>
+        <div class="body">
+          <div class="news-date">15. Oktober 2018</div>
+          <h3>Anschaffung der Boulderwand</h3>
+          <p>Beim Bouldern werden nahezu alle Muskelgruppen angesprochen – ein echtes Ganzkörpertraining, das auch Balance, Koordination und strategisches Denken schult. Aus diesen Gründen wurde 2018 eine Boulderwand angeschafft, die der Elternverein mit € 5.000,- unterstützte.</p>
+          <div class="thumbs" style="grid-template-columns:repeat(4,1fr);">
+            <a href="events/Boulder01.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder01.jpeg" alt="Boulderwand Detail 1"></a>
+            <a href="events/Boulder02.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder02.jpeg" alt="Boulderwand Detail 2"></a>
+            <a href="events/Boulder03.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder03.jpeg" alt="Boulderwand Detail 3"></a>
+            <a href="events/Boulder05.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder05.jpeg" alt="Boulderwand Detail 4"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            openButtons.forEach(btn => btn.addEventListener('click', openSidebar));
-            closeButton.addEventListener('click', closeSidebar);
-            sidebarOverlay.addEventListener('click', closeSidebar);
-            sidebarLinks.forEach(link => {
-                // Check if the link is an anchor link on the same page
-                if (link.getAttribute('href').startsWith('#')) {
-                    link.addEventListener('click', closeSidebar);
-                }
-            });
-            
-            // Accordion functionality
-            const detailsElements = document.querySelectorAll('details');
-            detailsElements.forEach(details => {
-                details.addEventListener('toggle', event => {
-                    const arrow = details.querySelector('.arrow-down');
-                    if (details.open) {
-                        arrow.style.transform = 'rotate(180deg)';
-                    } else {
-                        arrow.style.transform = 'rotate(0deg)';
-                    }
-                });
-            });
+<!-- ================= 02 ÜBER UNS ================= -->
+<section id="ueber-uns" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 02 · Über uns</div>
+      <h2 class="section-title">Wer wir sind und was wir tun</h2>
+    </div>
+    <div class="grid grid-2">
+      <div>
+        <h3>Unsere Mission</h3>
+        <p>Der Elternverein des BRG Hamerling sieht sich als Partner der Schule und als Vertretung der Interessen der Eltern und Erziehungsberechtigten. Wir fördern die Zusammenarbeit und Kommunikation, unterstützen schulische Projekte finanziell und ideell und tragen zu einem positiven Schulklima bei.</p>
+        <p>Unser Ziel ist es, die bestmöglichen Rahmenbedingungen für die Ausbildung und persönliche Entwicklung unserer Kinder zu schaffen. Wir organisieren Veranstaltungen, bieten Unterstützung bei schulischen Herausforderungen und sind Ansprechpartner für Ihre Anliegen.</p>
+      </div>
+      <div>
+        <h3>Unser Leitbild</h3>
+        <p style="font-family:var(--font-display);font-style:italic;color:var(--navy);font-size:1.1rem;">„Wir sehen es als unsere wichtigste Aufgabe, die Schulgemeinschaft zu unterstützen und so unseren Beitrag zu einem guten Schulklima zu leisten.“</p>
+        <p>Als Elternverein sind wir mit drei Stimmen im Schulgemeinschaftsausschuss (SGA) vertreten und bringen die Interessen der Eltern ein. Gemeinsam mit Lehrer- und Schülervertreter*innen werden hier wichtige Schulthemen behandelt.</p>
+        <p>Zusätzliche Lehr- und Freizeitmittel werden vom Elternverein angeschafft. Bei Problemen zwischen Eltern, Schüler*innen und Schule kann der Elternverein als Vermittler kontaktiert werden. Bedürftige Schüler*innen werden bei Schulveranstaltungen und -projekten finanziell unterstützt.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // Dynamic content loading for statutes
-            const statutenAccordion = document.getElementById('statuten-accordion');
-            let statutenLoaded = false;
-            if(statutenAccordion) {
-                statutenAccordion.addEventListener('toggle', event => {
-                    if (statutenAccordion.open && !statutenLoaded) {
-                        const contentTarget = document.getElementById('statuten-content');
-                        fetch('https://codelab365.github.io/evhamerling/statuten-inhalt.html')
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Netzwerk-Antwort war nicht ok.');
-                                }
-                                return response.text();
-                            })
-                            .then(html => {
-                                contentTarget.innerHTML = html;
-                                statutenLoaded = true;
-                            })
-                            .catch(error => {
-                                contentTarget.innerHTML = '<p class="text-red-500">Fehler beim Laden der Statuten. Bitte versuchen Sie es später erneut.</p>';
-                                console.error('Fehler beim Abrufen der Statuten:', error);
-                            });
-                    }
-                });
-            }
-            
-            // Termine Section Data
-            const termine = [
-                { date: '2025-11-03', time: '19:30 Uhr', title: 'Der KI-Tutor im Kinderzimmer – Wie KI die Nachhilfe revolutioniert online via Zoom', description: 'Teure Nachhilfestunden könnten bald der Vergangenheit angehören. In diesem Vortrag entdecken wir, wie moderne KI-Anwendungen die Rolle eines persönlichen Tutors einnehmen können. Wir zeigen Ihnen Programme, die nicht nur die richtige Lösung verraten, sondern den Weg dorthin Schritt für Schritt erklären, bei Denkblockaden helfen und sogar Fremdsprachen interaktiv trainieren. Ein Muss für alle, die Lernprozesse individuell und kosteneffizient unterstützen wollen.' },
-                { date: '2025-11-10', time: '19:30 Uhr', title: 'Die KI-Werkzeugkiste für die Schule – Kreativität und Effizienz entfesseln', description: 'Vom leeren Dokument zur fertigen Präsentation in wenigen Minuten? In dieser Live-Demonstration stellen wir Ihnen eine Palette an faszinierenden und meist kostenlosen KI-Tools vor (u.a. Gama, Canva, Suno). Erleben Sie, wie Ihr Kind mit wenigen Klicks beeindruckende Ergebnisse für Referate und Projekte erzielen und dabei wichtige digitale Kompetenzen aufbauen kann.' },
-                { date: '2025-11-17', time: '19:30 Uhr', title: 'KI-Kompetenz – Sicher und fair in der digitalen Welt', description: 'Mit den großen Chancen der KI gehen auch neue Herausforderungen einher. Dieser wichtige Abend widmet sich der "dunklen Seite": Wie erkennen wir Deepfakes? Wo ist die Grenze zwischen Recherche und Plagiat bei Hausübungen? Und wie schützen wir unsere Kinder vor neuen Formen des Cybermobbings? Wir geben Ihnen klare Informationen und praxistaugliche Strategien an die Hand, um als Familie kompetent und sicher in der digitalen Welt zu agieren.' }
-            ];
+<!-- ================= 03 WICHTIGE INFOS ================= -->
+<section id="infos">
+  <div class="container" style="max-width:820px;">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 03 · Wichtige Infos</div>
+      <h2 class="section-title">Mitgliedsbeitrag, Spind & Co.</h2>
+      <p class="lead">Alles rund um Beiträge, Unterstützung und den Ablauf bei Problemen – zum Nachschlagen.</p>
+    </div>
 
-            const calendarContainer = document.getElementById('calendar-events');
-            const monthNames = ["JAN", "FEB", "MÄR", "APR", "MAI", "JUN", "JUL", "AUG", "SEP", "OKT", "NOV", "DEZ"];
+    <details class="acc" open>
+      <summary>Mitgliedsbeitrag <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <p>Der jährliche Mitgliedsbeitrag beträgt <strong>€ 17,-</strong> für 1 Kind; für jedes weitere Kind zusätzlich <strong>€ 5,-</strong> (Versicherungsbeitrag). Bitte bis zum <strong>15. Oktober</strong> des jeweiligen Schuljahres einzahlen.</p>
+        <p><strong>Bankverbindung:</strong> Elternverein des BRG Hamerlingstraße<br><strong>IBAN:</strong> AT63 3400 0000 0136 8968</p>
+        <p>Zusätzliche Spenden sind jederzeit willkommen und helfen uns bei der Erfüllung unserer vielfältigen Aufgaben.</p>
+      </div>
+    </details>
 
-            if (calendarContainer) {
-                termine.sort((a, b) => new Date(a.date) - new Date(b.date));
+    <details class="acc">
+      <summary>Garderobenschrank (Spind) <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <p>Es besteht für die Schüler*innen die Verpflichtung, einen verschließbaren Garderobenschrank zum Preis von <strong>€ 10,- pro Schuljahr</strong> zu mieten.</p>
+        <p><strong>Bankverbindung:</strong> Elternverein des BRG Hamerlingstraße<br><strong>IBAN:</strong> AT63 3400 0000 0136 8968</p>
+        <p style="color:var(--gold-dark);font-weight:600;">Bitte den Namen und die Klasse des Kindes in der Zahlungsreferenz angeben!</p>
+        <p>Bei Verlust des Spindschlüssels sind € 20,- für den Tausch des Schlosses zu bezahlen. Dieser Betrag wird nicht mehr refundiert, wenn das Schloss bereits getauscht wurde.</p>
+      </div>
+    </details>
 
-                termine.forEach(event => {
-                    const dateObj = new Date(event.date + 'T00:00:00'); 
-                    const day = dateObj.getDate().toString();
-                    const month = monthNames[dateObj.getMonth()];
+    <details class="acc">
+      <summary>Finanzielle Unterstützung <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <p>Der Elternverein kann grundsätzlich nur Mitglieder finanziell unterstützen. Um Mitglied zu werden, zahlen Sie bitte den Mitgliedsbeitrag bis zum <strong>15. Oktober</strong> des jeweiligen Schuljahres ein.</p>
+        <p>Der EV gewährt einen Zuschuss zu Schulveranstaltungen von <strong>max. 50 %</strong>, um die Teilnahme bedürftiger Schüler*innen zu ermöglichen. Suchen Sie dazu bitte das Gespräch mit dem*der Klassenlehrer*in oder wenden Sie sich mittels Formular direkt an den Elternverein.</p>
+        <p>Der Elternverein bevorzugt, den zu fördernden Betrag direkt an den*die Veranstalter*in zu bezahlen. Bitte stellen Sie den Förderantrag daher so früh wie möglich – <strong>vor der Veranstaltung!</strong> – und geben Sie den Zugangscode von edu.PAY an.</p>
+      </div>
+    </details>
 
-                    const eventHtml = `
-                        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-700 transform hover:scale-105 transition-transform duration-300">
-                            <div class="flex items-start space-x-6">
-                                <div class="text-center w-20 flex-shrink-0 pt-1">
-                                    <p class="text-3xl font-bold text-blue-700">${day}</p>
-                                    <p class="text-sm font-semibold text-gray-500">${month}</p>
-                                </div>
-                                <div class="flex-grow">
-                                    <h4 class="font-bold text-xl text-gray-800 mb-2">${event.title}</h4>
-                                    <div class="flex items-center text-gray-600 text-sm mb-3">
-                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        <span>${event.time}</span>
-                                    </div>
-                                    <p class="text-gray-700 leading-relaxed">${event.description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    calendarContainer.innerHTML += eventHtml;
-                });
-            }
-            
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-        });
-    </script>
+    <details class="acc">
+      <summary>Schüler-Unfallversicherung <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <p>Leistungen aus der Kollektiv-Unfallversicherung werden nur ausgezahlt, wenn Sie den Versicherungsbeitrag (der mit dem Elternvereinsbeitrag eingezahlt wird) bis zum <strong>1. Oktober</strong> des laufenden Schuljahres eingezahlt haben.</p>
+        <p>Detailinformationen entnehmen Sie bitte der <a href="pdf/Schueler_Unfallversicherung.pdf">Polizze</a>.</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Rechte und Pflichten des Elternvereins <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <ul style="padding-left:1.1rem;">
+          <li><strong>Recht auf Information:</strong> Einblick in Erlässe und Information über das Schulgeschehen.</li>
+          <li><strong>Recht auf Anhörung:</strong> Vorschläge, Wünsche und Beschwerden an Schulleitung und Klassenvorstand.</li>
+          <li><strong>Recht auf Mitbestimmung:</strong> Gewählte Klassenelternvertreter*innen dürfen an pädagogischen Konferenzen teilnehmen (SchUG § 57 Abs. 5, § 61 Abs. 2).</li>
+          <li><strong>Entsendungs- und Vorschlagsrecht</strong> in den Schulgemeinschaftsausschuss.</li>
+          <li><strong>Wahrnehmung</strong> der Aufgaben gemäß § 63 SchUG.</li>
+          <li><strong>Aktive Mitwirkung</strong> an der Partnerschaft zwischen Eltern, Schülern und Schule.</li>
+          <li><strong>Unterstützung</strong> der Eltern bei der Geltendmachung ihrer Rechte nach dem SchUG.</li>
+          <li><strong>Förderung</strong> des Unterrichts durch enge Zusammenarbeit mit den Lehrer*innen.</li>
+          <li><strong>Wahrnehmung</strong> der Elterninteressen bei Schulwegsicherung, Sport- und Spielplätzen sowie Schulbahn- und Berufsberatung.</li>
+          <li><strong>Hilfe und Unterstützung</strong> für bedürftige Schüler*innen.</li>
+          <li><strong>Wahrung des Erziehungsrechtes</strong> der Eltern und Förderung positiver Erziehungseinflüsse.</li>
+          <li><strong>Beratung und Weiterbildung</strong> der Eltern im Bereich Bildung und Erziehung.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Verlust eines Spindschlüssels <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <p>Folgen Sie bitte diesen Schritten, um das Problem schnellstmöglich zu lösen:</p>
+        <ol>
+          <li><strong>Gründlich suchen:</strong> alle möglichen Orte prüfen, an denen der Schlüssel zuletzt verwendet wurde.</li>
+          <li><strong>Schulwart fragen:</strong> möglicherweise wurde der Schlüssel dort abgegeben.</li>
+          <li><strong>Fundamt Linz</strong> kontaktieren, falls der Schlüssel nicht auftaucht.</li>
+          <li><strong>Sekretariat informieren</strong> über den Verlust.</li>
+          <li><strong>Schlosstausch bezahlen:</strong> € 20,- für neuen Schlüssel und Tausch (siehe „Garderobenschrank“).</li>
+          <li><strong>Zahlungsbeleg vorlegen</strong> bei Frau Mag. Antretter oder dem Schulwart.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Unfall in der Schule / am Schulweg <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <ol>
+          <li><strong>Sofortige Hilfe leisten:</strong> Erste Hilfe für die verletzte Person sicherstellen.</li>
+          <li><strong>Meldung im Sekretariat</strong> so zeitnah wie möglich.</li>
+          <li><strong>Unfallbericht ausfüllen</strong> im Sekretariat.</li>
+          <li><strong>Schule übernimmt Unfallmeldung</strong> an Eltern und Versicherung.</li>
+          <li><strong>Belege dokumentieren:</strong> alle Rechnungen (z. B. Bergung, Spezialist*innen) aufbewahren.</li>
+          <li><strong>Meldung an Zusatzversicherung</strong> über Schule und Elternverein.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Leih-iPad defekt / beschädigt <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <ol>
+          <li><strong>Meldung im Sekretariat:</strong> Problem umgehend melden.</li>
+          <li><strong>Tausch in der Schule:</strong> das Sekretariat organisiert den Austausch.</li>
+          <li><strong>Abwicklung mit der Versicherung</strong> übernimmt Sekretariat und/oder Elternverein.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="acc" id="statuten-acc">
+      <summary>Vereinsstatuten (Volltext) <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body" style="max-height:520px;overflow-y:auto;">
+        <p style="font-size:.88rem;color:var(--ink-soft);">des Elternvereins des Bundesrealgymnasiums Linz, Hamerlingstraße · Stand März 2020</p>
+
+        <h4>§ 1 Name und Sitz des Vereines</h4>
+        <p>(1) Der Verein führt den Namen „Elternverein des Bundesrealgymnasiums Linz, Hamerlingstraße“ und hat seinen Sitz in Linz.<br>(2) Er ist der Elternverein im Sinne des Schulunterrichtsgesetzes BGBl. Nr. 139/1974 idgF.</p>
+
+        <h4>§ 2 Aufgaben des Vereines</h4>
+        <p>(1) Der Verein hat die Aufgabe, Vorschläge im Sinne des § 64 Abs. 2 SchUG zu erstatten, Stellungnahmen zu Unterrichtsmitteln (§ 54 Abs. 3 SchUG) abzugeben und Vertreter*innen in den Schulgemeinschaftsausschuss (§ 65 SchUG) zu entsenden.</p>
+        <p>(2) Der Verein verfolgt weiters den Zweck, in Fühlungnahme mit der Schule die Erziehung und den Unterricht der Schüler*innen zu fördern, das Verständnis zwischen Eltern und Lehrer*innen zu leben und Veranstaltungen der Schule ideell wie materiell zu unterstützen.</p>
+        <p>(3) Dazu dienen Zusammenkünfte von Eltern und Lehrkörper, Vorträge und Veranstaltungen sowie finanzielle Unterstützungen für Schüler*innen.</p>
+        <p>(4) Der Verein ist Mitglied des Landesverbandes der Elternvereine an höheren und mittleren Schulen in Oberösterreich.<br>(5) Eine parteipolitische Tätigkeit ist im Rahmen des Vereines ausgeschlossen.</p>
+
+        <h4>§ 3 Mitgliedschaft</h4>
+        <p>(1) Mitglied kann ein*e Erziehungsberechtigte*r eines Schülers/einer Schülerin werden.<br>(2) Die Mitgliedschaft wird durch Einzahlung des Mitgliedsbeitrages erworben.</p>
+        <p>(3) Die Mitgliedschaft erlischt durch schriftliche Austrittserklärung, bei Zahlungsverzug trotz Mahnung, mit Schulaustritt des Kindes (mit Übergangsfrist für Vorstandsmitglieder bis zur nächsten JHV) oder durch Ausschluss wegen Verletzung der Vereinsinteressen.</p>
+
+        <h4>§ 4 Rechte und Pflichten der Mitglieder</h4>
+        <p>(1) Mitglieder haben Sitz und Stimme in der Hauptversammlung, das Recht zur Teilnahme an Veranstaltungen sowie das aktive und passive Wahlrecht zum Elternausschuss.</p>
+        <p>(2) Mitglieder sind verpflichtet, den festgesetzten Mitgliedsbeitrag zu entrichten und die Bestrebungen des Vereines nach Kräften zu unterstützen.</p>
+
+        <h4>§ 5 Vereinsorgane</h4>
+        <p>Die Organe des Vereines sind die Hauptversammlung, der Elternausschuss und der Vorstand.</p>
+
+        <h4>§ 6 Die Hauptversammlung</h4>
+        <p>Die ordentliche Hauptversammlung (HV) findet alle 2 Jahre statt; eine außerordentliche HV kann der Elternausschuss einberufen und muss auf Verlangen von mindestens einem Zehntel der Mitglieder binnen vier Wochen stattfinden. Einladung schriftlich mit Tagesordnung mind. zwei Wochen vorher. Anträge können bis eine Woche vor der HV schriftlich beim Obmann eingebracht werden. Die HV ist ohne Rücksicht auf die Anzahl der Anwesenden beschlussfähig; Beschlüsse mit einfacher Mehrheit, bei Stimmengleichheit entscheidet die*der Vorsitzende, für die Vereinsauflösung ist Zweidrittelmehrheit nötig. Über die HV wird ein Protokoll geführt.</p>
+
+        <h4>§ 7 Aufgaben der HV</h4>
+        <p>Entgegennahme des Rechenschaftsberichts, Entlastung des Vorstandes, Wahl des Vorstandes und zweier Rechnungsprüfer*innen, Festsetzung des Mitgliedsbeitrages sowie Beschlussfassung über Statutenänderungen, die Vereinsauflösung und sonstige vorgelegte Angelegenheiten.</p>
+
+        <h4>§ 8 Der Elternausschuss</h4>
+        <p>Der Elternausschuss besteht aus dem Vorstand und den Elternvertretungen. Elternvertreter*innen pflegen die Verbindung zwischen Elternausschuss und den einzelnen Klassen. Scheidet ein Mitglied vorzeitig aus, kann der Elternausschuss eine Ersatzperson kooptieren. Sitzungen beruft der Obmann nach Bedarf ein; auf Verlangen von fünf Mitgliedern binnen zwei Wochen. Beschlussfassung mit einfacher Mehrheit, bei Gleichstand entscheidet der Obmann.</p>
+
+        <h4>§ 9 Der Vorstand</h4>
+        <p>Der Vorstand besteht aus Obmann/Obfrau und Stellvertreter*in, Schriftführer*in, Kassier*in und Beiräten. Er wird von der HV für 2 Jahre gewählt und führt die laufenden Geschäfte, insbesondere die Einberufung der HV, den Rechenschaftsbericht und die Umsetzung der HV-Beschlüsse.</p>
+
+        <h4>§ 10 Der Obmann</h4>
+        <p>Der Obmann bzw. die Obmann-Stellvertreter*innen vertreten den Verein nach außen und leiten die Sitzungen von Hauptversammlung, Elternausschuss und Vorstand.</p>
+
+        <h4>§ 11 Vereinsmittel</h4>
+        <p>Die Mittel des Vereines stammen aus Mitgliedsbeiträgen und sonstigen Einnahmen. Der Beitrag ist unabhängig von der Kinderzahl nur einmal zu entrichten; bei berücksichtigungswürdigen Gründen kann der Elternausschuss davon ganz oder teilweise befreien.</p>
+
+        <h4>§ 12 Zeichnungsberechtigung</h4>
+        <p>Schriftstücke im Namen des Vereines bedürfen der Unterschrift von Obmann und Schriftführer*in; bei finanziellen Angelegenheiten unterzeichnet an Stelle der*des Schriftführer*in der*die Kassier*in.</p>
+
+        <h4>§ 13 Schiedsgericht</h4>
+        <p>Streitigkeiten aus dem Vereinsverhältnis werden durch ein Schiedsgericht entschieden, das von den Parteien besetzt wird; gegen dessen Entscheidung ist kein Rechtsmittel zulässig.</p>
+
+        <h4>§ 14 Vermögen bei Auflösung des Vereines</h4>
+        <p>Bei freiwilliger Auflösung wird das Vereinsvermögen einem dem Vereinszweck entsprechenden Zweck zugeführt, andernfalls dem Amt der o.ö. Landesregierung – Jugendreferat – übergeben.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= 04 TEAM ================= -->
+<section id="team" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 04 · Team</div>
+      <h2 class="section-title">Unser Team</h2>
+      <p class="lead">Die Gesichter hinter dem Elternverein.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="team-card"><h4>Gudrun Ronacher</h4><p class="role">Obfrau</p></div>
+      <div class="team-card"><h4>Petra Schwarzenberger</h4><p class="role">Obfrau Stv.</p></div>
+      <div class="team-card"><h4>Thomas Wiener</h4><p class="role">Kassier</p></div>
+      <div class="team-card"><h4>in Kürze …</h4><p class="role">Schriftführerin</p></div>
+      <div class="team-card"><h4>Vera Rachbauer</h4><p class="role">Rechnungsprüferin</p></div>
+      <div class="team-card"><h4>Thomas Lambert</h4><p class="role">Rechnungsprüfer</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 KLASSENELTERNVERTRETER ================= -->
+<section id="klassenvertreter">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 05 · Klassenvertreter</div>
+      <h2 class="section-title">Klassenelternvertreter*innen 2024/2025</h2>
+      <p class="lead">Ihre Ansprechpartner*innen in den Klassen.</p>
+    </div>
+    <div class="kv-filter">
+      <input type="text" id="kvFilter" placeholder="Klasse oder Name suchen …">
+    </div>
+    <div class="table-wrap">
+      <table class="kv">
+        <thead><tr><th>Klasse</th><th>Vertreter*in</th><th>Stellvertreter*in</th></tr></thead>
+        <tbody>
+          <tr><td>1A</td><td>JEDINGER Elisabeth</td><td>OBERNDORFER Margit</td></tr>
+          <tr><td>1B</td><td>WEINMAYER-RICHTER Eva</td><td>HESCH Anton</td></tr>
+          <tr><td>1C</td><td>KAUFMANN Philipp</td><td>STRUKAR Selmir</td></tr>
+          <tr><td>1D</td><td>METZ Christine</td><td>LEITNER Sybille</td></tr>
+          <tr><td>1E</td><td>MASCHER Erwin</td><td>ZACHBAUER Lydia</td></tr>
+          <tr><td>1M</td><td>HARRER-NEMECEK Marion-Julia</td><td>SCHWEIGER Elke</td></tr>
+          <tr><td>2A</td><td>KRÖS Andreas</td><td>NUTZ Monika</td></tr>
+          <tr><td>2B</td><td>Ing. ZEHETHOFER Jürgen</td><td>FREUDENTHALER Sabrina</td></tr>
+          <tr><td>2D</td><td>SCHWARZENBERGER Petra</td><td>KARGL Michaela</td></tr>
+          <tr><td>2M</td><td>JAKOB Gerhard</td><td>GEINITZ Anja</td></tr>
+          <tr><td>3A</td><td>VUCIC Andelka</td><td>GLASER Maria</td></tr>
+          <tr><td>3B</td><td>GRALL David</td><td>RABER Julia</td></tr>
+          <tr><td>3C</td><td>ABLINGER Martina</td><td>LANG Andrea</td></tr>
+          <tr><td>3D</td><td>LIPP Manuel</td><td>GIERLINGER-ZÖCHMANN Teresa</td></tr>
+          <tr><td>3E</td><td>ALIRIFA Donika</td><td>Mag.a FALKNER-GARTENAUER Jane</td></tr>
+          <tr><td>3M</td><td>WIENER Thomas</td><td>PAULOWITSCH-LASKOWSKI Lisa</td></tr>
+          <tr><td>4A</td><td>ZEHETHOFER Jürgen</td><td>BINDER Markus</td></tr>
+          <tr><td>4B</td><td>Ing. GÖHRING Christian</td><td>SEEBACHER Daniela</td></tr>
+          <tr><td>4C</td><td>–</td><td>–</td></tr>
+          <tr><td>4D</td><td>DURGUTI Sabahate</td><td>RUMPLMAIER Sabine</td></tr>
+          <tr><td>4E</td><td>NEUNLINGER Daniel</td><td>LASA Claudia</td></tr>
+          <tr><td>4M</td><td>SCHWARZENBERGER Petra</td><td>STUHLBERGER-PFEIFER Doris</td></tr>
+          <tr><td>5LIA</td><td>SATOROVIC Elmana</td><td>GRALL Daniel</td></tr>
+          <tr><td>5LIB</td><td>JAHIC Elvedin</td><td>KLIMMER Marion</td></tr>
+          <tr><td>5MED</td><td>FRIEDL Werner</td><td>SCHNEIDER Stefanie</td></tr>
+          <tr><td>5MKK</td><td>Mag. SAHAT Seki</td><td>WALLINGER Cornelia</td></tr>
+          <tr><td>6LIA</td><td>–</td><td>–</td></tr>
+          <tr><td>6LIB</td><td>–</td><td>–</td></tr>
+          <tr><td>6LIC</td><td>KIRSCHNER Günter</td><td>KAPELLER Andreas</td></tr>
+          <tr><td>6MED</td><td>KRASSNIG Bernd</td><td>GRUBICH Petra</td></tr>
+          <tr><td>6MKK</td><td>HUBER Michaela</td><td>HAUNSCHMIDT Tanja</td></tr>
+          <tr><td>7LIA</td><td>MAURER Christian</td><td>JURDA Brigitte</td></tr>
+          <tr><td>7LIB</td><td>KLIMMER Ronald</td><td>REINDL Astrid</td></tr>
+          <tr><td>7MED</td><td>FRIEDL Werner</td><td>RACHBAUER Vera</td></tr>
+          <tr><td>7MKK</td><td>DALKILIC Dagmar</td><td>RONACHER Gudrun</td></tr>
+          <tr><td>8A</td><td>–</td><td>–</td></tr>
+          <tr><td>8B</td><td>–</td><td>–</td></tr>
+          <tr><td>8C</td><td>WIESAUER Cornelia</td><td>RACHBAUER Vera</td></tr>
+          <tr><td>8M</td><td>BADER-HALBWIRTH Jasmin</td><td>BERER Daniela</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 TERMINE ================= -->
+<section id="termine" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 06 · Termine</div>
+      <h2 class="section-title">Terminkalender</h2>
+      <p class="lead">Wichtige Termine und Veranstaltungen im Überblick.</p>
+    </div>
+    <div class="timeline" id="timelineList"></div>
+  </div>
+</section>
+
+<!-- ================= 07 DOWNLOADS & LINKS ================= -->
+<section id="downloads">
+  <div class="container" style="max-width:820px;">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 07 · Downloads & Links</div>
+      <h2 class="section-title">Dokumente & nützliche Links</h2>
+      <p class="lead">Formulare, Protokolle, Berichte zum Herunterladen sowie hilfreiche externe Anlaufstellen.</p>
+    </div>
+
+    <h3 style="margin-bottom:1.25rem;">Downloads</h3>
+
+    <p class="subhead">Vereinsdokumente & Protokolle</p>
+    <div class="res-list">
+      <a class="res-item" href="pdf/Protokoll_JHV2023.pdf" target="_blank" rel="noopener noreferrer"><span>Protokoll JHV 2023</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+      <a class="res-item" href="pdf/Protokoll_JHV_2020.pdf" target="_blank" rel="noopener noreferrer"><span>Protokoll JHV 2020</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+      <a class="res-item" href="pdf/Vereinsstatuten_2020-3.pdf" target="_blank" rel="noopener noreferrer"><span>Vereinsstatuten (PDF)</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+    </div>
+
+    <p class="subhead">Formulare & Anträge</p>
+    <div class="res-list">
+      <a class="res-item" href="pdf/EVHamerling_Antrag_Unterstuetzung.pdf" target="_blank" rel="noopener noreferrer"><span>Unterstützungs-Förderantrag</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+      <a class="res-item" href="pdf/Schueler_Unfallversicherung.pdf" target="_blank" rel="noopener noreferrer"><span>Polizze Schülerunfallversicherung</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+    </div>
+
+    <p class="subhead">Berichte & Vorträge</p>
+    <div class="res-list">
+      <a class="res-item" href="pdf/Taetigkeitsbericht6_BRG_Hamerling.pdf" target="_blank" rel="noopener noreferrer"><span>Tätigkeitsbericht 2 · SS 25 der Schulpsychotherapeutin</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+      <a class="res-item" href="pdf/Taetigkeitsbericht_SS_2425_BRG_Hamerling.pdf" target="_blank" rel="noopener noreferrer"><span>Tätigkeitsbericht SS 25 der Schulpsychotherapeutin</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+      <a class="res-item" href="pdf/Vortrag_Pubertaet_21-10-24.pdf" target="_blank" rel="noopener noreferrer"><span>Vortrag „Pubertät“ – Folien JHV 2024</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+      <a class="res-item" href="pdf/Vortrag_Kriseninterventionszentrum_ooe.pdf" target="_blank" rel="noopener noreferrer"><span>Vortrag „Jugendliche in Krisen“ – Unterlagen JHV 2019</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+    </div>
+
+    <h3 style="margin:3rem 0 1.25rem;">Nützliche externe Links</h3>
+
+    <p class="subhead">Jugend und Beruf</p>
+    <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
+      <a class="res-item" href="https://www.jugendundberuf.info/die-messe/" target="_blank" rel="noopener noreferrer"><span>Jugend- und Berufsmesse Wels</span></a>
+      <a class="res-item" href="https://www.kost-oberoesterreich.at/uebergang-schule-beruf/" target="_blank" rel="noopener noreferrer"><span>KOST Übergang Schule und Beruf</span></a>
+      <a class="res-item" href="https://ooe.arbeiterkammer.at/bildungsundberufswahl" target="_blank" rel="noopener noreferrer"><span>AK Bildungs- und Berufswahl</span></a>
+      <a class="res-item" href="https://www.wko.at/ooe/bildung-lehre/kostenlose-potenzialanalyse" target="_blank" rel="noopener noreferrer"><span>WKO Potenzialanalyse für Schüler*innen</span></a>
+      <a class="res-item" href="https://ooe.arbeiterkammer.at/potenzialanalyse" target="_blank" rel="noopener noreferrer"><span>AK Potenzialanalyse – Stärken testen</span></a>
+      <a class="res-item" href="https://gastfamilien.yfu.at/" target="_blank" rel="noopener noreferrer"><span>Gastfamilie werden</span></a>
+      <a class="res-item" href="https://www.volkshilfe-ooe.at/dienstleistung/jugendcoaching/" target="_blank" rel="noopener noreferrer"><span>Volkshilfe Jugendcoaching</span></a>
+      <a class="res-item" href="https://www.soziale-initiative.at/mobiles-familiencoaching" target="_blank" rel="noopener noreferrer"><span>Mobiles Familiencoaching</span></a>
+    </div>
+
+    <p class="subhead">Hilfe in Krisen</p>
+    <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
+      <a class="res-item" href="https://www.krisenhilfeooe.at/" target="_blank" rel="noopener noreferrer"><span>Krisenhilfe Oberösterreich</span></a>
+      <a class="res-item" href="https://gesundausderkrise.at/" target="_blank" rel="noopener noreferrer"><span>Gesund aus der Krise</span></a>
+      <a class="res-item" href="https://www.rataufdraht.at/" target="_blank" rel="noopener noreferrer"><span>Rat auf Draht</span></a>
+      <a class="res-item" href="https://www.kija.at/" target="_blank" rel="noopener noreferrer"><span>Kinder- und Jugendanwaltschaft</span></a>
+      <a class="res-item" href="https://www.bittelebe.at/" target="_blank" rel="noopener noreferrer"><span>Suizidgedanken – bitte lebe!</span></a>
+      <a class="res-item" href="https://www.gewaltpraevention-ooe.at/" target="_blank" rel="noopener noreferrer"><span>Gewaltprävention OÖ</span></a>
+      <a class="res-item" href="https://www.jugendservice.at/leben" target="_blank" rel="noopener noreferrer"><span>Jugendservice OÖ</span></a>
+    </div>
+
+    <p class="subhead">Finanzielle Unterstützungen & Förderungen</p>
+    <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
+      <a class="res-item" href="https://ooe.arbeiterkammer.at/beratung/bildung/bildungsfoerderungen/Schulbeihilfen.html" target="_blank" rel="noopener noreferrer"><span>Arbeiterkammer OÖ – Schulbeihilfen</span></a>
+      <a class="res-item" href="https://www.bmb.gv.at/Themen/schule/befoe/schuelerunterstuetzung.html" target="_blank" rel="noopener noreferrer"><span>Bundesministerium – Schülerunterstützung</span></a>
+      <a class="res-item" href="https://www.familienkarte.at/de/foerderungen/foerderungen-fuer-die-schule/unterstuetzungen.html" target="_blank" rel="noopener noreferrer"><span>Familienkarte Oberösterreich</span></a>
+    </div>
+
+    <p class="subhead">Digitale Medien</p>
+    <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
+      <a class="res-item" href="https://www.saferinternet.at/zielgruppen/eltern" target="_blank" rel="noopener noreferrer"><span>Safer Internet</span></a>
+      <a class="res-item" href="https://www.onlinesicherheit.gv.at/Services/News/Erste-Hilfe-bei-Cyber-Mobbing_Tipps-fuer-Eltern-und-Kinder.html" target="_blank" rel="noopener noreferrer"><span>Erste Hilfe bei Cyber-Mobbing</span></a>
+    </div>
+
+    <p class="subhead">Weitere Einrichtungen</p>
+    <div class="grid grid-2" style="gap:.65rem;">
+      <a class="res-item" href="https://www.lvev.at/" target="_blank" rel="noopener noreferrer"><span>Landesverband der Elternvereine OÖ</span></a>
+      <a class="res-item" href="https://www.bildung-ooe.gv.at/" target="_blank" rel="noopener noreferrer"><span>Bildungsdirektion OÖ</span></a>
+      <a class="res-item" href="https://www.bundeselternverband.at/" target="_blank" rel="noopener noreferrer"><span>Bundeselternverband Österreich</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 KONTAKT ================= -->
+<section id="kontakt" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 08 · Kontakt</div>
+      <h2 class="section-title">Kontaktieren Sie uns</h2>
+      <p class="lead">Wir freuen uns auf Ihre Nachricht.</p>
+    </div>
+    <div class="contact-card">
+      <p style="font-size:1.15rem;font-weight:700;color:var(--navy);font-family:var(--font-display);margin-bottom:.25rem;">Elternverein des BRG Hamerlingstraße</p>
+      <p style="color:var(--ink-soft);">Hamerlingstraße 18, 4020 Linz</p>
+      <a href="mailto:elternverein@brghamerling.at" class="btn btn-gold">E-Mail senden</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 IMPRESSUM & DATENSCHUTZ ================= -->
+<section id="impressum">
+  <div class="container" style="max-width:820px;">
+    <div class="section-head">
+      <div class="eyebrow">Kapitel 09 · Impressum</div>
+      <h2 class="section-title">Impressum & Datenschutz</h2>
+    </div>
+
+    <details class="acc" open>
+      <summary>Impressum <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <p><strong>Elternverein des Bundesrealgymnasiums Linz, Hamerlingstraße</strong><br>Hamerlingstraße 18, 4020 Linz</p>
+        <p><strong>Entstehungsdatum des Vereins:</strong> 29.03.1951<br><strong>ZVR-Zahl:</strong> 463107582<br><strong>Gerichtsstand:</strong> Linz</p>
+        <p><strong>Vertretungsberechtigte Personen:</strong><br>
+        Obfrau: Gudrun Ronacher<br>
+        Obfrau Stv.: Petra Schwarzenberger<br>
+        Kassier: Thomas Wiener<br>
+        Schriftführerin: (wird noch bekannt gegeben)</p>
+        <p><strong>E-Mail:</strong> <a href="mailto:elternverein@brghamerling.at">elternverein@brghamerling.at</a></p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Datenschutzerklärung <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+        <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und behandeln Ihre personenbezogenen Daten vertraulich entsprechend den gesetzlichen Datenschutzvorschriften.</p>
+        <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit personenbezogene Daten erhoben werden, erfolgt dies stets auf freiwilliger Basis.</p>
+        <h4>Datenerfassung auf dieser Website</h4>
+        <p>Der Provider der Seiten erhebt automatisch Informationen in Server-Log-Dateien, die Ihr Browser übermittelt: Browsertyp/-version, Betriebssystem, Referrer-URL, Hostname, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung mit anderen Datenquellen erfolgt nicht.</p>
+        <h4>Kontakt per E-Mail</h4>
+        <p>Wenn Sie uns per E-Mail kontaktieren, speichern wir Ihre Angaben zur Bearbeitung der Anfrage und für Anschlussfragen. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        <h4>Ihre Rechte</h4>
+        <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten Daten sowie ein Recht auf Berichtigung, Sperrung oder Löschung. Wenden Sie sich dazu an die im Impressum angegebene Adresse.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4 style="font-family:var(--font-display);font-size:1.1rem;">Elternverein BRG Hamerling</h4>
+      <p style="max-width:280px;font-size:.88rem;">Ein ehrenamtlicher Verein zur Förderung der Schulgemeinschaft am Bundesrealgymnasium Linz, Hamerlingstraße.</p>
+    </div>
+    <nav>
+      <h4>Kapitel</h4>
+      <a href="#aktuelles">Aktuelles</a>
+      <a href="#infos">Wichtige Infos</a>
+      <a href="#termine">Termine</a>
+      <a href="#downloads">Downloads & Links</a>
+    </nav>
+    <nav>
+      <h4>Verein</h4>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#impressum">Impressum</a>
+      <a href="mailto:elternverein@brghamerling.at">elternverein@brghamerling.at</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="year"></span> Elternverein BRG Hamerlingstraße · ZVR Österreich: 463107582
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Mobile menu */
+const mobileMenu = document.getElementById('mobileMenu');
+document.getElementById('menuBtn').addEventListener('click', () => mobileMenu.classList.add('open'));
+document.getElementById('mobileMenuClose').addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.addEventListener('click', (e) => { if(e.target === mobileMenu) mobileMenu.classList.remove('open'); });
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+/* Chapter rail: scroll-spy */
+const railLinks = Array.from(document.querySelectorAll('.chapter-rail a'));
+const sections = railLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function setActive(){
+  let current = sections[0];
+  const probe = window.scrollY + 140;
+  sections.forEach(sec => { if(sec.offsetTop <= probe) current = sec; });
+  railLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+  const activeEl = document.querySelector('.chapter-rail a.active');
+  if(activeEl){ activeEl.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' }); }
+}
+window.addEventListener('scroll', () => window.requestAnimationFrame(setActive));
+window.addEventListener('load', setActive);
+
+/* Accordion chevron rotation handled purely by CSS via [open] */
+
+/* Klassenvertreter table filter */
+const kvFilter = document.getElementById('kvFilter');
+if(kvFilter){
+  kvFilter.addEventListener('input', () => {
+    const q = kvFilter.value.trim().toLowerCase();
+    document.querySelectorAll('table.kv tbody tr').forEach(tr => {
+      tr.style.display = tr.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+}
+
+/* Termine: build timeline from data */
+const termine = [
+  { date:'2025-09-22', time:'19:00 Uhr', title:'Sitzung des Elternvereins', description:'Planung des Schuljahres. Alle Eltern sind herzlich eingeladen.' },
+  { date:'2025-10-20', time:'19:00 Uhr', title:'Jahreshauptversammlung & Vortrag „Snusen und Vapen“', description:'Ort: Festsaal. Wir treffen wichtige Entscheidungen für das Schuljahr 2025. Hr. Dieter Geigle spricht über „Kinder und Jugendliche gut begleiten im Umgang mit neuen Nikotinprodukten“.' },
+  { date:'2025-11-03', time:'19:30 Uhr', title:'Der KI-Tutor im Kinderzimmer', description:'Online via Zoom. Wie KI die Nachhilfe revolutioniert: Programme, die den Lösungsweg Schritt für Schritt erklären, bei Denkblockaden helfen und Fremdsprachen interaktiv trainieren.' },
+  { date:'2025-11-10', time:'19:30 Uhr', title:'Die KI-Werkzeugkiste für die Schule', description:'Live-Demonstration kostenloser KI-Tools (u. a. Gamma, Canva, Suno) für Referate und Projekte – von der Idee zur fertigen Präsentation in wenigen Minuten.' },
+  { date:'2025-11-17', time:'19:30 Uhr', title:'KI-Kompetenz – sicher und fair in der digitalen Welt', description:'Deepfakes erkennen, die Grenze zwischen Recherche und Plagiat, Schutz vor Cybermobbing – klare Infos und praxistaugliche Strategien für die Familie.' }
+];
+const monthNames = ["JAN","FEB","MÄR","APR","MAI","JUN","JUL","AUG","SEP","OKT","NOV","DEZ"];
+const tlContainer = document.getElementById('timelineList');
+if(tlContainer){
+  termine.sort((a,b) => new Date(a.date) - new Date(b.date));
+  tlContainer.innerHTML = termine.map(t => {
+    const d = new Date(t.date + 'T00:00:00');
+    return `<div class="tl-item">
+      <div class="tl-date"><span class="day">${d.getDate()}</span><span class="month">${monthNames[d.getMonth()]}</span></div>
+      <div class="tl-body">
+        <h4>${t.title}</h4>
+        <div class="tl-time">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          ${t.time}
+        </div>
+        <p style="margin-bottom:0;color:var(--ink-soft);">${t.description}</p>
+      </div>
+    </div>`;
+  }).join('');
+}
+</script>
 </body>
 </html>
