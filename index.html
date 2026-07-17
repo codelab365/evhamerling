@@ -29,7 +29,10 @@
   --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-  --radius: 6px;
+  --radius: 10px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 1px 2px rgba(22,58,95,.06), 0 1px 1px rgba(22,58,95,.04);
+  --shadow-md: 0 8px 24px rgba(22,58,95,.10), 0 2px 6px rgba(22,58,95,.06);
   --container: 1080px;
 }
 
@@ -45,6 +48,11 @@ body{
 }
 img{ max-width:100%; display:block; }
 a{ color:var(--blue); text-decoration:none; }
+
+input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible{
+  outline:2px solid var(--blue); outline-offset:2px; border-radius:4px;
+}
+input:focus, textarea:focus{ border-color:var(--blue); box-shadow:0 0 0 3px var(--blue-soft); }
 a:hover{ text-decoration:underline; }
 ul,ol{ padding-left:1.25rem; }
 .container{ width:100%; max-width:var(--container); margin:0 auto; padding:0 1.5rem; }
@@ -96,13 +104,15 @@ p{ margin:0 0 1rem; }
   font-weight:600;
   font-size:.95rem;
   padding:.7rem 1.5rem;
-  border-radius:var(--radius);
+  border-radius:var(--radius-sm);
   border:1px solid transparent;
   cursor:pointer;
   text-decoration:none;
-  transition:background .2s ease,border-color .2s ease,color .2s ease;
+  box-shadow:var(--shadow-sm);
+  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .15s ease,box-shadow .15s ease;
 }
-.btn:hover{ text-decoration:none; }
+.btn:hover{ text-decoration:none; transform:translateY(-1px); box-shadow:var(--shadow-md); }
+.btn:active{ transform:translateY(0); }
 .btn-primary{ background:var(--navy); color:var(--white); }
 .btn-primary:hover{ background:var(--blue); }
 .btn-gold{ background:var(--gold); color:var(--white); }
@@ -200,14 +210,15 @@ section.alt{ background:var(--sky); }
 /* ---------- Cards ---------- */
 .card{
   background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
-  padding:1.5rem;
+  padding:1.5rem; box-shadow:var(--shadow-sm);
 }
 .grid{ display:grid; gap:1.5rem; }
 .grid-2{ grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
 .grid-3{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
 
 /* News */
-.news-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-bottom:1.75rem; }
+.news-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-bottom:1.75rem; box-shadow:var(--shadow-sm); transition:box-shadow .2s ease, transform .2s ease; }
+.news-card:hover{ box-shadow:var(--shadow-md); transform:translateY(-2px); }
 .news-card img{ width:100%; height:230px; object-fit:cover; }
 .news-card .body{ padding:1.5rem; }
 .news-date{ font-size:.8rem; color:var(--gold-dark); font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.4rem; }
@@ -221,12 +232,15 @@ section.alt{ background:var(--sky); }
 }
 
 /* Accordion */
-details.acc{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); margin-bottom:.75rem; }
+details.acc{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); margin-bottom:.75rem; box-shadow:var(--shadow-sm); overflow:hidden; transition:box-shadow .2s ease; }
+details.acc:hover{ box-shadow:var(--shadow-md); }
 details.acc > summary{
   list-style:none; cursor:pointer; padding:1.1rem 1.4rem;
   display:flex; justify-content:space-between; align-items:center; gap:1rem;
   font-family:var(--font-display); font-weight:700; color:var(--navy); font-size:1.05rem;
+  transition:background .15s ease;
 }
+details.acc > summary:hover{ background:var(--sky); }
 details.acc > summary::-webkit-details-marker{ display:none; }
 details.acc > summary .chev{ width:18px; height:18px; stroke:var(--gold-dark); flex-shrink:0; transition:transform .2s ease; }
 details.acc[open] > summary .chev{ transform:rotate(180deg); }
@@ -235,7 +249,8 @@ details.acc[open] > summary .chev{ transform:rotate(180deg); }
 .acc-body strong{ color:var(--navy); }
 
 /* Team */
-.team-card{ background:var(--white); border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:var(--radius); padding:1.5rem; text-align:center; }
+.team-card{ background:var(--white); border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:var(--radius); padding:1.5rem; text-align:center; box-shadow:var(--shadow-sm); transition:box-shadow .2s ease, transform .2s ease; }
+.team-card:hover{ box-shadow:var(--shadow-md); transform:translateY(-2px); }
 .team-card h4{ margin-bottom:.15rem; }
 .team-card .role{ color:var(--ink-soft); font-size:.9rem; font-weight:600; margin-bottom:0; }
 .role-toggle{
@@ -294,7 +309,7 @@ table.kv tbody tr:hover{ background:var(--blue-soft); }
 .cal-year-badge{
   display:inline-block; font-family:var(--font-display); font-weight:700; font-size:1.1rem;
   color:var(--navy); background:var(--white); border:1px solid var(--line); border-left:4px solid var(--gold);
-  border-radius:var(--radius); padding:.6rem 1.2rem; margin-bottom:2rem;
+  border-radius:var(--radius); padding:.6rem 1.2rem; margin-bottom:2rem; box-shadow:var(--shadow-sm);
 }
 .timeline{ max-width:760px; }
 .tl-item{ display:flex; gap:1.5rem; padding-bottom:2rem; position:relative; }
@@ -305,7 +320,7 @@ table.kv tbody tr:hover{ background:var(--blue-soft); }
 .tl-date .day{ font-family:var(--font-display); font-size:1.6rem; color:var(--navy); display:block; line-height:1; }
 .tl-date .month{ font-size:.72rem; font-weight:700; letter-spacing:.06em; color:var(--gold-dark); text-transform:uppercase; }
 .tl-date .year{ display:block; font-size:.72rem; color:var(--ink-soft); font-weight:600; margin-top:.15rem; }
-.tl-body{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem 1.4rem; flex:1; }
+.tl-body{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem 1.4rem; flex:1; box-shadow:var(--shadow-sm); }
 .tl-time{ display:flex; align-items:center; gap:.4rem; font-size:.85rem; color:var(--ink-soft); margin:.25rem 0 .6rem; }
 
 /* Downloads / Links lists */
@@ -314,14 +329,15 @@ table.kv tbody tr:hover{ background:var(--blue-soft); }
   display:flex; align-items:center; justify-content:space-between; gap:1rem;
   background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
   padding:.9rem 1.2rem; font-size:.95rem; font-weight:600; color:var(--ink);
+  box-shadow:var(--shadow-sm); transition:box-shadow .15s ease, transform .15s ease, border-color .15s ease;
 }
-.res-item:hover{ border-color:var(--blue); text-decoration:none; }
+.res-item:hover{ border-color:var(--blue); text-decoration:none; box-shadow:var(--shadow-md); transform:translateY(-1px); }
 .res-item svg{ width:18px; height:18px; stroke:var(--blue); flex-shrink:0; }
 .subhead{ font-size:.9rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); margin:2rem 0 1rem; font-family:var(--font-body); }
 .subhead:first-child{ margin-top:0; }
 
 /* Contact */
-.contact-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:2.5rem; max-width:520px; margin:0 auto; text-align:center; }
+.contact-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:2.5rem; max-width:520px; margin:0 auto; text-align:center; box-shadow:var(--shadow-md); }
 
 /* Footer */
 footer.site-footer{ background:var(--navy-dark); color:#a9bccd; padding:3rem 0 2rem; }
@@ -974,58 +990,63 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
       </div>
     </details>
 
-    <p class="subhead" data-i18n="dl.sub.berichte">Berichte & Vorträge</p>
-    <div class="res-list">
-      <a class="res-item" href="pdf/Taetigkeitsbericht6_BRG_Hamerling.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.bericht1">Tätigkeitsbericht 2 · SS 25 der Schulpsychotherapeutin</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
-      <a class="res-item" href="pdf/Taetigkeitsbericht_SS_2425_BRG_Hamerling.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.bericht2">Tätigkeitsbericht SS 25 der Schulpsychotherapeutin</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
-      <a class="res-item" href="pdf/Vortrag_Pubertaet_21-10-24.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.vortrag1">Vortrag „Pubertät" – Folien JHV 2024</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
-      <a class="res-item" href="pdf/Vortrag_Kriseninterventionszentrum_ooe.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.vortrag2">Vortrag „Jugendliche in Krisen" – Unterlagen JHV 2019</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
-    </div>
+    <details class="acc" style="margin-top:.75rem;">
+      <summary><span data-i18n="dl.more.h">Berichte, Vorträge & externe Links anzeigen</span> <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="acc-body">
+      <p class="subhead" data-i18n="dl.sub.berichte">Berichte & Vorträge</p>
+      <div class="res-list">
+        <a class="res-item" href="pdf/Taetigkeitsbericht6_BRG_Hamerling.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.bericht1">Tätigkeitsbericht 2 · SS 25 der Schulpsychotherapeutin</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+        <a class="res-item" href="pdf/Taetigkeitsbericht_SS_2425_BRG_Hamerling.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.bericht2">Tätigkeitsbericht SS 25 der Schulpsychotherapeutin</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+        <a class="res-item" href="pdf/Vortrag_Pubertaet_21-10-24.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.vortrag1">Vortrag „Pubertät" – Folien JHV 2024</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+        <a class="res-item" href="pdf/Vortrag_Kriseninterventionszentrum_ooe.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.vortrag2">Vortrag „Jugendliche in Krisen" – Unterlagen JHV 2019</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12M7 12l5 5 5-5"/></svg></a>
+      </div>
 
-    <h3 style="margin:3rem 0 1.25rem;" data-i18n="dl.h.links">Nützliche externe Links</h3>
+      <h3 style="margin:3rem 0 1.25rem;" data-i18n="dl.h.links">Nützliche externe Links</h3>
 
-    <p class="subhead" data-i18n="dl.sub.jugend">Jugend und Beruf</p>
-    <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
-      <a class="res-item" href="https://www.jugendundberuf.info/die-messe/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l1">Jugend- und Berufsmesse Wels</span></a>
-      <a class="res-item" href="https://www.kost-oberoesterreich.at/uebergang-schule-beruf/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l2">KOST Übergang Schule und Beruf</span></a>
-      <a class="res-item" href="https://ooe.arbeiterkammer.at/bildungsundberufswahl" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l3">AK Bildungs- und Berufswahl</span></a>
-      <a class="res-item" href="https://www.wko.at/ooe/bildung-lehre/kostenlose-potenzialanalyse" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l4">WKO Potenzialanalyse für Schüler*innen</span></a>
-      <a class="res-item" href="https://ooe.arbeiterkammer.at/potenzialanalyse" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l5">AK Potenzialanalyse – Stärken testen</span></a>
-      <a class="res-item" href="https://gastfamilien.yfu.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l6">Gastfamilie werden</span></a>
-      <a class="res-item" href="https://www.volkshilfe-ooe.at/dienstleistung/jugendcoaching/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l7">Volkshilfe Jugendcoaching</span></a>
-      <a class="res-item" href="https://www.soziale-initiative.at/mobiles-familiencoaching" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l8">Mobiles Familiencoaching</span></a>
-    </div>
+      <p class="subhead" data-i18n="dl.sub.jugend">Jugend und Beruf</p>
+      <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
+        <a class="res-item" href="https://www.jugendundberuf.info/die-messe/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l1">Jugend- und Berufsmesse Wels</span></a>
+        <a class="res-item" href="https://www.kost-oberoesterreich.at/uebergang-schule-beruf/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l2">KOST Übergang Schule und Beruf</span></a>
+        <a class="res-item" href="https://ooe.arbeiterkammer.at/bildungsundberufswahl" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l3">AK Bildungs- und Berufswahl</span></a>
+        <a class="res-item" href="https://www.wko.at/ooe/bildung-lehre/kostenlose-potenzialanalyse" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l4">WKO Potenzialanalyse für Schüler*innen</span></a>
+        <a class="res-item" href="https://ooe.arbeiterkammer.at/potenzialanalyse" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l5">AK Potenzialanalyse – Stärken testen</span></a>
+        <a class="res-item" href="https://gastfamilien.yfu.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l6">Gastfamilie werden</span></a>
+        <a class="res-item" href="https://www.volkshilfe-ooe.at/dienstleistung/jugendcoaching/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l7">Volkshilfe Jugendcoaching</span></a>
+        <a class="res-item" href="https://www.soziale-initiative.at/mobiles-familiencoaching" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l8">Mobiles Familiencoaching</span></a>
+      </div>
 
-    <p class="subhead" data-i18n="dl.sub.krisen">Hilfe in Krisen</p>
-    <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
-      <a class="res-item" href="https://www.krisenhilfeooe.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l9">Krisenhilfe Oberösterreich</span></a>
-      <a class="res-item" href="https://gesundausderkrise.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l10">Gesund aus der Krise</span></a>
-      <a class="res-item" href="https://www.rataufdraht.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l11">Rat auf Draht</span></a>
-      <a class="res-item" href="https://www.kija.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l12">Kinder- und Jugendanwaltschaft</span></a>
-      <a class="res-item" href="https://www.bittelebe.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l13">Suizidgedanken – bitte lebe!</span></a>
-      <a class="res-item" href="https://www.gewaltpraevention-ooe.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l14">Gewaltprävention OÖ</span></a>
-      <a class="res-item" href="https://www.jugendservice.at/leben" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l15">Jugendservice OÖ</span></a>
-    </div>
+      <p class="subhead" data-i18n="dl.sub.krisen">Hilfe in Krisen</p>
+      <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
+        <a class="res-item" href="https://www.krisenhilfeooe.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l9">Krisenhilfe Oberösterreich</span></a>
+        <a class="res-item" href="https://gesundausderkrise.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l10">Gesund aus der Krise</span></a>
+        <a class="res-item" href="https://www.rataufdraht.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l11">Rat auf Draht</span></a>
+        <a class="res-item" href="https://www.kija.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l12">Kinder- und Jugendanwaltschaft</span></a>
+        <a class="res-item" href="https://www.bittelebe.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l13">Suizidgedanken – bitte lebe!</span></a>
+        <a class="res-item" href="https://www.gewaltpraevention-ooe.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l14">Gewaltprävention OÖ</span></a>
+        <a class="res-item" href="https://www.jugendservice.at/leben" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l15">Jugendservice OÖ</span></a>
+      </div>
 
-    <p class="subhead" data-i18n="dl.sub.finanz">Finanzielle Unterstützungen & Förderungen</p>
-    <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
-      <a class="res-item" href="https://ooe.arbeiterkammer.at/beratung/bildung/bildungsfoerderungen/Schulbeihilfen.html" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l16">Arbeiterkammer OÖ – Schulbeihilfen</span></a>
-      <a class="res-item" href="https://www.bmb.gv.at/Themen/schule/befoe/schuelerunterstuetzung.html" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l17">Bundesministerium – Schülerunterstützung</span></a>
-      <a class="res-item" href="https://www.familienkarte.at/de/foerderungen/foerderungen-fuer-die-schule/unterstuetzungen.html" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l18">Familienkarte Oberösterreich</span></a>
-    </div>
+      <p class="subhead" data-i18n="dl.sub.finanz">Finanzielle Unterstützungen & Förderungen</p>
+      <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
+        <a class="res-item" href="https://ooe.arbeiterkammer.at/beratung/bildung/bildungsfoerderungen/Schulbeihilfen.html" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l16">Arbeiterkammer OÖ – Schulbeihilfen</span></a>
+        <a class="res-item" href="https://www.bmb.gv.at/Themen/schule/befoe/schuelerunterstuetzung.html" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l17">Bundesministerium – Schülerunterstützung</span></a>
+        <a class="res-item" href="https://www.familienkarte.at/de/foerderungen/foerderungen-fuer-die-schule/unterstuetzungen.html" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l18">Familienkarte Oberösterreich</span></a>
+      </div>
 
-    <p class="subhead" data-i18n="dl.sub.digital">Digitale Medien</p>
-    <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
-      <a class="res-item" href="https://www.saferinternet.at/zielgruppen/eltern" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l19">Safer Internet</span></a>
-      <a class="res-item" href="https://www.onlinesicherheit.gv.at/Services/News/Erste-Hilfe-bei-Cyber-Mobbing_Tipps-fuer-Eltern-und-Kinder.html" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l20">Erste Hilfe bei Cyber-Mobbing</span></a>
-    </div>
+      <p class="subhead" data-i18n="dl.sub.digital">Digitale Medien</p>
+      <div class="grid grid-2" style="gap:.65rem;margin-bottom:1rem;">
+        <a class="res-item" href="https://www.saferinternet.at/zielgruppen/eltern" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l19">Safer Internet</span></a>
+        <a class="res-item" href="https://www.onlinesicherheit.gv.at/Services/News/Erste-Hilfe-bei-Cyber-Mobbing_Tipps-fuer-Eltern-und-Kinder.html" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l20">Erste Hilfe bei Cyber-Mobbing</span></a>
+      </div>
 
-    <p class="subhead" data-i18n="dl.sub.weitere">Weitere Einrichtungen</p>
-    <div class="grid grid-2" style="gap:.65rem;">
-      <a class="res-item" href="https://www.lvev.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l21">Landesverband der Elternvereine OÖ</span></a>
-      <a class="res-item" href="https://www.bildung-ooe.gv.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l22">Bildungsdirektion OÖ</span></a>
-      <a class="res-item" href="https://www.bundeselternverband.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l23">Bundeselternverband Österreich</span></a>
-    </div>
+      <p class="subhead" data-i18n="dl.sub.weitere">Weitere Einrichtungen</p>
+      <div class="grid grid-2" style="gap:.65rem;">
+        <a class="res-item" href="https://www.lvev.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l21">Landesverband der Elternvereine OÖ</span></a>
+        <a class="res-item" href="https://www.bildung-ooe.gv.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l22">Bildungsdirektion OÖ</span></a>
+        <a class="res-item" href="https://www.bundeselternverband.at/" target="_blank" rel="noopener noreferrer"><span data-i18n="dl.l23">Bundeselternverband Österreich</span></a>
+      </div>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -1420,6 +1441,7 @@ translations.en = {
   "dl.vortrag1":"Talk \"Puberty\" – Slides, AGM 2024",
   "dl.vortrag2":"Talk \"Young People in Crisis\" – Materials, AGM 2019",
   "dl.h.links":"Useful External Links",
+  "dl.more.h":"Show Reports, Talks & External Links",
   "dl.sub.jugend":"Youth and Careers",
   "dl.l1":"Youth and Careers Fair Wels","dl.l2":"KOST School-to-Career Transition","dl.l3":"Chamber of Labour: Education & Career Choice",
   "dl.l4":"WKO Free Aptitude Assessment for Students","dl.l5":"Chamber of Labour Aptitude Test – Discover Your Strengths",
@@ -1582,6 +1604,7 @@ translations.hr = {
   "dl.vortrag1":"Predavanje „Puberet” – prezentacija, Skupština 2024",
   "dl.vortrag2":"Predavanje „Mladi u krizi” – materijali, Skupština 2019",
   "dl.h.links":"Korisne vanjske poveznice",
+  "dl.more.h":"Prikaži izvještaje, predavanja i vanjske poveznice",
   "dl.sub.jugend":"Mladi i zanimanje",
   "dl.l1":"Sajam mladih i zanimanja Wels","dl.l2":"KOST – prijelaz iz škole u posao","dl.l3":"Komora rada: obrazovanje i izbor zanimanja",
   "dl.l4":"WKO besplatna analiza potencijala za učenike","dl.l5":"Komora rada – testirajte svoje snage",
