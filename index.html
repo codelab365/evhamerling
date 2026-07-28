@@ -234,6 +234,22 @@ section.alt{ background:var(--sky); }
   border-radius:0 var(--radius) var(--radius) 0; padding:1.5rem; margin-bottom:2.5rem;
 }
 
+/* Projekte: eine kompakte Box statt mehrerer Karten */
+.projects-box{ padding:0; overflow:hidden; }
+.projects-images{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); }
+.projects-images img{ width:100%; height:190px; object-fit:cover; display:block; }
+.projects-list{ padding:1.75rem 2rem; }
+.projects-item{ padding:1.1rem 0; border-top:1px solid var(--line); }
+.projects-item:first-child{ padding-top:0; border-top:none; }
+.projects-item h4{ margin-bottom:.3rem; }
+.projects-item p{ margin-bottom:0; color:var(--ink-soft); font-size:.92rem; }
+.projects-item p a{ font-weight:600; white-space:nowrap; }
+@media (max-width:600px){
+  .projects-images{ grid-template-columns:1fr; }
+  .projects-images img{ height:160px; }
+  .projects-list{ padding:1.4rem 1.25rem; }
+}
+
 /* Accordion */
 details.acc{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); margin-bottom:.75rem; box-shadow:var(--shadow-sm); overflow:hidden; transition:box-shadow .2s ease; }
 details.acc:hover{ box-shadow:var(--shadow-md); }
@@ -481,53 +497,31 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
       <p class="lead" data-i18n="aktuelles.lead">Ein kurzer Überblick, was der Elternverein für die Schulgemeinschaft umsetzt.</p>
     </div>
 
-    <div class="callout">
-      <h3 style="margin-bottom:.5rem;" data-i18n="aktuelles.sponsor.title">Wir suchen Sponsoren für das Projekt „Schulpsychotherapie“</h3>
-      <p data-i18n="aktuelles.sponsor.body">Die Schulpsychotherapeutin, die wir mit dem Geld des Elternvereins seit dem Sommersemester 2021 finanzieren, ist eine große Bereicherung für unsere Schüler*innen. Da wir von offizieller Seite bis dato keine Unterstützung erhalten, brauchen wir für die Weiterführung dringend Sponsoren. Bitte meldet euch über das <a href="#kontakt">Kontaktformular</a> oder per E-Mail an <a href="mailto:elternverein@brghamerling.at">elternverein@brghamerling.at</a> mit euren Ideen.</p>
-      <a href="pdf/Sponsering-Schulpsychotherapie.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:.5rem;" data-i18n="aktuelles.sponsor.btn">Mehr Infos (PDF)</a>
-    </div>
-
-    <div class="grid grid-2">
-      <div class="news-card">
-        <div class="body">
-          <h3 data-i18n="news.catering.title">Catering-Partnerschaft mit Kulinario</h3>
-          <p data-i18n="news.catering.body">Seit Herbst 2026 ist die Firma Kulinario für unser Schulbuffet und die Mittagsverpflegung zuständig.</p>
-          <p style="margin-bottom:0;"><a href="https://www.kulinario-herrenstrasse.at/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="news.catering.link">Zur Website von Kulinario</a></p>
-        </div>
+    <div class="card projects-box">
+      <div class="projects-images">
+        <img src="events/2025-fotos-sommerfest/BlickSchulhof.jpg" alt="Sommerfest im Schulhof">
+        <img src="events/Boulder04.jpeg" alt="Kinder an der Boulderwand">
       </div>
-
-      <div class="news-card">
-        <div class="body">
-          <h3 data-i18n="news.tischtennis.title">Outdoor-Tischtennistisch</h3>
-          <p data-i18n="news.tischtennis.body" style="margin-bottom:0;">Für mehr Bewegung in den Pausen hat der Elternverein einen wetterfesten Tischtennistisch für den Schulhof angeschafft.</p>
+      <div class="projects-list">
+        <div class="projects-item">
+          <h4 data-i18n="aktuelles.sponsor.title">Wir suchen Sponsoren für das Projekt „Schulpsychotherapie“</h4>
+          <p data-i18n="aktuelles.sponsor.body">Wir finanzieren seit 2021 eine Schulpsychotherapeutin – für die Weiterführung suchen wir dringend Sponsoren. <a href="#kontakt">Kontakt aufnehmen</a> oder <a href="pdf/Sponsering-Schulpsychotherapie.pdf" target="_blank" rel="noopener noreferrer">Mehr Infos (PDF)</a></p>
         </div>
-      </div>
-
-      <div class="news-card">
-        <a href="events/2025-fotos-sommerfest/BlickSchulhof.jpg" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/BlickSchulhof.jpg" alt="Blick in den Schulhof beim Sommerfest"></a>
-        <div class="body">
-          <h3 data-i18n="news.fest.title">Sommerfest der Schule</h3>
-          <p data-i18n="news.fest.body">Alle zwei Jahre organisieren wir gemeinsam mit der Schule ein großes Sommerfest für die gesamte Schulgemeinschaft – mit Kuchenverkauf, Spielen und Programm für die ganze Familie. Der Erlös kommt direkt unseren Kindern zugute: Beim letzten Sommerfest 2025 kamen so € 1.026,- zusammen. Das nächste Sommerfest findet im Sommer 2027 statt.</p>
-          <div class="thumbs">
-            <a href="events/2025-fotos-sommerfest/IMG_2365.webp" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/IMG_2365.webp" alt="Sommerfest Detail 1"></a>
-            <a href="events/2025-fotos-sommerfest/IMG_2369.webp" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/IMG_2369.webp" alt="Sommerfest Detail 2"></a>
-            <a href="events/2025-fotos-sommerfest/IMG_2370.webp" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/IMG_2370.webp" alt="Sommerfest Detail 3"></a>
-            <a href="events/2025-fotos-sommerfest/IMG_2376.webp" target="_blank" rel="noopener noreferrer"><img src="events/2025-fotos-sommerfest/IMG_2376.webp" alt="Sommerfest Detail 4"></a>
-          </div>
+        <div class="projects-item">
+          <h4 data-i18n="news.catering.title">Catering-Partnerschaft mit Kulinario</h4>
+          <p data-i18n="news.catering.body">Seit Herbst 2026 ist die Firma Kulinario für unser Schulbuffet und die Mittagsverpflegung zuständig. <a href="https://www.kulinario-herrenstrasse.at/" target="_blank" rel="noopener noreferrer">Zur Website von Kulinario</a></p>
         </div>
-      </div>
-
-      <div class="news-card">
-        <a href="events/Boulder04.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder04.jpeg" alt="Kinder an der Boulderwand"></a>
-        <div class="body">
-          <h3 data-i18n="news.boulder.title">Anschaffung der Boulderwand</h3>
-          <p data-i18n="news.boulder.body">Beim Bouldern werden nahezu alle Muskelgruppen angesprochen – ein echtes Ganzkörpertraining, das auch Balance, Koordination und strategisches Denken schult. Aus diesen Gründen wurde 2018 eine Boulderwand angeschafft, die der Elternverein mit € 5.000,- unterstützte.</p>
-          <div class="thumbs">
-            <a href="events/Boulder01.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder01.jpeg" alt="Boulderwand Detail 1"></a>
-            <a href="events/Boulder02.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder02.jpeg" alt="Boulderwand Detail 2"></a>
-            <a href="events/Boulder03.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder03.jpeg" alt="Boulderwand Detail 3"></a>
-            <a href="events/Boulder05.jpeg" target="_blank" rel="noopener noreferrer"><img src="events/Boulder05.jpeg" alt="Boulderwand Detail 4"></a>
-          </div>
+        <div class="projects-item">
+          <h4 data-i18n="news.tischtennis.title">Outdoor-Tischtennistisch</h4>
+          <p data-i18n="news.tischtennis.body">Für mehr Bewegung in den Pausen: ein wetterfester Tischtennistisch für den Schulhof.</p>
+        </div>
+        <div class="projects-item">
+          <h4 data-i18n="news.fest.title">Sommerfest der Schule</h4>
+          <p data-i18n="news.fest.body">Alle zwei Jahre feiern wir gemeinsam mit der Schule ein großes Sommerfest – 2025 kamen so € 1.026,- für unsere Kinder zusammen. Das nächste Sommerfest ist im Sommer 2027.</p>
+        </div>
+        <div class="projects-item">
+          <h4 data-i18n="news.boulder.title">Anschaffung der Boulderwand</h4>
+          <p data-i18n="news.boulder.body">2018 angeschafft und vom Elternverein mit € 5.000,- unterstützt – ein Ganzkörpertraining für Balance, Kraft und Koordination.</p>
         </div>
       </div>
     </div>
@@ -564,7 +558,7 @@ footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
         <p data-i18n="ueberuns.leitbild.p1">Als Elternverein sind wir mit drei Stimmen im Schulgemeinschaftsausschuss (SGA) vertreten und bringen die Interessen der Eltern ein. Gemeinsam mit Lehrer- und Schülervertreter*innen werden hier wichtige Schulthemen behandelt.</p>
         <p data-i18n="ueberuns.leitbild.p2">Zusätzliche Lehr- und Freizeitmittel werden vom Elternverein angeschafft. Bei Problemen zwischen Eltern, Schüler*innen und Schule kann der Elternverein als Vermittler kontaktiert werden. Bedürftige Schüler*innen werden bei Schulveranstaltungen und -projekten finanziell unterstützt.</p>
         <h4 style="margin-top:1.5rem;" data-i18n="ueberuns.kev.title">Warum wir Klassenelternvertreter*innen brauchen</h4>
-        <p data-i18n="ueberuns.kev.p">Damit die Anliegen der Eltern nicht erst über Umwege zum Elternverein finden, braucht jede Klasse eine direkte Vertretung: Elternklassenvertreter*innen kennen die Situation in ihrer Klasse aus erster Hand, sind erste Anlaufstelle bei Fragen und Problemen und tragen diese gebündelt an den Vorstand heran. So bleibt der Elternverein nah an den tatsächlichen Themen jeder einzelnen Klasse. <a href="#klassenvertreter" data-i18n="ueberuns.kev.link">Mehr zur Rolle der Klassenelternvertreter*innen</a></p>
+        <p data-i18n="ueberuns.kev.p">Damit die Anliegen der Eltern nicht erst über Umwege zum Elternverein finden, braucht jede Klasse eine direkte Vertretung: Elternklassenvertreter*innen kennen die Situation in ihrer Klasse aus erster Hand, sind erste Anlaufstelle bei Fragen und Problemen und tragen diese gebündelt an den Vorstand heran. So bleibt der Elternverein nah an den tatsächlichen Themen jeder einzelnen Klasse. <a href="#klassenvertreter">Mehr zur Rolle der Klassenelternvertreter*innen</a></p>
       </div>
     </div>
   </div>
@@ -1396,15 +1390,13 @@ translations.en = {
   "aktuelles.title":"Our Projects",
   "aktuelles.lead":"A quick overview of what the Parents' Association does for the school community.",
   "aktuelles.sponsor.title":"We're looking for sponsors for the \"School Psychotherapy\" project",
-  "aktuelles.sponsor.body":"The school psychotherapist, whom we have funded with Parents' Association money since summer term 2021, is a great asset for our students. As we have not received official support so far, we urgently need sponsors to continue the service. Please get in touch via the <a href=\"#kontakt\">contact form</a> or by e-mail at <a href=\"mailto:elternverein@brghamerling.at\">elternverein@brghamerling.at</a> with your ideas.",
-  "aktuelles.sponsor.btn":"More Info (PDF)",
+  "aktuelles.sponsor.body":"We have funded a school psychotherapist since 2021 – for the service to continue, we urgently need sponsors. <a href=\"#kontakt\">Get in touch</a> or <a href=\"pdf/Sponsering-Schulpsychotherapie.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">more info (PDF)</a>",
   "news.fest.title":"The School's Summer Festival",
   "news.fest.body":"Every two years, we team up with the school to host a big summer festival for the whole school community – with a cake sale, games and a programme for the whole family. The proceeds go straight to our children: the last festival in 2025 raised €1,026. The next summer festival takes place in summer 2027.",
   "news.boulder.title":"Purchase of the Climbing Wall",
   "news.boulder.body":"Bouldering engages almost every muscle group — a true full-body workout that also builds balance, coordination and strategic thinking. For these reasons, a climbing wall was purchased in 2018, with the Parents' Association contributing €5,000.",
   "news.catering.title":"Catering Partnership with Kulinario",
-  "news.catering.body":"Since autumn 2026, the company Kulinario has run our school buffet and lunch catering.",
-  "news.catering.link":"Visit Kulinario's Website",
+  "news.catering.body":"Since autumn 2026, the company Kulinario has run our school buffet and lunch catering. <a href=\"https://www.kulinario-herrenstrasse.at/\" target=\"_blank\" rel=\"noopener noreferrer\">Visit Kulinario's website</a>",
   "news.tischtennis.title":"Outdoor Table Tennis Table",
   "news.tischtennis.body":"For more movement during breaks, the Parents' Association bought a weatherproof table tennis table for the schoolyard.",
   "ueberuns.title":"Who we are and what we do",
@@ -1418,8 +1410,7 @@ translations.en = {
   "ueberuns.leitbild.p1":"As a Parents' Association, we hold three votes on the School Community Board (SGA) and bring parents' interests to the table. Together with teacher and student representatives, important school matters are discussed here.",
   "ueberuns.leitbild.p2":"Additional teaching and leisure equipment is purchased by the Parents' Association. In case of issues between parents, students and the school, the Parents' Association can be contacted as a mediator. Students in need are financially supported for school events and projects.",
   "ueberuns.kev.title":"Why we need class parent representatives",
-  "ueberuns.kev.p":"So that parents' concerns don't have to find a roundabout way to the Parents' Association, every class needs a direct representative: class parent representatives know their class's situation firsthand, are the first point of contact for questions and problems, and bring these together to the Board. This keeps the Parents' Association close to what's actually going on in each class.",
-  "ueberuns.kev.link":"More about the role of class parent representatives",
+  "ueberuns.kev.p":"So that parents' concerns don't have to find a roundabout way to the Parents' Association, every class needs a direct representative: class parent representatives know their class's situation firsthand, are the first point of contact for questions and problems, and bring these together to the Board. This keeps the Parents' Association close to what's actually going on in each class. <a href=\"#klassenvertreter\">More about the role of class parent representatives</a>",
   "infos.title":"Membership fee, lockers & more",
   "infos.lead":"Everything about fees, support and procedures for common issues — for quick reference.",
   "infos.beitrag.h":"Membership Fee",
@@ -1576,15 +1567,13 @@ translations.hr = {
   "aktuelles.title":"Naši projekti",
   "aktuelles.lead":"Kratak pregled onoga što udruga roditelja radi za školsku zajednicu.",
   "aktuelles.sponsor.title":"Tražimo sponzore za projekt „Školska psihoterapija”",
-  "aktuelles.sponsor.body":"Školska psihoterapeutkinja, koju financiramo sredstvima udruge roditelja od ljetnog semestra 2021., velika je dobit za naše učenike. Budući da dosad nismo dobili službenu potporu, hitno trebamo sponzore za nastavak. Javite nam se putem <a href=\"#kontakt\">kontakt obrasca</a> ili e-poštom na <a href=\"mailto:elternverein@brghamerling.at\">elternverein@brghamerling.at</a> s vašim idejama.",
-  "aktuelles.sponsor.btn":"Više informacija (PDF)",
+  "aktuelles.sponsor.body":"Od 2021. financiramo školsku psihoterapeutkinju – za nastavak hitno trebamo sponzore. <a href=\"#kontakt\">Javite nam se</a> ili <a href=\"pdf/Sponsering-Schulpsychotherapie.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">više informacija (PDF)</a>",
   "news.fest.title":"Školski ljetni festival",
   "news.fest.body":"Svake druge godine zajedno sa školom organiziramo veliki ljetni festival za cijelu školsku zajednicu – s prodajom kolača, igrama i programom za cijelu obitelj. Prihod ide izravno našoj djeci: na posljednjem festivalu 2025. prikupljeno je 1.026 €. Sljedeći ljetni festival održat će se u ljeto 2027.",
   "news.boulder.title":"Nabava boulder-zida",
   "news.boulder.body":"Bouldering angažira gotovo sve mišićne skupine – pravi trening cijelog tijela koji razvija i ravnotežu, koordinaciju i strateško razmišljanje. Zbog toga je 2018. nabavljen boulder-zid, koji je udruga roditelja podržala s 5.000 €.",
   "news.catering.title":"Partnerstvo s Kulinariom",
-  "news.catering.body":"Od jeseni 2026. tvrtka Kulinario vodi naš školski bife i ručak.",
-  "news.catering.link":"Posjetite web stranicu Kulinario",
+  "news.catering.body":"Od jeseni 2026. tvrtka Kulinario vodi naš školski bife i ručak. <a href=\"https://www.kulinario-herrenstrasse.at/\" target=\"_blank\" rel=\"noopener noreferrer\">Posjetite web stranicu Kulinario</a>",
   "news.tischtennis.title":"Vanjski stol za stolni tenis",
   "news.tischtennis.body":"Za više kretanja tijekom odmora udruga roditelja nabavila je stol za stolni tenis otporan na vremenske uvjete za školsko dvorište.",
   "ueberuns.title":"Tko smo i čime se bavimo",
@@ -1598,8 +1587,7 @@ translations.hr = {
   "ueberuns.leitbild.p1":"Kao udruga roditelja zastupljeni smo s tri glasa u Školskom vijeću (SGA) te unosimo interese roditelja. Zajedno s predstavnicima nastavnika i učenika ovdje se raspravlja o važnim školskim temama.",
   "ueberuns.leitbild.p2":"Udruga roditelja nabavlja dodatna nastavna i slobodnovremenska sredstva. Kod problema između roditelja, učenika i škole udruga se može kontaktirati kao posrednik. Učenici u potrebi financijski se podupiru za školske priredbe i projekte.",
   "ueberuns.kev.title":"Zašto su nam potrebni predstavnici roditelja razreda",
-  "ueberuns.kev.p":"Kako bi pitanja roditelja stigla do udruge izravno, a ne zaobilaznim putem, svaki razred treba izravnog predstavnika: predstavnici roditelja razreda iz prve ruke poznaju situaciju u svom razredu, prva su kontakt-točka za pitanja i probleme te ih objedinjeno prenose upravnom odboru. Tako udruga roditelja ostaje blizu stvarnih tema svakog pojedinog razreda.",
-  "ueberuns.kev.link":"Više o ulozi predstavnika roditelja razreda",
+  "ueberuns.kev.p":"Kako bi pitanja roditelja stigla do udruge izravno, a ne zaobilaznim putem, svaki razred treba izravnog predstavnika: predstavnici roditelja razreda iz prve ruke poznaju situaciju u svom razredu, prva su kontakt-točka za pitanja i probleme te ih objedinjeno prenose upravnom odboru. Tako udruga roditelja ostaje blizu stvarnih tema svakog pojedinog razreda. <a href=\"#klassenvertreter\">Više o ulozi predstavnika roditelja razreda</a>",
   "infos.title":"Članarina, ormarić i ostalo",
   "infos.lead":"Sve o članarinama, potporama i postupcima kod uobičajenih problema – za brzu provjeru.",
   "infos.beitrag.h":"Članarina",
