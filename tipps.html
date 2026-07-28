@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praktische Tipps für Schule & Alltag – Elternverein BRG Hamerlingstraße</title>
+<meta name="description" content="Praktische Tipps zu Zeitmanagement, Lernmethoden und effizientem Arbeiten für Eltern und Schüler*innen – inklusive Video-Sammlung.">
+<link rel="icon" type="image/png" href="img/ev-logo.png">
+<style>
+/* =========================================================
+   ELTERNVEREIN BRG HAMERLINGSTRASSE — STYLESHEET (shared)
+   Identisch zur Startseite, damit beide Seiten einheitlich wirken.
+   ========================================================= */
+
+:root{
+  --navy:        #163a5f;
+  --navy-dark:   #0e2740;
+  --blue:        #2f6690;
+  --blue-soft:   #e7eef4;
+  --sky:         #f2f6f9;
+  --paper:       #fdfcfa;
+  --gold:        #c1893c;
+  --gold-dark:   #9c6d2c;
+  --ink:         #1c2530;
+  --ink-soft:    #4b5563;
+  --line:        #dde3ea;
+  --white:       #ffffff;
+
+  --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --radius: 10px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 1px 2px rgba(22,58,95,.06), 0 1px 1px rgba(22,58,95,.04);
+  --shadow-md: 0 8px 24px rgba(22,58,95,.10), 0 2px 6px rgba(22,58,95,.06);
+  --container: 1080px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:110px; }
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:var(--blue); text-decoration:none; }
+
+input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible{
+  outline:2px solid var(--blue); outline-offset:2px; border-radius:4px;
+}
+
+a:hover{ text-decoration:underline; }
+ul,ol{ padding-left:1.25rem; }
+.container{ width:100%; max-width:var(--container); margin:0 auto; padding:0 1.5rem; }
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  color:var(--navy);
+  font-weight:700;
+  line-height:1.2;
+  margin:0 0 .6rem;
+}
+h2.section-title{ font-size:clamp(1.7rem,3.4vw,2.4rem); }
+h3{ font-size:1.25rem; }
+h4{ font-size:1.05rem; }
+p{ margin:0 0 1rem; }
+.lead{ color:var(--ink-soft); font-size:1.05rem; max-width:640px; }
+
+.eyebrow{
+  display:flex; align-items:center; gap:.6rem;
+  font-family:var(--font-body);
+  font-size:.78rem; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--gold-dark);
+  margin-bottom:.75rem;
+}
+.eyebrow::before{ content:""; width:22px; height:2px; background:var(--gold); }
+
+.section-head{ max-width:720px; margin-bottom:2.75rem; }
+
+.btn{
+  display:inline-block;
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:.95rem;
+  padding:.7rem 1.5rem;
+  border-radius:var(--radius-sm);
+  border:1px solid transparent;
+  cursor:pointer;
+  text-decoration:none;
+  box-shadow:var(--shadow-sm);
+  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .15s ease,box-shadow .15s ease;
+}
+.btn:hover{ text-decoration:none; transform:translateY(-1px); box-shadow:var(--shadow-md); }
+.btn:active{ transform:translateY(0); }
+.btn-primary{ background:var(--navy); color:var(--white); }
+.btn-primary:hover{ background:var(--blue); }
+.btn-gold{ background:var(--gold); color:var(--white); }
+.btn-gold:hover{ background:var(--gold-dark); }
+.btn-outline{ background:transparent; color:var(--navy); border-color:var(--navy); }
+.btn-outline:hover{ background:var(--navy); color:var(--white); }
+
+/* Header */
+header.site-header{ position:sticky; top:0; z-index:60; background:var(--paper); border-bottom:1px solid var(--line); }
+.header-inner{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.9rem 0; }
+.wordmark{
+  font-family:var(--font-display); font-weight:700; color:var(--navy);
+  font-size:1.15rem; line-height:1.2; min-width:0; flex:1 1 auto; display:flex; align-items:center; gap:.6rem;
+}
+.site-logo{ height:38px; width:auto; flex-shrink:0; display:block; }
+.wordmark-text{ min-width:0; }
+.wordmark-label{ display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.wordmark small{ display:block; font-family:var(--font-body); font-weight:500; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); white-space:normal; }
+.header-actions{ display:flex; align-items:center; gap:.6rem; flex:0 0 auto; }
+.header-actions a.quicklink{ font-size:.9rem; font-weight:600; color:var(--navy); }
+
+.lang-switch{ display:flex; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; flex-shrink:0; }
+.lang-btn{
+  font-family:var(--font-body); font-size:.74rem; font-weight:700; letter-spacing:.02em;
+  background:var(--paper); color:var(--ink-soft); border:none; padding:.45rem .5rem; cursor:pointer;
+  border-right:1px solid var(--line); min-width:32px;
+}
+.lang-btn:last-child{ border-right:none; }
+.lang-btn:hover{ background:var(--blue-soft); }
+.lang-btn.active{ background:var(--navy); color:var(--white); }
+
+/* Compact page rail */
+nav.chapter-rail{ position:sticky; top:64px; z-index:55; background:var(--navy); overflow-x:auto; scrollbar-width:none; }
+nav.chapter-rail::-webkit-scrollbar{ display:none; }
+.chapter-rail-inner{ display:flex; align-items:stretch; justify-content:center; max-width:var(--container); margin:0 auto; padding:0 1.5rem; min-width:max-content; }
+.chapter-rail a{
+  display:flex; align-items:baseline; color:#c7d6e5; text-decoration:none;
+  font-size:.78rem; font-weight:600; letter-spacing:.02em; padding:.55rem .85rem; white-space:nowrap;
+  border-bottom:2px solid transparent; transition:color .2s ease,border-color .2s ease;
+}
+.chapter-rail a:hover{ color:var(--white); text-decoration:none; }
+.chapter-rail a.active{ color:var(--white); border-bottom-color:var(--gold); }
+
+section{ padding:4.5rem 0; }
+section.alt{ background:var(--sky); }
+
+.hero{ background:linear-gradient(180deg,var(--sky) 0%,var(--paper) 65%); padding:4rem 0 3rem; border-bottom:1px solid var(--line); }
+.hero-tag{
+  display:inline-block; font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--gold-dark); background:var(--white); border:1px solid var(--line); border-radius:999px; padding:.3rem .9rem; margin-bottom:1.4rem;
+}
+.hero h1{ color:var(--navy); font-size:clamp(1.9rem,4vw,2.7rem); max-width:20ch; margin-bottom:1rem; }
+.hero .lead{ font-size:1.1rem; max-width:56ch; }
+
+.card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow-sm); }
+.grid{ display:grid; gap:1.5rem; }
+.grid-2{ grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+.grid-3{ grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+
+.tip-card{ position:relative; transition:box-shadow .2s ease, transform .2s ease; }
+.tip-card:hover{ box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.tip-num{ font-family:var(--font-display); font-size:1.7rem; color:var(--gold); display:block; margin-bottom:.4rem; }
+.tip-card h4{ margin-bottom:.4rem; }
+.tip-card p{ margin-bottom:0; color:var(--ink-soft); font-size:.92rem; }
+
+/* Video appendix */
+.video-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:box-shadow .2s ease, transform .2s ease; }
+.video-card:hover{ box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.video-embed{ position:relative; aspect-ratio:16/9; background:#0e2740; cursor:pointer; overflow:hidden; }
+.video-embed img.video-thumb{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease; }
+.video-embed:hover img.video-thumb{ transform:scale(1.04); }
+.video-embed iframe{ width:100%; height:100%; border:0; display:block; }
+.video-play{
+  position:absolute; inset:0; margin:auto; width:62px; height:62px; border-radius:50%;
+  background:rgba(14,39,64,.82); border:2px solid rgba(255,255,255,.85);
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  transition:background .2s ease, transform .2s ease;
+}
+.video-embed:hover .video-play{ background:var(--gold); transform:translate(-50%,-50%) scale(1.06); position:absolute; top:50%; left:50%; margin:0; }
+.video-play svg{ width:24px; height:24px; fill:var(--white); margin-left:3px; }
+.video-body{ padding:1.25rem 1.4rem; }
+.video-body h4{ margin-bottom:.35rem; }
+.video-body p{ margin-bottom:0; color:var(--ink-soft); font-size:.9rem; }
+.video-note{ font-size:.82rem; color:var(--ink-soft); margin-top:2rem; }
+
+/* Footer */
+footer.site-footer{ background:var(--navy-dark); color:#a9bccd; padding:3rem 0 2rem; }
+footer.site-footer .container{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem; }
+footer.site-footer h4{ color:var(--white); font-size:.95rem; }
+footer.site-footer a{ color:#a9bccd; }
+footer.site-footer nav a{ display:block; margin-bottom:.5rem; font-size:.9rem; }
+.footer-bottom{ border-top:1px solid rgba(255,255,255,.1); margin-top:2rem; padding-top:1.5rem; font-size:.82rem; text-align:center; color:#7f93a5; }
+
+@media (max-width:760px){
+  section{ padding:3.25rem 0; }
+  .header-actions .quicklink{ display:none; }
+}
+@media (max-width:420px){
+  .container{ padding:0 1.1rem; }
+  .wordmark{ font-size:.98rem; }
+  .wordmark small{ display:none; }
+  .site-logo{ height:30px; }
+  .lang-btn{ padding:.4rem .42rem; font-size:.7rem; min-width:28px; }
+  section{ padding:2.75rem 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html#start" class="wordmark">
+      <img src="img/ev-logo.png" alt="Elternverein BRG Hamerling" class="site-logo">
+      <span class="wordmark-text"><span class="wordmark-label">Elternverein BRG Hamerling</span><small data-i18n="header.subtitle">Bundesrealgymnasium Linz</small></span>
+    </a>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Sprache / Language / Jezik">
+        <button type="button" class="lang-btn" data-lang="de">DE</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="hr">HR</button>
+      </div>
+      <a href="index.html#start" class="quicklink" data-i18n="back.home">Zur Startseite</a>
+    </div>
+  </div>
+</header>
+
+<nav class="chapter-rail" id="chapterRail" aria-label="Seitennavigation">
+  <div class="chapter-rail-inner">
+    <a href="#zeitmanagement" data-i18n="nav.zeit">Zeitmanagement</a>
+    <a href="#lernmethoden" data-i18n="nav.lern">Lernmethoden</a>
+    <a href="#effizient" data-i18n="nav.effizient">Effizientes Arbeiten</a>
+    <a href="#videos" data-i18n="nav.videos">Videos</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <span class="hero-tag" data-i18n="hero.tag">Praktische Tipps</span>
+    <h1 data-i18n="hero.h1">Tipps für Schule &amp; Alltag</h1>
+    <p class="lead" data-i18n="hero.lead">Manche Punkte kennst du vielleicht schon, andere probierst du zum ersten Mal aus. Am besten funktioniert es nicht, alles gleichzeitig umzustellen – einen Tipp herausgreifen, zwei Wochen testen, dann weiterschauen.</p>
+  </div>
+</section>
+
+<!-- ============ ZEITMANAGEMENT ============ -->
+<section id="zeitmanagement">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><span data-i18n="nav.zeit">Zeitmanagement</span></div>
+      <h2 class="section-title" data-i18n="zeit.title">Zeitmanagement &amp; Tagesorganisation</h2>
+      <p class="lead" data-i18n="zeit.lead">Ein verlässlicher Tagesablauf entlastet mehr, als man zunächst denkt – vor allem, wenn mehrere Familienmitglieder gleichzeitig unter Zeitdruck stehen.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card tip-card"><span class="tip-num">01</span><h4 data-i18n="zeit.1.h">Feste Lernzeiten einplanen</h4><p data-i18n="zeit.1.p">Lernen fällt leichter, wenn es zur Gewohnheit wird. Wer täglich zur gleichen Uhrzeit beginnt, muss sich nicht jedes Mal neu überwinden. <strong>Beispiel:</strong> Montag bis Donnerstag ab 16 Uhr, direkt nach der Jause, 30 Minuten Mathe oder Vokabeln – ohne morgendliche Diskussion, ob und wann.</p></div>
+      <div class="card tip-card"><span class="tip-num">02</span><h4 data-i18n="zeit.2.h">Wochenplan statt Tagesplan</h4><p data-i18n="zeit.2.p">Wer nur von Tag zu Tag plant, übersieht leicht, dass am Donnerstag zwei Schularbeiten und eine Abgabe zusammenfallen. <strong>Beispiel:</strong> Ein einfacher Wochenkalender an der Kühlschranktür, in den alle Prüfungstermine sofort eingetragen werden, sobald sie bekannt sind.</p></div>
+      <div class="card tip-card"><span class="tip-num">03</span><h4 data-i18n="zeit.3.h">Prioritäten setzen</h4><p data-i18n="zeit.3.p">Nicht jede Aufgabe ist gleich dringend, auch wenn sich das im Trubel oft anders anfühlt. <strong>Beispiel:</strong> Vor dem Lernen drei Punkte auf einen Zettel schreiben und durchnummerieren – Punkt eins zuerst, auch wenn Punkt drei mehr Spaß macht.</p></div>
+      <div class="card tip-card"><span class="tip-num">04</span><h4 data-i18n="zeit.4.h">Pausen bewusst einplanen</h4><p data-i18n="zeit.4.p">Nach etwa 25 bis 30 Minuten lässt die Konzentration spürbar nach – das ist keine Frage der Disziplin, sondern schlicht Biologie. <strong>Beispiel:</strong> Timer auf 25 Minuten stellen, danach fünf Minuten wirklich aufstehen und etwas trinken, erst dann weiterarbeiten.</p></div>
+      <div class="card tip-card"><span class="tip-num">05</span><h4 data-i18n="zeit.5.h">Schultasche am Vorabend packen</h4><p data-i18n="zeit.5.p">Der Unterschied zwischen einem entspannten und einem hektischen Morgen liegt oft an Kleinigkeiten. <strong>Beispiel:</strong> Fixer Programmpunkt nach dem Abendessen – Stundenplan kontrollieren, Tasche packen, dann ist Feierabend.</p></div>
+      <div class="card tip-card"><span class="tip-num">06</span><h4 data-i18n="zeit.6.h">Feste Ablage für Unterlagen</h4><p data-i18n="zeit.6.p">Ein eigener Ordner pro Fach klingt banal, spart aber im Ernstfall viel Zeit und noch mehr Nerven. <strong>Beispiel:</strong> Jedes Fach bekommt eine eigene Farbe – blaue Mappe für Mathe, grüne für Deutsch. Das sortiert sich fast von selbst.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LERNMETHODEN ============ -->
+<section id="lernmethoden" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><span data-i18n="nav.lern">Lernmethoden</span></div>
+      <h2 class="section-title" data-i18n="lern.title">Lernmethoden</h2>
+      <p class="lead" data-i18n="lern.lead">Wie man lernt, macht oft einen größeren Unterschied als wie lange.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card tip-card"><span class="tip-num">01</span><h4 data-i18n="lern.1.h">Aktiv wiederholen statt nur lesen</h4><p data-i18n="lern.1.p">Nochmaliges Durchlesen fühlt sich produktiv an, bringt aber erstaunlich wenig – der Kopf erkennt den Text wieder, ohne ihn wirklich abrufen zu können. <strong>Beispiel:</strong> Nach einem Kapitel das Buch zuklappen und drei Fragen dazu aus dem Kopf beantworten, bevor es weitergeht.</p></div>
+      <div class="card tip-card"><span class="tip-num">02</span><h4 data-i18n="lern.2.h">Die Feynman-Technik</h4><p data-i18n="lern.2.p">Wer einen Sachverhalt einem jüngeren Geschwisterkind erklären kann, hat ihn verstanden – wer dabei ins Stocken gerät, weiß genau, wo die Lücke liegt. <strong>Beispiel:</strong> Nach dem Lernen laut erklären, als würde man es der kleinen Schwester am Küchentisch beibringen.</p></div>
+      <div class="card tip-card"><span class="tip-num">03</span><h4 data-i18n="lern.3.h">Verteiltes statt Blocklernen</h4><p data-i18n="lern.3.p">Eine lange Nacht vor der Schularbeit fühlt sich nach viel Einsatz an, bleibt aber selten hängen. <strong>Beispiel:</strong> Statt drei Stunden am Vorabend lieber fünf Mal 30 Minuten über die Woche verteilt – am Ende sitzt deutlich mehr.</p></div>
+      <div class="card tip-card"><span class="tip-num">04</span><h4 data-i18n="lern.4.h">Mindmaps &amp; Visualisierung</h4><p data-i18n="lern.4.p">Manche Zusammenhänge lassen sich in Worten kaum fassen, auf einem Blatt Papier aber sofort erkennen. <strong>Beispiel:</strong> Zentralen Begriff in die Mitte schreiben, alles Dazugehörige mit Linien verbinden – kein Kunstwerk nötig, nur Struktur.</p></div>
+      <div class="card tip-card"><span class="tip-num">05</span><h4 data-i18n="lern.5.h">Die richtige Lernumgebung</h4><p data-i18n="lern.5.p">Konzentration entsteht nicht im Kopf allein, sondern auch durch den Ort, an dem gelernt wird. <strong>Beispiel:</strong> Handy für die Lernzeit bewusst in ein anderes Zimmer legen, nicht nur stummschalten.</p></div>
+      <div class="card tip-card"><span class="tip-num">06</span><h4 data-i18n="lern.6.h">Mehrere Sinne einbeziehen</h4><p data-i18n="lern.6.p">Wer Inhalte nur stumm liest, aktiviert weniger als jemand, der sie laut ausspricht oder erklärt. <strong>Beispiel:</strong> Vokabeln nicht nur lesen, sondern laut aussprechen und gleichzeitig aufschreiben.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EFFIZIENTES ARBEITEN ============ -->
+<section id="effizient">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><span data-i18n="nav.effizient">Effizientes Arbeiten</span></div>
+      <h2 class="section-title" data-i18n="effizient.title">Effizientes Arbeiten</h2>
+      <p class="lead" data-i18n="effizient.lead">Kleine Gewohnheiten, die helfen, Aufgaben mit weniger Reibung zu erledigen.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card tip-card"><span class="tip-num">01</span><h4 data-i18n="eff.1.h">Ablenkungen minimieren</h4><p data-i18n="eff.1.p">Ein Handy in Griffweite meldet sich früher oder später – und jede Unterbrechung kostet mehr Zeit, als die Nachricht selbst dauert. <strong>Beispiel:</strong> Handy während der Hausaufgaben in die Küche legen, nicht nur umdrehen.</p></div>
+      <div class="card tip-card"><span class="tip-num">02</span><h4 data-i18n="eff.2.h">Eine Aufgabe nach der anderen</h4><p data-i18n="eff.2.p">Zwischen Matheaufgabe und Nachrichten hin- und herzuspringen fühlt sich nach viel Bewegung an, bringt aber beides langsamer voran. <strong>Beispiel:</strong> Erst die Hausübung fertig machen, dann bewusst zehn Minuten für Nachrichten – nicht parallel.</p></div>
+      <div class="card tip-card"><span class="tip-num">03</span><h4 data-i18n="eff.3.h">Realistisch planen</h4><p data-i18n="eff.3.p">Wer für ein Referat nur eine Stunde einplant, gerät fast zwangsläufig in Zeitnot; wer drei Stunden ansetzt, verliert oft die Motivation. <strong>Beispiel:</strong> Beim ersten Mal ehrlich stoppen, wie lange eine ähnliche Aufgabe wirklich gedauert hat, und beim nächsten Mal danach planen.</p></div>
+      <div class="card tip-card"><span class="tip-num">04</span><h4 data-i18n="eff.4.h">Bewegungspausen einbauen</h4><p data-i18n="eff.4.p">Nach einer Stunde Stillsitzen sinkt die Konzentration spürbar, auch wenn man es selbst kaum bemerkt. <strong>Beispiel:</strong> Nach jeder Lerneinheit fünf Minuten wirklich aufstehen und sich bewegen, nicht nur am Handy weiterscrollen.</p></div>
+      <div class="card tip-card"><span class="tip-num">05</span><h4 data-i18n="eff.5.h">Arbeitsplatz vorbereiten</h4><p data-i18n="eff.5.p">Der Griff zum fehlenden Geodreieck mitten in der Aufgabe reißt aus der Konzentration, und danach dauert es, wieder reinzukommen. <strong>Beispiel:</strong> Vor Lernbeginn kurz prüfen, ob Heft, Stift, Taschenrechner und Unterlagen am Tisch liegen.</p></div>
+      <div class="card tip-card"><span class="tip-num">06</span><h4 data-i18n="eff.6.h">Kurze Reflexion am Ende</h4><p data-i18n="eff.6.p">Ohne einen kurzen Rückblick wiederholt sich derselbe Fehler oft wochenlang, bevor er überhaupt auffällt. <strong>Beispiel:</strong> Zwei Sätze ins Heft schreiben – Was lief gut? Was ändere ich morgen?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS (ANHANG) ============ -->
+<section id="videos" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><span data-i18n="nav.videos">Videos</span></div>
+      <h2 class="section-title" data-i18n="videos.title">Anhang: Methoden &amp; Wissen auf YouTube</h2>
+      <p class="lead" data-i18n="videos.lead">Wir haben ein paar Videos herausgesucht, die zu den Themen oben passen. Einfach anklicken, dann läuft es direkt hier.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="video-card">
+        <div class="video-embed" data-video-id="qjZYjnIIKwk">
+          <img class="video-thumb" src="https://img.youtube.com/vi/qjZYjnIIKwk/hqdefault.jpg" alt="Ivy Lee Methode" loading="lazy">
+          <button class="video-play" type="button" aria-label="Video abspielen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="video-body">
+          <h4 data-i18n="video.1.title">Ivy Lee Methode</h4>
+          <p data-i18n="video.1.desc">Abends sechs Aufgaben für den nächsten Tag notieren, nach Priorität ordnen und der Reihe nach abarbeiten – eine der einfachsten Prioritätenmethoden überhaupt.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed" data-video-id="2kYfeYfl5hs">
+          <img class="video-thumb" src="https://img.youtube.com/vi/2kYfeYfl5hs/hqdefault.jpg" alt="So werde ich gut in Mathematik" loading="lazy">
+          <button class="video-play" type="button" aria-label="Video abspielen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="video-body">
+          <h4 data-i18n="video.2.title">So werde ich gut in Mathematik</h4>
+          <p data-i18n="video.2.desc">Wie sich Verständnis und Übung sinnvoll kombinieren lassen, um in Mathematik wirklich voranzukommen.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed" data-video-id="6BkLsMnoJQg">
+          <img class="video-thumb" src="https://img.youtube.com/vi/6BkLsMnoJQg/hqdefault.jpg" alt="Ultra schnell lernen ist einfach" loading="lazy">
+          <button class="video-play" type="button" aria-label="Video abspielen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="video-body">
+          <h4 data-i18n="video.3.title">Ultra schnell lernen ist einfach</h4>
+          <p data-i18n="video.3.desc">Ein paar Techniken, mit denen Lerninhalte schneller hängen bleiben – nicht nur kurzfristig, sondern über die Prüfung hinaus.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed" data-video-id="ybspTTfyw8M">
+          <img class="video-thumb" src="https://img.youtube.com/vi/ybspTTfyw8M/hqdefault.jpg" alt="10 Techniken für einen besseren Arbeitsablauf" loading="lazy">
+          <button class="video-play" type="button" aria-label="Video abspielen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="video-body">
+          <h4 data-i18n="video.4.title">10 Techniken für einen besseren Arbeitsablauf</h4>
+          <p data-i18n="video.4.desc">Zehn Ideen für einen strukturierteren Arbeitsalltag, von der Priorisierung bis zur Pausenplanung.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed" data-video-id="WlEIonZkZFU">
+          <img class="video-thumb" src="https://img.youtube.com/vi/WlEIonZkZFU/hqdefault.jpg" alt="So machst du bessere Notizen für die Schule" loading="lazy">
+          <button class="video-play" type="button" aria-label="Video abspielen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="video-body">
+          <h4 data-i18n="video.5.title">So machst du bessere Notizen für die Schule</h4>
+          <p data-i18n="video.5.desc">Mitschriften, die im Unterricht wirklich helfen und nicht erst zu Hause entziffert werden müssen.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed" data-video-id="pgaYHADCB5Y">
+          <img class="video-thumb" src="https://img.youtube.com/vi/pgaYHADCB5Y/hqdefault.jpg" alt="So schaffst du alles" loading="lazy">
+          <button class="video-play" type="button" aria-label="Video abspielen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="video-body">
+          <h4 data-i18n="video.6.title">So schaffst du alles</h4>
+          <p data-i18n="video.6.desc">Impulse zu Selbstorganisation und Motivation für Tage, an denen die To-do-Liste einfach nicht kürzer werden will.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="video-note" data-i18n="videos.note">Die Videos werden erst nach einem Klick von YouTube geladen, vorher seht ihr nur ein Vorschaubild. Uns war wichtig, hier so wenig wie möglich ungefragt an Google weiterzugeben – deshalb diese Zwei-Klick-Lösung. Es handelt sich um Inhalte externer YouTube-Kanäle, nicht um Produktionen des Elternvereins.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;">
+        <img src="img/ev-logo.png" alt="Elternverein BRG Hamerling" style="height:34px;width:auto;">
+        <h4 style="font-family:var(--font-display);font-size:1.1rem;margin:0;">Elternverein BRG Hamerling</h4>
+      </div>
+      <p style="max-width:280px;font-size:.88rem;" data-i18n="footer.claim">Ein ehrenamtlicher Verein zur Förderung der Schulgemeinschaft am Bundesrealgymnasium Linz, Hamerlingstraße.</p>
+    </div>
+    <nav>
+      <h4 data-i18n="footer.nav">Navigation</h4>
+      <a href="#zeitmanagement" data-i18n="nav.zeit">Zeitmanagement</a>
+      <a href="#lernmethoden" data-i18n="nav.lern">Lernmethoden</a>
+      <a href="#effizient" data-i18n="nav.effizient">Effizientes Arbeiten</a>
+      <a href="#videos" data-i18n="nav.videos">Videos</a>
+    </nav>
+    <nav>
+      <h4 data-i18n="footer.verein">Verein</h4>
+      <a href="index.html#start" data-i18n="back.home">Zur Startseite</a>
+      <a href="index.html#kontakt" data-i18n="nav.kontakt">Kontakt</a>
+      <a href="index.html#impressum" data-i18n="nav.impressum">Impressum & Datenschutz</a>
+      <a href="mailto:elternverein@brghamerling.at">elternverein@brghamerling.at</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="year"></span> Elternverein BRG Hamerlingstraße · ZVR Österreich: 463107582
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Compact rail: scroll-spy (identisch zur Startseite) */
+const railEl = document.getElementById('chapterRail');
+const railLinks = Array.from(document.querySelectorAll('.chapter-rail a'));
+const sections = railLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function centerInRail(a){
+  const railRect = railEl.getBoundingClientRect();
+  const aRect = a.getBoundingClientRect();
+  const target = railEl.scrollLeft + (aRect.left - railRect.left) - (railEl.clientWidth / 2) + (aRect.width / 2);
+  railEl.scrollTo({ left: Math.max(0, target), behavior:'smooth' });
+}
+let currentActiveHref = null;
+function setActive(){
+  let current = null;
+  const probe = window.scrollY + 140;
+  sections.forEach(sec => { if(sec.offsetTop <= probe) current = sec; });
+  const href = current ? ('#' + current.id) : null;
+  if(href === currentActiveHref) return;
+  currentActiveHref = href;
+  railLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === href));
+  const activeEl = href ? railLinks.find(a => a.getAttribute('href') === href) : null;
+  if(activeEl){ centerInRail(activeEl); }
+}
+window.addEventListener('scroll', () => window.requestAnimationFrame(setActive));
+window.addEventListener('load', setActive);
+
+/* Video-Fassade: laedt YouTube-iframe erst nach Klick (datenschutzfreundlicher) */
+document.querySelectorAll('.video-embed').forEach(el => {
+  el.addEventListener('click', () => {
+    const id = el.dataset.videoId;
+    el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  }, { once:true });
+});
+
+/* ============================================================
+   I18N — gleiches Prinzip wie auf der Startseite: Deutsch steht
+   direkt im HTML (Fallback), EN/HR liegen hier als Wörterbuch.
+   Sprachwahl wird über die Startseite hinweg gemeinsam gespeichert.
+   ============================================================ */
+const translations = { de:{}, en:{}, hr:{} };
+
+translations.en = {
+  "header.subtitle":"State Secondary School Linz",
+  "back.home":"Back to Homepage",
+  "nav.zeit":"Time Management","nav.lern":"Study Methods","nav.effizient":"Working Efficiently","nav.videos":"Videos",
+  "hero.tag":"Practical Tips",
+  "hero.h1":"Tips for School & Everyday Life",
+  "hero.lead":"Some of this you may already know, some you'll try for the first time. It rarely works to change everything at once – pick one tip, test it for two weeks, then take stock.",
+  "zeit.title":"Time Management & Daily Organisation",
+  "zeit.lead":"A reliable daily routine takes more pressure off than you'd expect – especially when several family members are under time pressure at once.",
+  "zeit.1.h":"Set fixed study times","zeit.1.p":"Studying gets easier once it becomes a habit. Start at the same time every day and you won't have to talk yourself into it each time. <strong>Example:</strong> Monday to Thursday from 4pm, right after the afternoon snack, 30 minutes of maths or vocabulary – no morning debate about whether or when.",
+  "zeit.2.h":"A weekly plan instead of a daily plan","zeit.2.p":"Planning day by day makes it easy to miss that Thursday has two tests and a deadline all at once. <strong>Example:</strong> A simple weekly calendar on the fridge door where every test date goes in as soon as it's known.",
+  "zeit.3.h":"Set priorities","zeit.3.p":"Not every task is equally urgent, even though it can feel that way in the rush of the day. <strong>Example:</strong> Before studying, write down three tasks and number them – tackle number one first, even if number three sounds more fun.",
+  "zeit.4.h":"Plan breaks deliberately","zeit.4.p":"After about 25 to 30 minutes, concentration drops noticeably – that's not a matter of discipline, just biology. <strong>Example:</strong> Set a 25-minute timer, then get up for real for five minutes and have a drink before continuing.",
+  "zeit.5.h":"Pack your school bag the evening before","zeit.5.p":"The difference between a calm and a hectic morning often comes down to small things. <strong>Example:</strong> A fixed routine after dinner – check the timetable, pack the bag, then you're done for the day.",
+  "zeit.6.h":"A fixed place for documents","zeit.6.p":"A dedicated folder per subject sounds trivial but saves real time and nerves when it matters. <strong>Example:</strong> Give each subject its own colour – blue folder for maths, green for English. It sorts itself almost automatically.",
+  "lern.title":"Study Methods",
+  "lern.lead":"How you learn often makes a bigger difference than how long.",
+  "lern.1.h":"Active recall instead of just reading","lern.1.p":"Re-reading feels productive but achieves surprisingly little – your brain recognises the text without truly being able to retrieve it. <strong>Example:</strong> After a chapter, close the book and answer three questions about it from memory before moving on.",
+  "lern.2.h":"The Feynman Technique","lern.2.p":"If you can explain something to a younger sibling, you've understood it – and if you get stuck, you know exactly where the gap is. <strong>Example:</strong> After studying, explain it out loud as if teaching your little sister at the kitchen table.",
+  "lern.3.h":"Spaced learning instead of cramming","lern.3.p":"A long night before the test feels like a lot of effort but rarely sticks. <strong>Example:</strong> Instead of three hours the evening before, do five 30-minute sessions spread across the week – far more stays in your head.",
+  "lern.4.h":"Mind maps & visualisation","lern.4.p":"Some connections are hard to put into words but obvious the moment you see them on paper. <strong>Example:</strong> Write the key term in the middle of a page and connect everything related with lines – no artwork required, just structure.",
+  "lern.5.h":"The right study environment","lern.5.p":"Concentration doesn't come from willpower alone – the place where you study matters too. <strong>Example:</strong> Put your phone in another room for study time, not just on silent.",
+  "lern.6.h":"Engage several senses","lern.6.p":"Reading silently activates less than reading aloud or explaining something to someone. <strong>Example:</strong> Don't just read vocabulary – say it out loud and write it down at the same time.",
+  "effizient.title":"Working Efficiently",
+  "effizient.lead":"Small habits that help get things done with less friction.",
+  "eff.1.h":"Minimise distractions","eff.1.p":"A phone within reach will demand attention sooner or later, and every interruption costs more time than the message itself takes. <strong>Example:</strong> Put the phone in the kitchen during homework, not just face-down on the desk.",
+  "eff.2.h":"One task at a time","eff.2.p":"Jumping between a maths problem and messages feels busy but actually slows both down. <strong>Example:</strong> Finish the homework first, then take a deliberate ten minutes for messages – not side by side.",
+  "eff.3.h":"Plan realistically","eff.3.p":"Allow only an hour for a presentation and you'll likely run out of time; allow three and motivation tends to fade. <strong>Example:</strong> Time the first attempt honestly, then plan the next similar task around that real number.",
+  "eff.4.h":"Build in movement breaks","eff.4.p":"After an hour of sitting still, concentration drops noticeably, even if you barely notice it yourself. <strong>Example:</strong> After each study session, get up and move for five real minutes instead of scrolling on your phone.",
+  "eff.5.h":"Prepare your workspace","eff.5.p":"Reaching for a missing ruler mid-task breaks your focus, and it takes a while to get back into it. <strong>Example:</strong> Before starting, check that notebook, pen, calculator and materials are already on the desk.",
+  "eff.6.h":"A short reflection at the end","eff.6.p":"Without a brief look back, the same mistake can repeat for weeks before anyone notices. <strong>Example:</strong> Write two sentences in a notebook – what went well, what to change tomorrow.",
+  "videos.title":"Appendix: Methods & Knowledge on YouTube",
+  "videos.lead":"We picked a few videos that fit the topics above. Just click one and it plays right here.",
+  "video.1.title":"The Ivy Lee Method","video.1.desc":"Note down six tasks for the next day each evening, order them by priority, and work through them one by one – one of the simplest prioritisation methods there is.",
+  "video.2.title":"How I Got Good at Maths","video.2.desc":"How to combine understanding and practice in a way that actually moves you forward in maths.",
+  "video.3.title":"Learning Ultra Fast Is Easy","video.3.desc":"A few techniques that help study material stick faster – not just for the moment, but well beyond the test.",
+  "video.4.title":"10 Techniques for a Better Workflow","video.4.desc":"Ten ideas for a more structured working day, from prioritising tasks to planning breaks.",
+  "video.5.title":"How to Take Better Notes for School","video.5.desc":"Notes that actually help during class instead of needing to be deciphered at home.",
+  "video.6.title":"How You Get It All Done","video.6.desc":"Ideas on self-organisation and motivation for days when the to-do list just won't get any shorter.",
+  "videos.note":"Videos only load from YouTube once you click them – before that, you just see a preview image. We wanted to send as little as possible to Google without being asked, hence this two-click approach. These are contents from third-party YouTube channels, not productions of the Parents' Association.",
+  "footer.claim":"A volunteer-run association supporting the school community at BRG Linz Hamerlingstraße.",
+  "footer.nav":"Navigation","footer.verein":"Association","nav.kontakt":"Contact","nav.impressum":"Legal Notice & Privacy"
+};
+
+translations.hr = {
+  "header.subtitle":"Državna gimnazija Linz",
+  "back.home":"Natrag na početnu",
+  "nav.zeit":"Upravljanje vremenom","nav.lern":"Metode učenja","nav.effizient":"Učinkovit rad","nav.videos":"Videi",
+  "hero.tag":"Praktični savjeti",
+  "hero.h1":"Savjeti za školu i svakodnevicu",
+  "hero.lead":"Neke stvari možda već znate, druge isprobavate prvi put. Rijetko funkcionira mijenjati sve odjednom – odaberite jedan savjet, isprobajte ga dva tjedna, pa procijenite.",
+  "zeit.title":"Upravljanje vremenom i organizacija dana",
+  "zeit.lead":"Pouzdan dnevni ritam rasterećuje više nego što biste očekivali – posebno kad je više članova obitelji istovremeno pod vremenskim pritiskom.",
+  "zeit.1.h":"Odredite fiksno vrijeme učenja","zeit.1.p":"Učenje postaje lakše kad postane navika. Tko počinje svaki dan u isto vrijeme, ne mora se svaki put iznova nagovarati. <strong>Primjer:</strong> od ponedjeljka do četvrtka od 16 sati, odmah nakon užine, 30 minuta matematike ili vokabulara – bez jutarnje rasprave hoće li i kada.",
+  "zeit.2.h":"Tjedni plan umjesto dnevnog","zeit.2.p":"Tko planira samo iz dana u dan, lako previdi da se u četvrtak poklapaju dva ispita i jedan rok. <strong>Primjer:</strong> jednostavan tjedni kalendar na vratima hladnjaka, u koji se svaki datum ispita upiše čim postane poznat.",
+  "zeit.3.h":"Odredite prioritete","zeit.3.p":"Nije svaki zadatak podjednako hitan, iako se u gužvi tako često čini. <strong>Primjer:</strong> prije učenja zapisati tri zadatka i numerirati ih – prvo riješiti broj jedan, čak i ako broj tri djeluje zabavnije.",
+  "zeit.4.h":"Svjesno planirajte stanke","zeit.4.p":"Nakon otprilike 25 do 30 minuta koncentracija primjetno pada – to nije pitanje discipline, nego jednostavno biologije. <strong>Primjer:</strong> postaviti tajmer na 25 minuta, zatim stvarno ustati na pet minuta i popiti nešto prije nastavka.",
+  "zeit.5.h":"Spremite torbu večer prije","zeit.5.p":"Razlika između opuštenog i kaotičnog jutra često leži u sitnicama. <strong>Primjer:</strong> fiksna točka nakon večere – provjeriti raspored, spakirati torbu, i time je dan gotov.",
+  "zeit.6.h":"Fiksno mjesto za materijale","zeit.6.p":"Poseban fascikl za svaki predmet zvuči banalno, no u pravom trenutku štedi puno vremena i živaca. <strong>Primjer:</strong> svaki predmet dobije svoju boju – plava mapa za matematiku, zelena za hrvatski. Gotovo se samo posloži.",
+  "lern.title":"Metode učenja",
+  "lern.lead":"Kako učite često čini veću razliku nego koliko dugo.",
+  "lern.1.h":"Aktivno ponavljanje umjesto samo čitanja","lern.1.p":"Ponovno čitanje djeluje produktivno, no zapravo donosi iznenađujuće malo – mozak prepoznaje tekst, a da ga zapravo ne može dozvati iz sjećanja. <strong>Primjer:</strong> nakon poglavlja zatvoriti knjigu i iz sjećanja odgovoriti na tri pitanja prije nego što se nastavi dalje.",
+  "lern.2.h":"Feynmanova tehnika","lern.2.p":"Tko gradivo može objasniti mlađem bratu ili sestri, taj ga je razumio – a tko pritom zapne, točno zna gdje mu nedostaje znanje. <strong>Primjer:</strong> nakon učenja naglas objasniti gradivo, kao da ga učite mlađu sestru za kuhinjskim stolom.",
+  "lern.3.h":"Raspoređeno učenje umjesto zbijenog","lern.3.p":"Duga noć uoči ispita djeluje kao velik trud, no rijetko dugo ostaje u pamćenju. <strong>Primjer:</strong> umjesto tri sata večer prije, radije pet puta po 30 minuta raspoređeno tijekom tjedna – na kraju ostane znatno više.",
+  "lern.4.h":"Mape uma i vizualizacija","lern.4.p":"Neke se veze teško opisuju riječima, ali se odmah prepoznaju na papiru. <strong>Primjer:</strong> ključni pojam napisati u sredinu stranice, a sve povezano spojiti linijama – nije potrebno umjetničko djelo, samo struktura.",
+  "lern.5.h":"Prava okolina za učenje","lern.5.p":"Koncentracija ne nastaje samo u glavi, nego i zbog mjesta na kojem se uči. <strong>Primjer:</strong> mobitel za vrijeme učenja svjesno odnijeti u drugu sobu, ne samo stišati.",
+  "lern.6.h":"Uključite više osjetila","lern.6.p":"Tko sadržaj samo tiho čita, aktivira manje nego onaj tko ga naglas izgovara ili objašnjava. <strong>Primjer:</strong> vokabular ne samo čitati, nego naglas izgovoriti i istovremeno zapisati.",
+  "effizient.title":"Učinkovit rad",
+  "effizient.lead":"Male navike koje pomažu obaviti zadatke uz manje trenja.",
+  "eff.1.h":"Smanjite ometanja","eff.1.p":"Mobitel nadohvat ruke prije ili kasnije će se oglasiti – a svaki prekid košta više vremena nego što traje sama poruka. <strong>Primjer:</strong> mobitel za vrijeme zadaće odnijeti u kuhinju, ne samo okrenuti naopako.",
+  "eff.2.h":"Jedan zadatak za drugim","eff.2.p":"Skakanje između matematičkog zadatka i poruka djeluje živahno, no zapravo usporava oboje. <strong>Primjer:</strong> prvo dovršiti zadaću, a zatim svjesno odvojiti deset minuta za poruke – ne usporedno.",
+  "eff.3.h":"Planirajte realistično","eff.3.p":"Tko za referat planira samo sat vremena, gotovo neizbježno upada u vremensku stisku; tko planira tri sata, često gubi motivaciju. <strong>Primjer:</strong> prvi put pošteno izmjeriti koliko je sličan zadatak stvarno trajao i sljedeći put planirati prema tome.",
+  "eff.4.h":"Uključite stanke za pokret","eff.4.p":"Nakon sat vremena mirnog sjedenja koncentracija primjetno pada, i to i kad to sami jedva primjećujemo. <strong>Primjer:</strong> nakon svake cjeline učenja pet minuta stvarno ustati i pokrenuti se, ne samo dalje listati mobitel.",
+  "eff.5.h":"Pripremite radno mjesto","eff.5.p":"Traženje šestara usred zadatka izbaci iz koncentracije, a povratak u nju traje. <strong>Primjer:</strong> prije početka učenja kratko provjeriti jesu li bilježnica, olovka, kalkulator i materijali već na stolu.",
+  "eff.6.h":"Kratka refleksija na kraju","eff.6.p":"Bez kratkog osvrta ista se greška zna ponavljati tjednima prije nego što uopće postane vidljiva. <strong>Primjer:</strong> zapisati dvije rečenice u bilježnicu – što je dobro funkcioniralo, što sutra promijeniti.",
+  "videos.title":"Prilog: metode i znanje na YouTubeu",
+  "videos.lead":"Odabrali smo nekoliko videa koji se uklapaju u teme gore. Samo kliknite i video kreće ovdje.",
+  "video.1.title":"Ivy Lee metoda","video.1.desc":"Navečer zabilježiti šest zadataka za sljedeći dan, poredati ih po prioritetu i obraditi redom – jedna od najjednostavnijih metoda određivanja prioriteta uopće.",
+  "video.2.title":"Kako sam postao dobar iz matematike","video.2.desc":"Kako smisleno kombinirati razumijevanje i vježbu tako da stvarno napredujete u matematici.",
+  "video.3.title":"Ultra brzo učenje je jednostavno","video.3.desc":"Nekoliko tehnika zahvaljujući kojima gradivo brže ostaje u pamćenju – ne samo do ispita, nego i dugo poslije.",
+  "video.4.title":"10 tehnika za bolji tijek rada","video.4.desc":"Deset ideja za strukturiraniji radni dan, od određivanja prioriteta do planiranja stanki.",
+  "video.5.title":"Kako praviti bolje bilješke za školu","video.5.desc":"Bilješke koje na nastavi stvarno pomažu, umjesto da ih tek kod kuće treba dešifrirati.",
+  "video.6.title":"Kako sve stići","video.6.desc":"Poticaji za samoorganizaciju i motivaciju za dane kad popis obveza jednostavno ne postaje kraći.",
+  "videos.note":"Videi se s YouTubea učitavaju tek nakon što ih kliknete – prije toga vidite samo pregledna sliku. Bilo nam je važno Googleu bez pitanja poslati što manje podataka, otuda ovo rješenje s dva klika. Riječ je o sadržaju vanjskih YouTube kanala, a ne o produkciji udruge roditelja.",
+  "footer.claim":"Udruga koju vode volonteri, a koja podržava školsku zajednicu BRG Linz Hamerlingstraße.",
+  "footer.nav":"Navigacija","footer.verein":"Udruga","nav.kontakt":"Kontakt","nav.impressum":"Impresum i zaštita podataka"
+};
+
+document.querySelectorAll('[data-i18n]').forEach(el => { el.dataset.deHtml = el.innerHTML; });
+
+function applyLanguage(lang){
+  if(!translations[lang]) lang = 'de';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.innerHTML = (lang === 'de') ? el.dataset.deHtml : (translations[lang][key] || el.dataset.deHtml);
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.documentElement.setAttribute('lang', lang);
+  try{ localStorage.setItem('ev-lang', lang); }catch(e){}
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+});
+
+let startLang = 'de';
+try{ startLang = localStorage.getItem('ev-lang') || 'de'; }catch(e){}
+if(!translations[startLang]) startLang = 'de';
+applyLanguage(startLang);
+</script>
+</body>
+</html>
